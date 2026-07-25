@@ -1,0 +1,96 @@
+openapi: 3.0.0
+info:
+  title: Yuzu Accumulator (Experimental) Accumulator (Experimental) Coverage API
+  description: Yuzu's Public API
+  version: '0.5'
+  contact: {}
+servers: []
+tags:
+- name: Coverage
+paths:
+  /v2/coverages/{coverageId}/generate-id-card/svg:
+    get:
+      description: Generate an ID card for a coverage as an SVG
+      operationId: PublicCoverageController_generateIDCardSvg
+      parameters:
+      - name: coverageId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Id Card as SVG
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IDCardResponse'
+      security:
+      - public-api-auth: []
+      summary: Generate an ID card
+      tags:
+      - Coverage
+  /v2/coverages/{coverageId}/generate-id-card/b64:
+    get:
+      description: Generate an ID card for a coverage as a b64 encoded string of the PNG image
+      operationId: PublicCoverageController_generateIDCardB64
+      parameters:
+      - name: coverageId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Id Card as b64 encoded string of the PNG image
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IDCardResponse'
+      security:
+      - public-api-auth: []
+      summary: Generate an ID card
+      tags:
+      - Coverage
+  /v2/coverages/{coverageId}/generate-id-card/pdf:
+    get:
+      description: Generate an ID card for a coverage as a pdf file.
+      operationId: PublicCoverageController_generateIDCardPdf
+      parameters:
+      - name: coverageId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Id Card as PDF file
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Uint8Array'
+      security:
+      - public-api-auth: []
+      summary: Generate an ID card
+      tags:
+      - Coverage
+components:
+  schemas:
+    Uint8Array:
+      type: object
+      properties: {}
+    IDCardResponse:
+      type: object
+      properties:
+        front:
+          type: string
+        back:
+          type: string
+      required:
+      - front
+      - back
+  securitySchemes:
+    public-api-auth:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

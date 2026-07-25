@@ -1,0 +1,1319 @@
+openapi: 3.0.0
+info:
+  title: Yuzu Accumulator (Experimental) Accumulator (Experimental) Benefits API
+  description: Yuzu's Public API
+  version: '0.5'
+  contact: {}
+servers: []
+tags:
+- name: Benefits
+paths:
+  /v2/coverages/{coverageId}/benefit-lookup:
+    get:
+      description: Return all benefits available under a coverage, formatted for code- and name-based lookup. Suitable for answering questions like "is this covered?" and "who do I call to set up pre-cert?"
+      operationId: PublicBenefitsController_getBenefitLookup
+      parameters:
+      - name: coverageId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Benefit lookup data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BenefitLookupDto'
+              examples:
+                full:
+                  summary: Multi-benefit bundle with exclusions, tiers, precert vendor, and telehealth
+                  value:
+                    benefits:
+                    - benefitCategory:
+                        id: 550e8400-e29b-41d4-a716-446655440010
+                        name: Primary Care Office Visit
+                        description: In-office visit with a primary care provider.
+                        legalDescription: null
+                      costSharing:
+                      - tierId: tier-in-network
+                        covered: true
+                        copayCents: 2500
+                        coinsurancePct: null
+                        ifApplicable: false
+                        requiresDeductibleMet: false
+                        waiveCopayAfterDays: null
+                        waiveCostSharingForVisits: null
+                        notes: null
+                      - tierId: tier-out-of-network
+                        covered: true
+                        copayCents: null
+                        coinsurancePct: 40
+                        ifApplicable: false
+                        requiresDeductibleMet: true
+                        waiveCopayAfterDays: null
+                        waiveCostSharingForVisits: null
+                        notes: null
+                      benefitNotes: null
+                      precertRequirements: []
+                      procedureCodeRanges:
+                      - 99201-99205
+                      - 99211-99215
+                      revenueCodeRanges: []
+                      humanReadable:
+                        payments:
+                        - tierId: tier-in-network
+                          tierName: In-Network
+                          payment: $25.00 Copay
+                        - tierId: tier-out-of-network
+                          tierName: Out-of-Network
+                          payment: 40% Coinsurance after deductible
+                        precertRequirements: []
+                    - benefitCategory:
+                        id: 550e8400-e29b-41d4-a716-446655440011
+                        name: Physical Therapy
+                        description: Outpatient physical, occupational, and speech therapy.
+                        legalDescription: null
+                      costSharing:
+                      - tierId: tier-in-network
+                        covered: true
+                        copayCents: 4000
+                        coinsurancePct: null
+                        ifApplicable: false
+                        requiresDeductibleMet: true
+                        waiveCopayAfterDays: null
+                        waiveCostSharingForVisits: 3
+                        notes: null
+                      limitations:
+                        maxVisitsPerYear: 30
+                        maxDaysPerYear: null
+                        moneyPerLifetimeCents: null
+                        maxDaysPerLifetime: null
+                        moneyPerFillCents: null
+                        maxHoursPerVisit: null
+                        excludeChildDependents: null
+                        limitationNotes: Combined PT/OT/ST limit
+                        precertMayBeRequired: false
+                      benefitNotes: Members may self-refer to a network therapist.
+                      precertRequirements: []
+                      procedureCodeRanges:
+                      - 97110-97546
+                      revenueCodeRanges:
+                      - 0420-0429
+                      humanReadable:
+                        payments:
+                        - tierId: tier-in-network
+                          tierName: In-Network
+                          payment: $40.00 Copay after deductible. $0 for the first 3 visits
+                        limitation: 30 visits per year. Combined PT/OT/ST limit. Members may self-refer to a network therapist.
+                        precertRequirements: []
+                    - benefitCategory:
+                        id: 550e8400-e29b-41d4-a716-446655440012
+                        name: Inpatient Hospital Admission
+                        description: Inpatient acute-care hospital stays.
+                        legalDescription: null
+                      costSharing:
+                      - tierId: tier-in-network
+                        covered: true
+                        copayCents: null
+                        coinsurancePct: 20
+                        ifApplicable: false
+                        requiresDeductibleMet: true
+                        waiveCopayAfterDays: null
+                        waiveCostSharingForVisits: null
+                        notes: null
+                      benefitNotes: null
+                      precertRequirements:
+                      - benefitCategoryId: 550e8400-e29b-41d4-a716-446655440012
+                        rule:
+                          minHoursPerAdmission: 24
+                          minAge: null
+                          minMoneyPerServiceLineCents: null
+                          minDaysPerClaim: null
+                          excludePosCode: '23'
+                      procedureCodeRanges:
+                      - 99221-99239
+                      revenueCodeRanges:
+                      - 0100-0219
+                      humanReadable:
+                        payments:
+                        - tierId: tier-in-network
+                          tierName: In-Network
+                          payment: 20% Coinsurance after deductible
+                        precertRequirements:
+                        - benefitCategoryId: 550e8400-e29b-41d4-a716-446655440012
+                          rule: Admission is over 24 hours or POS code is not 23
+                    exclusions:
+                    - id: 550e8400-e29b-41d4-a716-446655440099
+                      name: Cosmetic Surgery
+                      description: Procedures performed primarily for cosmetic purposes.
+                      legalDescription: null
+                    - id: 550e8400-e29b-41d4-a716-446655440098
+                      name: Experimental Treatments
+                      description: Services, supplies, or treatments that are experimental, investigational, or not generally accepted medical practice.
+                      legalDescription: null
+                    tiers:
+                    - id: tier-in-network
+                      name: In-Network
+                      waivePrecertRequirements: false
+                      excludeLimitations: false
+                      networks:
+                      - name: Acme PPO
+                        url: https://example.com/find-a-provider
+                        phone: '+18005551212'
+                    - id: tier-out-of-network
+                      name: Out-of-Network
+                      waivePrecertRequirements: false
+                      excludeLimitations: false
+                      networks: []
+                    precertVendorInfo:
+                      name: MedWatch
+                      phone: '+18004328421'
+                    telehealthDisclaimer:
+                      orgName: Teladoc
+                    humanReadable:
+                      precertDisclaimer: To initiate the precertification process, call MedWatch at +18004328421
+                minimal:
+                  summary: Single-benefit bundle with no precert vendor or telehealth disclaimer
+                  value:
+                    benefits:
+                    - benefitCategory:
+                        id: 550e8400-e29b-41d4-a716-446655440010
+                        name: Primary Care Office Visit
+                        description: In-office visit with a primary care provider.
+                        legalDescription: null
+                      costSharing:
+                      - tierId: tier-in-network
+                        covered: true
+                        copayCents: 2500
+                        coinsurancePct: null
+                        ifApplicable: false
+                        requiresDeductibleMet: false
+                        waiveCopayAfterDays: null
+                        waiveCostSharingForVisits: null
+                        notes: null
+                      - tierId: tier-out-of-network
+                        covered: true
+                        copayCents: null
+                        coinsurancePct: 40
+                        ifApplicable: false
+                        requiresDeductibleMet: true
+                        waiveCopayAfterDays: null
+                        waiveCostSharingForVisits: null
+                        notes: null
+                      benefitNotes: null
+                      precertRequirements: []
+                      procedureCodeRanges:
+                      - 99201-99205
+                      - 99211-99215
+                      revenueCodeRanges: []
+                      humanReadable:
+                        payments:
+                        - tierId: tier-in-network
+                          tierName: In-Network
+                          payment: $25.00 Copay
+                        - tierId: tier-out-of-network
+                          tierName: Out-of-Network
+                          payment: 40% Coinsurance after deductible
+                        precertRequirements: []
+                    exclusions: []
+                    tiers:
+                    - id: tier-in-network
+                      name: In-Network
+                      waivePrecertRequirements: false
+                      excludeLimitations: false
+                      networks: []
+                    humanReadable: {}
+        '404':
+          description: The coverage does not exist or its plan has no benefit bundle configured.
+      security:
+      - public-api-auth: []
+      summary: Retrieve benefit lookup data for a coverage
+      tags:
+      - Benefits
+  /v2/coverages/{coverageId}/benefit-lookup/codes/{code}:
+    post:
+      description: Resolve a supplied code through the same code-search path used by the portal benefit lookup. Returns matching benefit(s), the structured precert status (including network-waiver outcome when a provider TIN is supplied in the body), matched exclusions, and RxBuy status when the shared lookup returns one.
+      operationId: PublicBenefitsController_getBenefitLookupByCode
+      parameters:
+      - name: coverageId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: code
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: false
+        description: Optional rendering-provider TIN. When supplied, the response's precertStatus.waivedByProviderNetwork is true if the provider participates in a network tier that waives pre-certification.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BenefitLookupCodeRequestDto'
+      responses:
+        '200':
+          description: Code lookup result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BenefitLookupCodeResultDto'
+              examples:
+                precertNotRequired:
+                  summary: Code matches a benefit with no pre-cert requirement
+                  value:
+                    codeSet: Procedure
+                    label: Office or other outpatient visit, established patient, 30-39 minutes
+                    matchedBenefits:
+                    - benefitCategory:
+                        id: 550e8400-e29b-41d4-a716-446655440010
+                        name: Primary Care Office Visit
+                        description: In-office visit with a primary care provider.
+                        legalDescription: null
+                      costSharing:
+                      - tierId: tier-in-network
+                        covered: true
+                        copayCents: 2500
+                        coinsurancePct: null
+                        ifApplicable: false
+                        requiresDeductibleMet: false
+                        waiveCopayAfterDays: null
+                        waiveCostSharingForVisits: null
+                        notes: null
+                      - tierId: tier-out-of-network
+                        covered: true
+                        copayCents: null
+                        coinsurancePct: 40
+                        ifApplicable: false
+                        requiresDeductibleMet: true
+                        waiveCopayAfterDays: null
+                        waiveCostSharingForVisits: null
+                        notes: null
+                      benefitNotes: null
+                      precertRequirements: []
+                      procedureCodeRanges:
+                      - 99201-99205
+                      - 99211-99215
+                      revenueCodeRanges: []
+                      humanReadable:
+                        payments:
+                        - tierId: tier-in-network
+                          tierName: In-Network
+                          payment: $25.00 Copay
+                        - tierId: tier-out-of-network
+                          tierName: Out-of-Network
+                          payment: 40% Coinsurance after deductible
+                        precertRequirements: []
+                    tiers:
+                    - id: tier-in-network
+                      name: In-Network
+                      waivePrecertRequirements: false
+                      excludeLimitations: false
+                      networks:
+                      - name: Acme PPO
+                        url: https://example.com/find-a-provider
+                        phone: '+18005551212'
+                    - id: tier-out-of-network
+                      name: Out-of-Network
+                      waivePrecertRequirements: false
+                      excludeLimitations: false
+                      networks: []
+                    matchedExclusions: []
+                precertRequiredNoRule:
+                  summary: Pre-cert required (unconditional)
+                  value:
+                    codeSet: Procedure
+                    label: Home health aide services, per diem
+                    matchedBenefits:
+                    - benefitCategory:
+                        id: 550e8400-e29b-41d4-a716-446655440011
+                        name: Physical Therapy
+                        description: Outpatient physical, occupational, and speech therapy.
+                        legalDescription: null
+                      costSharing:
+                      - tierId: tier-in-network
+                        covered: true
+                        copayCents: 4000
+                        coinsurancePct: null
+                        ifApplicable: false
+                        requiresDeductibleMet: true
+                        waiveCopayAfterDays: null
+                        waiveCostSharingForVisits: 3
+                        notes: null
+                      limitations:
+                        maxVisitsPerYear: 30
+                        maxDaysPerYear: null
+                        moneyPerLifetimeCents: null
+                        maxDaysPerLifetime: null
+                        moneyPerFillCents: null
+                        maxHoursPerVisit: null
+                        excludeChildDependents: null
+                        limitationNotes: Combined PT/OT/ST limit
+                        precertMayBeRequired: false
+                      benefitNotes: Members may self-refer to a network therapist.
+                      precertRequirements: []
+                      procedureCodeRanges:
+                      - 97110-97546
+                      revenueCodeRanges:
+                      - 0420-0429
+                      humanReadable:
+                        payments:
+                        - tierId: tier-in-network
+                          tierName: In-Network
+                          payment: $40.00 Copay after deductible. $0 for the first 3 visits
+                        limitation: 30 visits per year. Combined PT/OT/ST limit. Members may self-refer to a network therapist.
+                        precertRequirements: []
+                    precertStatus:
+                      humanReadable: {}
+                      benefitCategoryId: 550e8400-e29b-41d4-a716-446655440020
+                      waivedByProviderNetwork: false
+                    tiers:
+                    - id: tier-in-network
+                      name: In-Network
+                      waivePrecertRequirements: false
+                      excludeLimitations: false
+                      networks:
+                      - name: Acme PPO
+                        url: https://example.com/find-a-provider
+                        phone: '+18005551212'
+                    - id: tier-out-of-network
+                      name: Out-of-Network
+                      waivePrecertRequirements: false
+                      excludeLimitations: false
+                      networks: []
+                    matchedExclusions: []
+                precertRequiredWithRule:
+                  summary: Pre-cert required if conditions met
+                  value:
+                    codeSet: Procedure
+                    label: Subsequent hospital inpatient or observation care, per day
+                    matchedBenefits:
+                    - benefitCategory:
+                        id: 550e8400-e29b-41d4-a716-446655440012
+                        name: Inpatient Hospital Admission
+                        description: Inpatient acute-care hospital stays.
+                        legalDescription: null
+                      costSharing:
+                      - tierId: tier-in-network
+                        covered: true
+                        copayCents: null
+                        coinsurancePct: 20
+                        ifApplicable: false
+                        requiresDeductibleMet: true
+                        waiveCopayAfterDays: null
+                        waiveCostSharingForVisits: null
+                        notes: null
+                      benefitNotes: null
+                      precertRequirements:
+                      - benefitCategoryId: 550e8400-e29b-41d4-a716-446655440012
+                        rule:
+                          minHoursPerAdmission: 24
+                          minAge: null
+                          minMoneyPerServiceLineCents: null
+                          minDaysPerClaim: null
+                          excludePosCode: '23'
+                      procedureCodeRanges:
+                      - 99221-99239
+                      revenueCodeRanges:
+                      - 0100-0219
+                      humanReadable:
+                        payments:
+                        - tierId: tier-in-network
+                          tierName: In-Network
+                          payment: 20% Coinsurance after deductible
+                        precertRequirements:
+                        - benefitCategoryId: 550e8400-e29b-41d4-a716-446655440012
+                          rule: Admission is over 24 hours or POS code is not 23
+                    precertStatus:
+                      rule:
+                        minHoursPerAdmission: 24
+                        minAge: null
+                        minMoneyPerServiceLineCents: null
+                        minDaysPerClaim: null
+                        excludePosCode: '23'
+                      humanReadable:
+                        rule: Admission is over 24 hours or POS code is not 23
+                      benefitCategoryId: 550e8400-e29b-41d4-a716-446655440012
+                      waivedByProviderNetwork: false
+                    tiers:
+                    - id: tier-in-network
+                      name: In-Network
+                      waivePrecertRequirements: false
+                      excludeLimitations: false
+                      networks:
+                      - name: Acme PPO
+                        url: https://example.com/find-a-provider
+                        phone: '+18005551212'
+                    - id: tier-out-of-network
+                      name: Out-of-Network
+                      waivePrecertRequirements: false
+                      excludeLimitations: false
+                      networks: []
+                    matchedExclusions: []
+                waivedByProviderNetwork:
+                  summary: Pre-cert waived by provider's network tier
+                  value:
+                    codeSet: Procedure
+                    label: Subsequent hospital inpatient or observation care, per day
+                    matchedBenefits:
+                    - benefitCategory:
+                        id: 550e8400-e29b-41d4-a716-446655440012
+                        name: Inpatient Hospital Admission
+                        description: Inpatient acute-care hospital stays.
+                        legalDescription: null
+                      costSharing:
+                      - tierId: tier-in-network
+                        covered: true
+                        copayCents: null
+                        coinsurancePct: 20
+                        ifApplicable: false
+                        requiresDeductibleMet: true
+                        waiveCopayAfterDays: null
+                        waiveCostSharingForVisits: null
+                        notes: null
+                      benefitNotes: null
+                      precertRequirements:
+                      - benefitCategoryId: 550e8400-e29b-41d4-a716-446655440012
+                        rule:
+                          minHoursPerAdmission: 24
+                          minAge: null
+                          minMoneyPerServiceLineCents: null
+                          minDaysPerClaim: null
+                          excludePosCode: '23'
+                      procedureCodeRanges:
+                      - 99221-99239
+                      revenueCodeRanges:
+                      - 0100-0219
+                      humanReadable:
+                        payments:
+                        - tierId: tier-in-network
+                          tierName: In-Network
+                          payment: 20% Coinsurance after deductible
+                        precertRequirements:
+                        - benefitCategoryId: 550e8400-e29b-41d4-a716-446655440012
+                          rule: Admission is over 24 hours or POS code is not 23
+                    precertStatus:
+                      humanReadable: {}
+                      benefitCategoryId: 550e8400-e29b-41d4-a716-446655440012
+                      waivedByProviderNetwork: true
+                    tiers:
+                    - id: tier-in-network
+                      name: In-Network
+                      waivePrecertRequirements: false
+                      excludeLimitations: false
+                      networks:
+                      - name: Acme PPO
+                        url: https://example.com/find-a-provider
+                        phone: '+18005551212'
+                    - id: tier-out-of-network
+                      name: Out-of-Network
+                      waivePrecertRequirements: false
+                      excludeLimitations: false
+                      networks: []
+                    matchedExclusions: []
+                rxBuyMatch:
+                  summary: Code matches a benefit and the plan's RxBuy drug list
+                  value:
+                    codeSet: Procedure
+                    label: Injection, infliximab, biosimilar, 10 mg
+                    matchedBenefits:
+                    - benefitCategory:
+                        id: 550e8400-e29b-41d4-a716-446655440013
+                        name: Injectable Drugs
+                        description: Provider-administered specialty medications.
+                        legalDescription: null
+                      costSharing:
+                      - tierId: tier-in-network
+                        covered: true
+                        copayCents: null
+                        coinsurancePct: 20
+                        ifApplicable: false
+                        requiresDeductibleMet: true
+                        waiveCopayAfterDays: null
+                        waiveCostSharingForVisits: null
+                        notes: null
+                      benefitNotes: null
+                      precertRequirements: []
+                      procedureCodeRanges:
+                      - J0135-J1745
+                      revenueCodeRanges: []
+                      humanReadable:
+                        payments:
+                        - tierId: tier-in-network
+                          tierName: In-Network
+                          payment: 20% Coinsurance after deductible
+                        precertRequirements: []
+                    rxBuyStatus:
+                      message: This drug is sourced through the plan's specialty buy-and-bill program.
+                    tiers:
+                    - id: tier-in-network
+                      name: In-Network
+                      waivePrecertRequirements: false
+                      excludeLimitations: false
+                      networks:
+                      - name: Acme PPO
+                        url: https://example.com/find-a-provider
+                        phone: '+18005551212'
+                    - id: tier-out-of-network
+                      name: Out-of-Network
+                      waivePrecertRequirements: false
+                      excludeLimitations: false
+                      networks: []
+                    matchedExclusions: []
+                exclusionMatch:
+                  summary: Code matches an excluded benefit (explicitly not covered)
+                  value:
+                    codeSet: Procedure
+                    label: Cosmetic procedure (placeholder description)
+                    matchedBenefits: []
+                    matchedExclusions:
+                    - id: 550e8400-e29b-41d4-a716-446655440099
+                      name: Cosmetic Surgery
+                      description: Procedures performed primarily for cosmetic purposes.
+                      legalDescription: null
+                    tiers:
+                    - id: tier-in-network
+                      name: In-Network
+                      waivePrecertRequirements: false
+                      excludeLimitations: false
+                      networks:
+                      - name: Acme PPO
+                        url: https://example.com/find-a-provider
+                        phone: '+18005551212'
+                    - id: tier-out-of-network
+                      name: Out-of-Network
+                      waivePrecertRequirements: false
+                      excludeLimitations: false
+                      networks: []
+                noMatch:
+                  summary: Code did not match any benefit or exclusion on this coverage
+                  value:
+                    codeSet: null
+                    matchedBenefits: []
+                    matchedExclusions: []
+                    tiers:
+                    - id: tier-in-network
+                      name: In-Network
+                      waivePrecertRequirements: false
+                      excludeLimitations: false
+                      networks:
+                      - name: Acme PPO
+                        url: https://example.com/find-a-provider
+                        phone: '+18005551212'
+                    - id: tier-out-of-network
+                      name: Out-of-Network
+                      waivePrecertRequirements: false
+                      excludeLimitations: false
+                      networks: []
+        '400':
+          description: The request body failed validation (for example, `providerTin` did not match the 9-digit / `XX-XXXXXXX` TIN pattern). Response body includes the standard Yuzu error envelope plus a `errors[]` array of Zod issues.
+        '404':
+          description: The coverage does not exist or its plan has no benefit bundle configured.
+      security:
+      - public-api-auth: []
+      summary: Look up a single code under a coverage
+      tags:
+      - Benefits
+components:
+  schemas:
+    BenefitLookupCodeResultDto:
+      type: object
+      properties:
+        codeSet:
+          anyOf:
+          - type: string
+            enum:
+            - Procedure
+            - Revenue
+          - type: 'null'
+          x-nestjs_zod-empty-type: true
+        label:
+          type: string
+        matchedBenefits:
+          type: array
+          items:
+            type: object
+            properties:
+              benefitCategory:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  description:
+                    anyOf:
+                    - type: string
+                    - type: 'null'
+                  legalDescription:
+                    anyOf:
+                    - type: string
+                    - type: 'null'
+                required:
+                - id
+                - name
+                - description
+                - legalDescription
+              costSharing:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    tierId:
+                      type: string
+                    covered:
+                      type: boolean
+                    copayCents:
+                      anyOf:
+                      - type: integer
+                        minimum: -9007199254740991
+                        maximum: 9007199254740991
+                      - type: 'null'
+                    ifApplicable:
+                      default: false
+                      type: boolean
+                    coinsurancePct:
+                      anyOf:
+                      - type: integer
+                        minimum: -9007199254740991
+                        maximum: 9007199254740991
+                      - type: 'null'
+                    requiresDeductibleMet:
+                      default: false
+                      type: boolean
+                    waiveCopayAfterDays:
+                      anyOf:
+                      - type: integer
+                        minimum: -9007199254740991
+                        maximum: 9007199254740991
+                      - type: 'null'
+                    waiveCostSharingForVisits:
+                      anyOf:
+                      - type: integer
+                        minimum: -9007199254740991
+                        maximum: 9007199254740991
+                      - type: 'null'
+                    notes:
+                      anyOf:
+                      - type: string
+                      - type: 'null'
+                  required:
+                  - tierId
+                  - covered
+                  - copayCents
+                  - coinsurancePct
+                  - waiveCopayAfterDays
+                  - waiveCostSharingForVisits
+                  - notes
+              limitations:
+                type: object
+                properties:
+                  maxVisitsPerYear:
+                    anyOf:
+                    - type: integer
+                      minimum: -9007199254740991
+                      maximum: 9007199254740991
+                    - type: 'null'
+                  maxDaysPerYear:
+                    anyOf:
+                    - type: integer
+                      minimum: -9007199254740991
+                      maximum: 9007199254740991
+                    - type: 'null'
+                  moneyPerLifetimeCents:
+                    anyOf:
+                    - type: integer
+                      minimum: -9007199254740991
+                      maximum: 9007199254740991
+                    - type: 'null'
+                  maxDaysPerLifetime:
+                    anyOf:
+                    - type: integer
+                      minimum: -9007199254740991
+                      maximum: 9007199254740991
+                    - type: 'null'
+                  moneyPerFillCents:
+                    anyOf:
+                    - type: integer
+                      minimum: -9007199254740991
+                      maximum: 9007199254740991
+                    - type: 'null'
+                  maxHoursPerVisit:
+                    anyOf:
+                    - type: integer
+                      minimum: -9007199254740991
+                      maximum: 9007199254740991
+                    - type: 'null'
+                  excludeChildDependents:
+                    anyOf:
+                    - type: boolean
+                    - type: 'null'
+                  limitationNotes:
+                    anyOf:
+                    - type: string
+                    - type: 'null'
+                  precertMayBeRequired:
+                    default: false
+                    type: boolean
+                required:
+                - maxVisitsPerYear
+                - maxDaysPerYear
+                - moneyPerLifetimeCents
+                - maxDaysPerLifetime
+                - moneyPerFillCents
+                - maxHoursPerVisit
+                - excludeChildDependents
+                - limitationNotes
+              benefitNotes:
+                anyOf:
+                - type: string
+                - type: 'null'
+              precertRequirements:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    benefitCategoryId:
+                      type: string
+                    rule:
+                      type: object
+                      properties:
+                        minHoursPerAdmission:
+                          anyOf:
+                          - type: integer
+                            minimum: -9007199254740991
+                            maximum: 9007199254740991
+                          - type: 'null'
+                        minAge:
+                          anyOf:
+                          - type: integer
+                            minimum: -9007199254740991
+                            maximum: 9007199254740991
+                          - type: 'null'
+                        minMoneyPerServiceLineCents:
+                          anyOf:
+                          - type: integer
+                            minimum: -9007199254740991
+                            maximum: 9007199254740991
+                          - type: 'null'
+                        minDaysPerClaim:
+                          anyOf:
+                          - type: integer
+                            minimum: -9007199254740991
+                            maximum: 9007199254740991
+                          - type: 'null'
+                        excludePosCode:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                      required:
+                      - minHoursPerAdmission
+                      - minAge
+                      - minMoneyPerServiceLineCents
+                      - minDaysPerClaim
+                      - excludePosCode
+                  required:
+                  - benefitCategoryId
+              procedureCodeRanges:
+                type: array
+                items:
+                  type: string
+              revenueCodeRanges:
+                type: array
+                items:
+                  type: string
+              humanReadable:
+                type: object
+                properties:
+                  payments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        tierId:
+                          type: string
+                        tierName:
+                          type: string
+                        payment:
+                          type: string
+                      required:
+                      - tierId
+                      - tierName
+                  limitation:
+                    type: string
+                  precertRequirements:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        benefitCategoryId:
+                          type: string
+                        rule:
+                          type: string
+                      required:
+                      - benefitCategoryId
+                required:
+                - payments
+                - precertRequirements
+            required:
+            - benefitCategory
+            - costSharing
+            - benefitNotes
+            - precertRequirements
+            - procedureCodeRanges
+            - revenueCodeRanges
+            - humanReadable
+        matchedExclusions:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              description:
+                anyOf:
+                - type: string
+                - type: 'null'
+              legalDescription:
+                anyOf:
+                - type: string
+                - type: 'null'
+            required:
+            - id
+            - name
+            - description
+            - legalDescription
+        tiers:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              waivePrecertRequirements:
+                default: false
+                type: boolean
+              excludeLimitations:
+                default: false
+                type: boolean
+              networks:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    url:
+                      type: string
+                    phone:
+                      type: string
+                      example: '+12125551234'
+                    description:
+                      type: string
+                  required:
+                  - name
+            required:
+            - id
+            - name
+            - networks
+        precertStatus:
+          type: object
+          properties:
+            rule:
+              type: object
+              properties:
+                minHoursPerAdmission:
+                  anyOf:
+                  - type: integer
+                    minimum: -9007199254740991
+                    maximum: 9007199254740991
+                  - type: 'null'
+                minAge:
+                  anyOf:
+                  - type: integer
+                    minimum: -9007199254740991
+                    maximum: 9007199254740991
+                  - type: 'null'
+                minMoneyPerServiceLineCents:
+                  anyOf:
+                  - type: integer
+                    minimum: -9007199254740991
+                    maximum: 9007199254740991
+                  - type: 'null'
+                minDaysPerClaim:
+                  anyOf:
+                  - type: integer
+                    minimum: -9007199254740991
+                    maximum: 9007199254740991
+                  - type: 'null'
+                excludePosCode:
+                  anyOf:
+                  - type: string
+                  - type: 'null'
+              required:
+              - minHoursPerAdmission
+              - minAge
+              - minMoneyPerServiceLineCents
+              - minDaysPerClaim
+              - excludePosCode
+            humanReadable:
+              type: object
+              properties:
+                rule:
+                  type: string
+            benefitCategoryId:
+              type: string
+            waivedByProviderNetwork:
+              type: boolean
+          required:
+          - humanReadable
+          - benefitCategoryId
+        rxBuyStatus:
+          type: object
+          properties:
+            message:
+              type: string
+      required:
+      - codeSet
+      - matchedBenefits
+      - matchedExclusions
+      - tiers
+    BenefitLookupCodeRequestDto:
+      type: object
+      properties:
+        providerTin:
+          type: string
+          pattern: ^(\d{2}-\d{7}|\d{9})$
+          example: '123456789'
+    BenefitLookupDto:
+      type: object
+      properties:
+        benefits:
+          type: array
+          items:
+            type: object
+            properties:
+              benefitCategory:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  description:
+                    anyOf:
+                    - type: string
+                    - type: 'null'
+                  legalDescription:
+                    anyOf:
+                    - type: string
+                    - type: 'null'
+                required:
+                - id
+                - name
+                - description
+                - legalDescription
+              costSharing:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    tierId:
+                      type: string
+                    covered:
+                      type: boolean
+                    copayCents:
+                      anyOf:
+                      - type: integer
+                        minimum: -9007199254740991
+                        maximum: 9007199254740991
+                      - type: 'null'
+                    ifApplicable:
+                      default: false
+                      type: boolean
+                    coinsurancePct:
+                      anyOf:
+                      - type: integer
+                        minimum: -9007199254740991
+                        maximum: 9007199254740991
+                      - type: 'null'
+                    requiresDeductibleMet:
+                      default: false
+                      type: boolean
+                    waiveCopayAfterDays:
+                      anyOf:
+                      - type: integer
+                        minimum: -9007199254740991
+                        maximum: 9007199254740991
+                      - type: 'null'
+                    waiveCostSharingForVisits:
+                      anyOf:
+                      - type: integer
+                        minimum: -9007199254740991
+                        maximum: 9007199254740991
+                      - type: 'null'
+                    notes:
+                      anyOf:
+                      - type: string
+                      - type: 'null'
+                  required:
+                  - tierId
+                  - covered
+                  - copayCents
+                  - coinsurancePct
+                  - waiveCopayAfterDays
+                  - waiveCostSharingForVisits
+                  - notes
+              limitations:
+                type: object
+                properties:
+                  maxVisitsPerYear:
+                    anyOf:
+                    - type: integer
+                      minimum: -9007199254740991
+                      maximum: 9007199254740991
+                    - type: 'null'
+                  maxDaysPerYear:
+                    anyOf:
+                    - type: integer
+                      minimum: -9007199254740991
+                      maximum: 9007199254740991
+                    - type: 'null'
+                  moneyPerLifetimeCents:
+                    anyOf:
+                    - type: integer
+                      minimum: -9007199254740991
+                      maximum: 9007199254740991
+                    - type: 'null'
+                  maxDaysPerLifetime:
+                    anyOf:
+                    - type: integer
+                      minimum: -9007199254740991
+                      maximum: 9007199254740991
+                    - type: 'null'
+                  moneyPerFillCents:
+                    anyOf:
+                    - type: integer
+                      minimum: -9007199254740991
+                      maximum: 9007199254740991
+                    - type: 'null'
+                  maxHoursPerVisit:
+                    anyOf:
+                    - type: integer
+                      minimum: -9007199254740991
+                      maximum: 9007199254740991
+                    - type: 'null'
+                  excludeChildDependents:
+                    anyOf:
+                    - type: boolean
+                    - type: 'null'
+                  limitationNotes:
+                    anyOf:
+                    - type: string
+                    - type: 'null'
+                  precertMayBeRequired:
+                    default: false
+                    type: boolean
+                required:
+                - maxVisitsPerYear
+                - maxDaysPerYear
+                - moneyPerLifetimeCents
+                - maxDaysPerLifetime
+                - moneyPerFillCents
+                - maxHoursPerVisit
+                - excludeChildDependents
+                - limitationNotes
+              benefitNotes:
+                anyOf:
+                - type: string
+                - type: 'null'
+              precertRequirements:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    benefitCategoryId:
+                      type: string
+                    rule:
+                      type: object
+                      properties:
+                        minHoursPerAdmission:
+                          anyOf:
+                          - type: integer
+                            minimum: -9007199254740991
+                            maximum: 9007199254740991
+                          - type: 'null'
+                        minAge:
+                          anyOf:
+                          - type: integer
+                            minimum: -9007199254740991
+                            maximum: 9007199254740991
+                          - type: 'null'
+                        minMoneyPerServiceLineCents:
+                          anyOf:
+                          - type: integer
+                            minimum: -9007199254740991
+                            maximum: 9007199254740991
+                          - type: 'null'
+                        minDaysPerClaim:
+                          anyOf:
+                          - type: integer
+                            minimum: -9007199254740991
+                            maximum: 9007199254740991
+                          - type: 'null'
+                        excludePosCode:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                      required:
+                      - minHoursPerAdmission
+                      - minAge
+                      - minMoneyPerServiceLineCents
+                      - minDaysPerClaim
+                      - excludePosCode
+                  required:
+                  - benefitCategoryId
+              procedureCodeRanges:
+                type: array
+                items:
+                  type: string
+              revenueCodeRanges:
+                type: array
+                items:
+                  type: string
+              humanReadable:
+                type: object
+                properties:
+                  payments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        tierId:
+                          type: string
+                        tierName:
+                          type: string
+                        payment:
+                          type: string
+                      required:
+                      - tierId
+                      - tierName
+                  limitation:
+                    type: string
+                  precertRequirements:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        benefitCategoryId:
+                          type: string
+                        rule:
+                          type: string
+                      required:
+                      - benefitCategoryId
+                required:
+                - payments
+                - precertRequirements
+            required:
+            - benefitCategory
+            - costSharing
+            - benefitNotes
+            - precertRequirements
+            - procedureCodeRanges
+            - revenueCodeRanges
+            - humanReadable
+        exclusions:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              description:
+                anyOf:
+                - type: string
+                - type: 'null'
+              legalDescription:
+                anyOf:
+                - type: string
+                - type: 'null'
+            required:
+            - id
+            - name
+            - description
+            - legalDescription
+        tiers:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              waivePrecertRequirements:
+                default: false
+                type: boolean
+              excludeLimitations:
+                default: false
+                type: boolean
+              networks:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    url:
+                      type: string
+                    phone:
+                      type: string
+                      example: '+12125551234'
+                    description:
+                      type: string
+                  required:
+                  - name
+            required:
+            - id
+            - name
+            - networks
+        precertVendorInfo:
+          type: object
+          properties:
+            name:
+              type: string
+            phone:
+              type: string
+              example: '+12125551234'
+          required:
+          - name
+        telehealthDisclaimer:
+          type: object
+          properties:
+            orgName:
+              type: string
+          required:
+          - orgName
+        humanReadable:
+          type: object
+          properties:
+            precertDisclaimer:
+              type: string
+      required:
+      - benefits
+      - exclusions
+      - tiers
+      - humanReadable
+  securitySchemes:
+    public-api-auth:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

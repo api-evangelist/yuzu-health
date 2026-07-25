@@ -1,0 +1,205 @@
+openapi: 3.0.0
+info:
+  title: Yuzu Accumulator (Experimental) Accumulator (Experimental) Accumulator (Experimental) API
+  description: Yuzu's Public API
+  version: '0.5'
+  contact: {}
+servers: []
+tags:
+- name: Accumulator (Experimental)
+paths:
+  /v2/accumulator/coverage/buckets/{coverageId}:
+    get:
+      description: 'Get coverage buckets for a coverage. Note: buckets are filtered out if cost sharing is $0.'
+      operationId: PublicAccumulatorController_getCoverageBuckets
+      parameters:
+      - name: coverageId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Coverage buckets
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BucketRangeDto'
+      security:
+      - public-api-auth: []
+      summary: Get coverage buckets
+      tags:
+      - Accumulator (Experimental)
+  /v2/accumulator/coverage/{coverageId}:
+    get:
+      description: 'Get coverage accumulators for a coverage. Note: accumulators are filtered out if 0.'
+      operationId: PublicAccumulatorController_getCoverageAccums
+      parameters:
+      - name: coverageId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Coverage accumulators
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FamilyAccumulatorsDto'
+      security:
+      - public-api-auth: []
+      summary: Get coverage accumulators
+      tags:
+      - Accumulator (Experimental)
+components:
+  schemas:
+    BucketRangeDto:
+      type: object
+      properties:
+        startDate:
+          type: string
+        endDate:
+          type: string
+        buckets:
+          type: array
+          items:
+            type: object
+            properties:
+              benefitCategoryId:
+                type: string
+              dxGroupingId:
+                type: string
+              name:
+                type: string
+              limit:
+                type: number
+              used:
+                type: number
+              units:
+                type: string
+                enum:
+                - visits
+                - days
+                - money
+              resets:
+                type: string
+            required:
+            - benefitCategoryId
+            - name
+            - limit
+            - used
+            - units
+      required:
+      - startDate
+      - endDate
+      - buckets
+    FamilyAccumulatorsDto:
+      type: object
+      properties:
+        startDate:
+          type: string
+        endDate:
+          type: string
+        member:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                anyOf:
+                - type: string
+                - type: 'null'
+              appliesToTiers:
+                type: array
+                items:
+                  type: string
+              deductible:
+                type: object
+                properties:
+                  usedCents:
+                    type: number
+                  limitCents:
+                    type: number
+                  rolloverCents:
+                    type: number
+                required:
+                - usedCents
+                - limitCents
+                - rolloverCents
+              maxOop:
+                type: object
+                properties:
+                  usedCents:
+                    type: number
+                  limitCents:
+                    type: number
+                  rolloverCents:
+                    type: number
+                required:
+                - usedCents
+                - limitCents
+                - rolloverCents
+            required:
+            - id
+            - appliesToTiers
+            - deductible
+            - maxOop
+        family:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                anyOf:
+                - type: string
+                - type: 'null'
+              appliesToTiers:
+                type: array
+                items:
+                  type: string
+              deductible:
+                type: object
+                properties:
+                  usedCents:
+                    type: number
+                  limitCents:
+                    type: number
+                  rolloverCents:
+                    type: number
+                required:
+                - usedCents
+                - limitCents
+                - rolloverCents
+              maxOop:
+                type: object
+                properties:
+                  usedCents:
+                    type: number
+                  limitCents:
+                    type: number
+                  rolloverCents:
+                    type: number
+                required:
+                - usedCents
+                - limitCents
+                - rolloverCents
+            required:
+            - id
+            - appliesToTiers
+            - deductible
+            - maxOop
+      required:
+      - startDate
+      - endDate
+      - member
+      - family
+  securitySchemes:
+    public-api-auth:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

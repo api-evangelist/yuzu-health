@@ -1,0 +1,825 @@
+openapi: 3.0.0
+info:
+  title: Yuzu Accumulator (Experimental) Accumulator (Experimental) Enrollment API
+  description: Yuzu's Public API
+  version: '0.5'
+  contact: {}
+servers: []
+tags:
+- name: Enrollment
+paths:
+  /v3/groups/{groupPolicyId}/enroll/add-subscriber:
+    post:
+      description: Enroll one or more new subscribers and their families on an existing plan. For reason `newHire`, each subscriber's coverage start is derived from their hire date and the plan's waiting-period rules. For a qualifying-life-event reason, coverage starts on the provided effectiveDate.
+      operationId: PublicEnrollmentApplicationController_createAddSubscriber
+      parameters:
+      - name: groupPolicyId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        description: Add Subscriber
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddSubscriberDto'
+      responses:
+        '200':
+          description: Enrollment Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnrollmentRequestDto'
+      security:
+      - public-api-auth: []
+      summary: Add subscribers to an existing plan
+      tags:
+      - Enrollment
+  /v3/groups/{groupPolicyId}/enroll/{subscriberCoverageId}/add-dependent:
+    post:
+      description: Enroll a single dependent (spouse or child) under an existing subscriber, identified by the subscriber's coverage id (the `subscriberId` field returned on a coverage). The dependent is added to that coverage's plan and coverage starts on the provided effectiveDate.
+      operationId: PublicEnrollmentApplicationController_createAddDependent
+      parameters:
+      - name: groupPolicyId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: subscriberCoverageId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        description: Add Dependent
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddDependentDto'
+      responses:
+        '200':
+          description: Enrollment Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnrollmentRequestDto'
+      security:
+      - public-api-auth: []
+      summary: Add a dependent to an existing subscriber
+      tags:
+      - Enrollment
+  /v3/groups/{groupPolicyId}/enroll/terminate:
+    post:
+      description: Terminate the coverage identified by coverageId, dispatching by reason. A subscriber's coverage terminates the whole family; a dependent's coverage terminates only that dependent. Employment termination is only valid on a subscriber's coverage. terminationDate is required for every reason except mistakeEnrollment (a mistaken-enrollment correction). For employment termination COBRA eligibility is taken from cobraEligible; for every other reason it is derived from the reason.
+      operationId: PublicEnrollmentApplicationController_createTermination
+      parameters:
+      - name: groupPolicyId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        description: Termination
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TerminationDto'
+      responses:
+        '200':
+          description: Enrollment Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnrollmentRequestDto'
+      security:
+      - public-api-auth: []
+      summary: Terminate coverage on an existing plan
+      tags:
+      - Enrollment
+components:
+  schemas:
+    AddDependentDto:
+      type: object
+      properties:
+        dependent:
+          type: object
+          properties:
+            line1:
+              type: string
+            state:
+              default: ''
+              type: string
+              enum:
+              - AL
+              - AK
+              - AZ
+              - AR
+              - CA
+              - CO
+              - CT
+              - DE
+              - FL
+              - GA
+              - HI
+              - ID
+              - IL
+              - IN
+              - IA
+              - KS
+              - KY
+              - LA
+              - ME
+              - MD
+              - MA
+              - MI
+              - MN
+              - MS
+              - MO
+              - MT
+              - NE
+              - NV
+              - NH
+              - NJ
+              - NM
+              - NY
+              - NC
+              - ND
+              - OH
+              - OK
+              - OR
+              - PA
+              - RI
+              - SC
+              - SD
+              - TN
+              - TX
+              - UT
+              - VT
+              - VA
+              - WA
+              - WV
+              - WI
+              - WY
+              - DC
+              - AS
+              - GU
+              - MP
+              - PR
+              - VI
+            city:
+              type: string
+            zip:
+              type: string
+              pattern: ^\d{5}(?:[ -]?\d{4})?$
+            sex:
+              default: ''
+              type: string
+              enum:
+              - M
+              - F
+            ssn:
+              anyOf:
+              - example: '{ raw: "123-45-6789", masked: "***-**-6789" }'
+                type: string
+              - type: 'null'
+            line2:
+              anyOf:
+              - type: string
+              - type: 'null'
+            firstName:
+              type: string
+            middleName:
+              anyOf:
+              - type: string
+                minLength: 1
+              - type: 'null'
+            lastName:
+              type: string
+            suffix:
+              anyOf:
+              - type: string
+                enum:
+                - Jr
+                - Sr
+                - II
+                - III
+                - IV
+                - V
+                - VI
+                - VII
+                - VIII
+              - type: 'null'
+            alternateID:
+              anyOf:
+              - type: string
+              - type: 'null'
+            email:
+              anyOf:
+              - type: string
+                format: email
+                pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+              - type: 'null'
+            phoneNumber:
+              anyOf:
+              - type: string
+                example: '+12125551234'
+              - type: 'null'
+            birthday:
+              type: string
+              example: '2025-01-01'
+            planFeeIds:
+              default: []
+              type: array
+              items:
+                type: string
+            __id:
+              type: string
+          required:
+          - line1
+          - city
+          - zip
+          - firstName
+          - lastName
+          - birthday
+        relationship:
+          type: string
+          enum:
+          - spouse
+          - child
+        effectiveDate:
+          type: string
+          example: '2025-01-01'
+        reason:
+          type: string
+          enum:
+          - birth
+          - adoption
+          - marriage
+          - qualifiedMedicalChildSupportOrder
+          - lossOfCoverage
+          - subscriberOpenEnrollment
+          - subscriberNewHire
+          - other
+      required:
+      - dependent
+      - relationship
+      - effectiveDate
+      - reason
+    TerminationDto:
+      type: object
+      properties:
+        coverageId:
+          type: string
+        reason:
+          type: string
+          enum:
+          - maritalStatusChange
+          - spouseEligibleElsewhere
+          - coveredThroughEmploymentElsewhere
+          - reductionInWorkHours
+          - death
+          - medicaidMedicareElig
+          - mistakeEnrollment
+          - employmentTermination
+          - legalMandate
+          - ageOut
+        terminationDate:
+          type: string
+          example: '2025-01-01'
+        cobraEligible:
+          type: boolean
+      required:
+      - coverageId
+      - reason
+    AddSubscriberDto:
+      type: object
+      properties:
+        subscribers:
+          minItems: 1
+          type: array
+          items:
+            type: object
+            properties:
+              plan:
+                type: string
+                format: uuid
+                pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$
+              tags:
+                default: []
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    type:
+                      type: string
+                      enum:
+                      - location
+                      - department
+                      - employeeClass
+                  required:
+                  - name
+                  - type
+              self:
+                type: object
+                properties:
+                  line1:
+                    type: string
+                  state:
+                    default: ''
+                    type: string
+                    enum:
+                    - AL
+                    - AK
+                    - AZ
+                    - AR
+                    - CA
+                    - CO
+                    - CT
+                    - DE
+                    - FL
+                    - GA
+                    - HI
+                    - ID
+                    - IL
+                    - IN
+                    - IA
+                    - KS
+                    - KY
+                    - LA
+                    - ME
+                    - MD
+                    - MA
+                    - MI
+                    - MN
+                    - MS
+                    - MO
+                    - MT
+                    - NE
+                    - NV
+                    - NH
+                    - NJ
+                    - NM
+                    - NY
+                    - NC
+                    - ND
+                    - OH
+                    - OK
+                    - OR
+                    - PA
+                    - RI
+                    - SC
+                    - SD
+                    - TN
+                    - TX
+                    - UT
+                    - VT
+                    - VA
+                    - WA
+                    - WV
+                    - WI
+                    - WY
+                    - DC
+                    - AS
+                    - GU
+                    - MP
+                    - PR
+                    - VI
+                  city:
+                    type: string
+                  zip:
+                    type: string
+                    pattern: ^\d{5}(?:[ -]?\d{4})?$
+                  sex:
+                    default: ''
+                    type: string
+                    enum:
+                    - M
+                    - F
+                  ssn:
+                    anyOf:
+                    - example: '{ raw: "123-45-6789", masked: "***-**-6789" }'
+                      type: string
+                    - type: 'null'
+                  line2:
+                    anyOf:
+                    - type: string
+                    - type: 'null'
+                  firstName:
+                    type: string
+                  middleName:
+                    anyOf:
+                    - type: string
+                      minLength: 1
+                    - type: 'null'
+                  lastName:
+                    type: string
+                  suffix:
+                    anyOf:
+                    - type: string
+                      enum:
+                      - Jr
+                      - Sr
+                      - II
+                      - III
+                      - IV
+                      - V
+                      - VI
+                      - VII
+                      - VIII
+                    - type: 'null'
+                  alternateID:
+                    anyOf:
+                    - type: string
+                    - type: 'null'
+                  email:
+                    anyOf:
+                    - type: string
+                      format: email
+                      pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+                    - type: 'null'
+                  phoneNumber:
+                    anyOf:
+                    - type: string
+                      example: '+12125551234'
+                    - type: 'null'
+                  birthday:
+                    type: string
+                    example: '2025-01-01'
+                  planFeeIds:
+                    default: []
+                    type: array
+                    items:
+                      type: string
+                  __id:
+                    type: string
+                required:
+                - line1
+                - city
+                - zip
+                - firstName
+                - lastName
+                - birthday
+              spouse:
+                type: object
+                properties:
+                  line1:
+                    type: string
+                  state:
+                    default: ''
+                    type: string
+                    enum:
+                    - AL
+                    - AK
+                    - AZ
+                    - AR
+                    - CA
+                    - CO
+                    - CT
+                    - DE
+                    - FL
+                    - GA
+                    - HI
+                    - ID
+                    - IL
+                    - IN
+                    - IA
+                    - KS
+                    - KY
+                    - LA
+                    - ME
+                    - MD
+                    - MA
+                    - MI
+                    - MN
+                    - MS
+                    - MO
+                    - MT
+                    - NE
+                    - NV
+                    - NH
+                    - NJ
+                    - NM
+                    - NY
+                    - NC
+                    - ND
+                    - OH
+                    - OK
+                    - OR
+                    - PA
+                    - RI
+                    - SC
+                    - SD
+                    - TN
+                    - TX
+                    - UT
+                    - VT
+                    - VA
+                    - WA
+                    - WV
+                    - WI
+                    - WY
+                    - DC
+                    - AS
+                    - GU
+                    - MP
+                    - PR
+                    - VI
+                  city:
+                    type: string
+                  zip:
+                    type: string
+                    pattern: ^\d{5}(?:[ -]?\d{4})?$
+                  sex:
+                    default: ''
+                    type: string
+                    enum:
+                    - M
+                    - F
+                  ssn:
+                    anyOf:
+                    - example: '{ raw: "123-45-6789", masked: "***-**-6789" }'
+                      type: string
+                    - type: 'null'
+                  line2:
+                    anyOf:
+                    - type: string
+                    - type: 'null'
+                  firstName:
+                    type: string
+                  middleName:
+                    anyOf:
+                    - type: string
+                      minLength: 1
+                    - type: 'null'
+                  lastName:
+                    type: string
+                  suffix:
+                    anyOf:
+                    - type: string
+                      enum:
+                      - Jr
+                      - Sr
+                      - II
+                      - III
+                      - IV
+                      - V
+                      - VI
+                      - VII
+                      - VIII
+                    - type: 'null'
+                  alternateID:
+                    anyOf:
+                    - type: string
+                    - type: 'null'
+                  email:
+                    anyOf:
+                    - type: string
+                      format: email
+                      pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+                    - type: 'null'
+                  phoneNumber:
+                    anyOf:
+                    - type: string
+                      example: '+12125551234'
+                    - type: 'null'
+                  birthday:
+                    type: string
+                    example: '2025-01-01'
+                  planFeeIds:
+                    default: []
+                    type: array
+                    items:
+                      type: string
+                  __id:
+                    type: string
+                required:
+                - line1
+                - city
+                - zip
+                - firstName
+                - lastName
+                - birthday
+              children:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    line1:
+                      type: string
+                    state:
+                      default: ''
+                      type: string
+                      enum:
+                      - AL
+                      - AK
+                      - AZ
+                      - AR
+                      - CA
+                      - CO
+                      - CT
+                      - DE
+                      - FL
+                      - GA
+                      - HI
+                      - ID
+                      - IL
+                      - IN
+                      - IA
+                      - KS
+                      - KY
+                      - LA
+                      - ME
+                      - MD
+                      - MA
+                      - MI
+                      - MN
+                      - MS
+                      - MO
+                      - MT
+                      - NE
+                      - NV
+                      - NH
+                      - NJ
+                      - NM
+                      - NY
+                      - NC
+                      - ND
+                      - OH
+                      - OK
+                      - OR
+                      - PA
+                      - RI
+                      - SC
+                      - SD
+                      - TN
+                      - TX
+                      - UT
+                      - VT
+                      - VA
+                      - WA
+                      - WV
+                      - WI
+                      - WY
+                      - DC
+                      - AS
+                      - GU
+                      - MP
+                      - PR
+                      - VI
+                    city:
+                      type: string
+                    zip:
+                      type: string
+                      pattern: ^\d{5}(?:[ -]?\d{4})?$
+                    sex:
+                      default: ''
+                      type: string
+                      enum:
+                      - M
+                      - F
+                    ssn:
+                      anyOf:
+                      - example: '{ raw: "123-45-6789", masked: "***-**-6789" }'
+                        type: string
+                      - type: 'null'
+                    line2:
+                      anyOf:
+                      - type: string
+                      - type: 'null'
+                    firstName:
+                      type: string
+                    middleName:
+                      anyOf:
+                      - type: string
+                        minLength: 1
+                      - type: 'null'
+                    lastName:
+                      type: string
+                    suffix:
+                      anyOf:
+                      - type: string
+                        enum:
+                        - Jr
+                        - Sr
+                        - II
+                        - III
+                        - IV
+                        - V
+                        - VI
+                        - VII
+                        - VIII
+                      - type: 'null'
+                    alternateID:
+                      anyOf:
+                      - type: string
+                      - type: 'null'
+                    email:
+                      anyOf:
+                      - type: string
+                        format: email
+                        pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+                      - type: 'null'
+                    phoneNumber:
+                      anyOf:
+                      - type: string
+                        example: '+12125551234'
+                      - type: 'null'
+                    birthday:
+                      type: string
+                      example: '2025-01-01'
+                    planFeeIds:
+                      default: []
+                      type: array
+                      items:
+                        type: string
+                    __id:
+                      type: string
+                  required:
+                  - line1
+                  - city
+                  - zip
+                  - firstName
+                  - lastName
+                  - birthday
+              hireDate:
+                type: string
+                example: '2025-01-01'
+              cobraStartDate:
+                anyOf:
+                - type: string
+                  example: '2025-01-01'
+                - type: 'null'
+              termedByEmployerDate:
+                type: string
+                example: '2025-01-01'
+              isCobraEligible:
+                type: boolean
+              retirementDate:
+                type: string
+                example: '2025-01-01'
+              __id:
+                type: string
+            required:
+            - plan
+            - self
+        reason:
+          type: string
+          enum:
+          - newHire
+          - lossOfOtherCoverage
+          - medicaidMedicareInelig
+          - legalMandate
+          - partTimeToFullTime
+        effectiveDate:
+          type: string
+          example: '2025-01-01'
+      required:
+      - subscribers
+      - reason
+    EnrollmentRequestDto:
+      type: object
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+          enum:
+          - ingested
+          - failed
+          - denied
+          - submitted
+          - applied
+          - rejected
+          - processing
+          - approved
+          - queued
+          - pendingApproval
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              subscriber:
+                anyOf:
+                - type: string
+                - type: 'null'
+              message:
+                type: string
+            required:
+            - subscriber
+            - message
+      required:
+      - id
+      - status
+      - errors
+  securitySchemes:
+    public-api-auth:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

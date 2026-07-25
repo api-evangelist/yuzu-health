@@ -1,0 +1,3991 @@
+openapi: 3.0.0
+info:
+  title: Yuzu Accumulator (Experimental) Accumulator (Experimental) PublicApiV2 API
+  description: Yuzu's Public API
+  version: '0.5'
+  contact: {}
+servers: []
+tags:
+- name: PublicApiV2
+paths:
+  /v2/groups:
+    post:
+      description: Create a new group with the provided data.
+      operationId: PublicApiV2Controller_createGroup
+      parameters: []
+      requestBody:
+        required: true
+        description: Group to Create
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupCreationDto'
+      responses:
+        '200':
+          description: Group Policy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupPolicyDto'
+      security:
+      - public-api-auth: []
+      summary: Create a group
+      tags:
+      - PublicApiV2
+    get:
+      description: Fetch a paginated list of all group policies with optional filters.
+      operationId: PublicApiV2Controller_listAllGroups
+      parameters:
+      - name: startAfter
+        required: false
+        in: query
+        description: Pagination cursor
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Paginated Group Policies
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedGroupPolicyDto'
+      security:
+      - public-api-auth: []
+      summary: List all group policies
+      tags:
+      - PublicApiV2
+  /v2/groups/{groupPolicyId}:
+    get:
+      description: Fetch details for a specific group policy by its ID.
+      operationId: PublicApiV2Controller_getGroup
+      parameters:
+      - name: groupPolicyId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Group Policy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupPolicyDto'
+      security:
+      - public-api-auth: []
+      summary: Retrieve a group policy
+      tags:
+      - PublicApiV2
+  /v2/groups/{groupPolicyId}/enroll/initial-enrollment:
+    post:
+      description: Create an initial enrollment for a group policy with the provided data.
+      operationId: PublicApiV2Controller_createInitialEnrollment
+      parameters:
+      - name: groupPolicyId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        description: Initial Enrollment
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InitialEnrollmentDto'
+      responses:
+        '200':
+          description: Enrollment Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnrollmentRequestDto'
+      security:
+      - public-api-auth: []
+      summary: Create an initial enrollment
+      tags:
+      - PublicApiV2
+  /v2/groups/{groupPolicyId}/enroll/new-subscribers:
+    post:
+      description: Append new employees/subscribers to an existing plan. This is an append (it never terminates omitted members); each subscriber's coverage start is derived from their hire date and the plan's waiting-period rules.
+      operationId: PublicApiV2Controller_createNewSubscribersEnrollment
+      parameters:
+      - name: groupPolicyId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        description: New Subscribers Enrollment
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewSubscribersEnrollmentDto'
+      responses:
+        '200':
+          description: Enrollment Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnrollmentRequestDto'
+      security:
+      - public-api-auth: []
+      summary: Add new subscribers to an existing plan
+      tags:
+      - PublicApiV2
+  /v2/enroll/{enrollmentRequestId}/status:
+    post:
+      description: Get the status of an enrollment request for a group policy.
+      operationId: PublicApiV2Controller_getEnrollmentRequestStatus
+      parameters:
+      - name: enrollmentRequestId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Enrollment Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnrollmentRequestDto'
+      security:
+      - public-api-auth: []
+      summary: Get enrollment request status
+      tags:
+      - PublicApiV2
+  /v2/groups/{groupPolicyId}/members:
+    get:
+      description: Fetch a paginated list of members for a specific group policy.
+      operationId: PublicApiV2Controller_listGroupMembers
+      parameters:
+      - name: groupPolicyId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: startAfter
+        required: false
+        in: query
+        description: Pagination cursor
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Paginated Members
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedMemberDto'
+      security:
+      - public-api-auth: []
+      summary: List group members
+      tags:
+      - PublicApiV2
+  /v2/groups/{groupPolicyId}/plans/remove/{planIdToRemove}:
+    delete:
+      description: Remove a specific plan from a group policy by its ID.
+      operationId: PublicApiV2Controller_removePlanFromGroup
+      parameters:
+      - name: groupPolicyId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: planIdToRemove
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Group Policy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupPolicyDto'
+      security:
+      - public-api-auth: []
+      summary: Remove a plan from a group
+      tags:
+      - PublicApiV2
+  /v2/groups/{groupPolicyId}/plans/add:
+    post:
+      description: Add a new plan to a specific group policy with the provided data.
+      operationId: PublicApiV2Controller_addPlanToGroup
+      parameters:
+      - name: groupPolicyId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        description: Plan to Create
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlanCreationDto'
+      responses:
+        '200':
+          description: Group Policy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupPolicyDto'
+      security:
+      - public-api-auth: []
+      summary: Add a plan to a group
+      tags:
+      - PublicApiV2
+  /v2/plans/{planId}/spd:
+    get:
+      description: Fetch a specific plan's Summary Plan Description (SPD) as a PDF file. If one is not found, it will not be generated.
+      operationId: PublicApiV2Controller_getSpd
+      parameters:
+      - name: planId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Plan SPD as PDF
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Uint8Array'
+      security:
+      - public-api-auth: []
+      summary: Retrieve plan SPD
+      tags:
+      - PublicApiV2
+  /v2/designs:
+    get:
+      description: Fetch a list of plan designs. By default only active designs are returned. Set includeAll=true to include all statuses (draft, inReview, active, archived).
+      operationId: PublicApiV2Controller_getDesigns
+      parameters:
+      - name: includeAll
+        required: false
+        in: query
+        description: When true, returns plan designs in all statuses. Defaults to false (active only).
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Array of Plan Designs
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlanDesignArrayDto'
+      security:
+      - public-api-auth: []
+      summary: List all plan designs
+      tags:
+      - PublicApiV2
+  /v2/coverages/{coverageId}/care-events:
+    post:
+      description: Create a new care event for a specific coverage. Care events can pend claims, reprice claims, or set a benefit tier for matching claims.
+      operationId: PublicApiV2Controller_createCareEvent
+      parameters:
+      - name: coverageId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        description: Care Event to Create
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CareEventCreationDto'
+      responses:
+        '200':
+          description: Care Event
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CareEventDto'
+      security:
+      - public-api-auth: []
+      summary: Create a care event
+      tags:
+      - PublicApiV2
+    get:
+      description: Fetch all care events for a specific coverage, including archived ones. Archived events no longer apply to claims.
+      operationId: PublicApiV2Controller_listCareEvents
+      parameters:
+      - name: coverageId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Care Events
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CareEventArrayDto'
+      security:
+      - public-api-auth: []
+      summary: List care events
+      tags:
+      - PublicApiV2
+  /v2/coverages/{coverageId}/care-events/{careEventId}/replacement:
+    post:
+      description: Archive the existing care event and create a replacement with the provided data
+      operationId: PublicApiV2Controller_replaceCareEvent
+      parameters:
+      - name: coverageId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: careEventId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        description: Care Event Replacement
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CareEventCreationDto'
+      responses:
+        '200':
+          description: Care Event
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CareEventDto'
+      security:
+      - public-api-auth: []
+      summary: Replace a care event
+      tags:
+      - PublicApiV2
+  /v2/coverages/{coverageId}/care-events/{careEventId}:
+    delete:
+      description: Archive a care event so it no longer applies to the coverage. Returns the archived care event.
+      operationId: PublicApiV2Controller_deleteCareEvent
+      parameters:
+      - name: coverageId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: careEventId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Care Event
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CareEventDto'
+      security:
+      - public-api-auth: []
+      summary: Delete a care event
+      tags:
+      - PublicApiV2
+  /v2/designs/{planDesignId}/benefits:
+    get:
+      description: Fetch details for a specific plan design's benefits.
+      operationId: PublicApiV2Controller_getDesignBenefits
+      parameters:
+      - name: planDesignId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Plan Benefits
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BenefitsDto'
+      security:
+      - public-api-auth: []
+      summary: Retrieve plan design benefits
+      tags:
+      - PublicApiV2
+components:
+  schemas:
+    GroupPolicyDto:
+      type: object
+      properties:
+        id:
+          type: string
+        startDate:
+          type: string
+        endDate:
+          type: string
+        groupId:
+          type: string
+        plans:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              planNumber:
+                type: string
+              nickname:
+                type: string
+              type:
+                type: string
+                enum:
+                - RBP
+                - PPO
+                - PPO_RBP
+                - Cash
+                - Dental
+                - Vision
+                - MEC
+                - EPO
+                - Supplemental
+              brokerVendorId:
+                type: string
+              basePlanDesignId:
+                anyOf:
+                - type: string
+                - type: 'null'
+                description: The plan design ID used to create this plan (maps to the planDesignId passed on group creation).
+              vendorRelationships:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    vendor:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        ein:
+                          type: string
+                      required:
+                      - id
+                      - name
+                    planFees:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                          name:
+                            type: string
+                          isVariable:
+                            default: false
+                            type: boolean
+                          isReserve:
+                            default: false
+                            type: boolean
+                          eeCents:
+                            default: 0
+                            type: integer
+                            minimum: -9007199254740991
+                            maximum: 9007199254740991
+                          esCents:
+                            default: 0
+                            type: integer
+                            minimum: -9007199254740991
+                            maximum: 9007199254740991
+                          ecCents:
+                            default: 0
+                            type: integer
+                            minimum: -9007199254740991
+                            maximum: 9007199254740991
+                          efCents:
+                            default: 0
+                            type: integer
+                            minimum: -9007199254740991
+                            maximum: 9007199254740991
+                          adultCents:
+                            default: 0
+                            type: integer
+                            minimum: -9007199254740991
+                            maximum: 9007199254740991
+                          minorCents:
+                            default: 0
+                            type: integer
+                            minimum: -9007199254740991
+                            maximum: 9007199254740991
+                          flatCents:
+                            default: 0
+                            type: integer
+                            minimum: -9007199254740991
+                            maximum: 9007199254740991
+                        required:
+                        - id
+                        - name
+                        - eeCents
+                        - esCents
+                        - ecCents
+                        - efCents
+                        - adultCents
+                        - minorCents
+                        - flatCents
+                    stoplossContract:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                          - specific
+                          - aggregate
+                          - specAndAgg
+                        policyNumber:
+                          type: string
+                        specAttachmentCents:
+                          type: number
+                        aggAccommodationDeductibleCents:
+                          type: number
+                        aggregatingSpecDeductibleCents:
+                          type: number
+                        minAggAttachmentCents:
+                          type: string
+                          pattern: ^\d+$
+                        incurredMonths:
+                          type: number
+                        paidMonths:
+                          type: number
+                        aggEeCents:
+                          default: 0
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        aggEsCents:
+                          default: 0
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        aggEcCents:
+                          default: 0
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        aggEfCents:
+                          default: 0
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                      required:
+                      - aggEeCents
+                      - aggEsCents
+                      - aggEcCents
+                      - aggEfCents
+                  required:
+                  - id
+                  - vendor
+                  - planFees
+              cobraVendorId:
+                anyOf:
+                - type: string
+                - type: 'null'
+            required:
+            - id
+            - planNumber
+            - nickname
+            - type
+            - basePlanDesignId
+            - vendorRelationships
+            - cobraVendorId
+        sponsor:
+          type: object
+          properties:
+            id:
+              type: string
+            namespace:
+              type: string
+            name:
+              type: string
+            website:
+              type: string
+              format: uri
+            description:
+              type: string
+            phoneNumber:
+              type: string
+              example: '+12125551234'
+            address:
+              type: object
+              properties:
+                address1:
+                  type: string
+                address2:
+                  type: string
+                city:
+                  type: string
+                state:
+                  type: string
+                  enum:
+                  - AL
+                  - AK
+                  - AZ
+                  - AR
+                  - CA
+                  - CO
+                  - CT
+                  - DE
+                  - FL
+                  - GA
+                  - HI
+                  - ID
+                  - IL
+                  - IN
+                  - IA
+                  - KS
+                  - KY
+                  - LA
+                  - ME
+                  - MD
+                  - MA
+                  - MI
+                  - MN
+                  - MS
+                  - MO
+                  - MT
+                  - NE
+                  - NV
+                  - NH
+                  - NJ
+                  - NM
+                  - NY
+                  - NC
+                  - ND
+                  - OH
+                  - OK
+                  - OR
+                  - PA
+                  - RI
+                  - SC
+                  - SD
+                  - TN
+                  - TX
+                  - UT
+                  - VT
+                  - VA
+                  - WA
+                  - WV
+                  - WI
+                  - WY
+                  - DC
+                  - AS
+                  - GU
+                  - MP
+                  - PR
+                  - VI
+                postalCode:
+                  type: string
+                  pattern: ^\d{5}(?:[ -]?\d{4})?$
+              required:
+              - address1
+              - city
+              - state
+              - postalCode
+            bankingVerified:
+              type: boolean
+            brokerVendor:
+              type: object
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+                ein:
+                  type: string
+              required:
+              - id
+              - name
+            ein:
+              type: string
+              pattern: ^(\d{2}-\d{7}|\d{9})$
+              example: '123456789'
+            structure:
+              type: string
+              enum:
+              - C_Corporation
+              - LLC
+              - LLP
+              - Nonprofit_Organization
+              - Partnership
+              - Professional_Association
+              - Professional_Corporation
+              - S_Corporation
+              - General_Partnership
+              - Limited_Partnership
+              - Sole_Proprietorship
+              - Government_Entity
+            businessType:
+              type: string
+              enum:
+              - company
+              - government_entity
+              - non_profit
+            invoicingEmails:
+              type: array
+              items:
+                type: string
+                format: email
+                pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+            contractEmails:
+              type: array
+              items:
+                type: string
+                format: email
+                pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+          required:
+          - id
+          - namespace
+          - name
+          - invoicingEmails
+          - contractEmails
+        rules:
+          type: object
+          properties:
+            accumulatorPeriod:
+              type: string
+              enum:
+              - planYear
+              - calendarYear
+            runIn:
+              type: boolean
+            loadAccumulators:
+              type: boolean
+            cobraExempt:
+              type: boolean
+            erisaExempt:
+              type: boolean
+            enrollmentWaitingPeriodType:
+              type: string
+              enum:
+              - months
+              - days
+            enrollmentWaitingPeriod:
+              type: integer
+              minimum: 0
+              maximum: 9007199254740991
+              example: 1
+            waitingPeriodRules:
+              default: []
+              type: array
+              items:
+                type: object
+                properties:
+                  employeeClassTagName:
+                    type: string
+                    minLength: 1
+                  days:
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                  rounding:
+                    type: string
+                    enum:
+                    - none
+                    - firstOfMonth
+                    - firstOfCalendarMonth
+                required:
+                - employeeClassTagName
+                - days
+                - rounding
+            externalCobraVendorId:
+              type: string
+            externalCobraVendor:
+              type: object
+              properties:
+                name:
+                  type: string
+                phoneNumber:
+                  type: string
+                  example: '+12125551234'
+              required:
+              - name
+              - phoneNumber
+            isCobraManagedByYuzu:
+              type: boolean
+          required:
+          - accumulatorPeriod
+          - runIn
+          - loadAccumulators
+          - cobraExempt
+          - erisaExempt
+          - enrollmentWaitingPeriodType
+          - enrollmentWaitingPeriod
+      required:
+      - id
+      - startDate
+      - endDate
+      - groupId
+      - plans
+      - sponsor
+    PaginatedGroupPolicyDto:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              startDate:
+                type: string
+              endDate:
+                type: string
+              groupId:
+                type: string
+              plans:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    planNumber:
+                      type: string
+                    nickname:
+                      type: string
+                    type:
+                      type: string
+                      enum:
+                      - RBP
+                      - PPO
+                      - PPO_RBP
+                      - Cash
+                      - Dental
+                      - Vision
+                      - MEC
+                      - EPO
+                      - Supplemental
+                    brokerVendorId:
+                      type: string
+                    basePlanDesignId:
+                      anyOf:
+                      - type: string
+                      - type: 'null'
+                      description: The plan design ID used to create this plan (maps to the planDesignId passed on group creation).
+                    vendorRelationships:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                          vendor:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                              name:
+                                type: string
+                              ein:
+                                type: string
+                            required:
+                            - id
+                            - name
+                          planFees:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                name:
+                                  type: string
+                                isVariable:
+                                  default: false
+                                  type: boolean
+                                isReserve:
+                                  default: false
+                                  type: boolean
+                                eeCents:
+                                  default: 0
+                                  type: integer
+                                  minimum: -9007199254740991
+                                  maximum: 9007199254740991
+                                esCents:
+                                  default: 0
+                                  type: integer
+                                  minimum: -9007199254740991
+                                  maximum: 9007199254740991
+                                ecCents:
+                                  default: 0
+                                  type: integer
+                                  minimum: -9007199254740991
+                                  maximum: 9007199254740991
+                                efCents:
+                                  default: 0
+                                  type: integer
+                                  minimum: -9007199254740991
+                                  maximum: 9007199254740991
+                                adultCents:
+                                  default: 0
+                                  type: integer
+                                  minimum: -9007199254740991
+                                  maximum: 9007199254740991
+                                minorCents:
+                                  default: 0
+                                  type: integer
+                                  minimum: -9007199254740991
+                                  maximum: 9007199254740991
+                                flatCents:
+                                  default: 0
+                                  type: integer
+                                  minimum: -9007199254740991
+                                  maximum: 9007199254740991
+                              required:
+                              - id
+                              - name
+                              - eeCents
+                              - esCents
+                              - ecCents
+                              - efCents
+                              - adultCents
+                              - minorCents
+                              - flatCents
+                          stoplossContract:
+                            type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                - specific
+                                - aggregate
+                                - specAndAgg
+                              policyNumber:
+                                type: string
+                              specAttachmentCents:
+                                type: number
+                              aggAccommodationDeductibleCents:
+                                type: number
+                              aggregatingSpecDeductibleCents:
+                                type: number
+                              minAggAttachmentCents:
+                                type: string
+                                pattern: ^\d+$
+                              incurredMonths:
+                                type: number
+                              paidMonths:
+                                type: number
+                              aggEeCents:
+                                default: 0
+                                type: integer
+                                minimum: 0
+                                maximum: 9007199254740991
+                              aggEsCents:
+                                default: 0
+                                type: integer
+                                minimum: 0
+                                maximum: 9007199254740991
+                              aggEcCents:
+                                default: 0
+                                type: integer
+                                minimum: 0
+                                maximum: 9007199254740991
+                              aggEfCents:
+                                default: 0
+                                type: integer
+                                minimum: 0
+                                maximum: 9007199254740991
+                            required:
+                            - aggEeCents
+                            - aggEsCents
+                            - aggEcCents
+                            - aggEfCents
+                        required:
+                        - id
+                        - vendor
+                        - planFees
+                    cobraVendorId:
+                      anyOf:
+                      - type: string
+                      - type: 'null'
+                  required:
+                  - id
+                  - planNumber
+                  - nickname
+                  - type
+                  - basePlanDesignId
+                  - vendorRelationships
+                  - cobraVendorId
+              sponsor:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  namespace:
+                    type: string
+                  name:
+                    type: string
+                  website:
+                    type: string
+                    format: uri
+                  description:
+                    type: string
+                  phoneNumber:
+                    type: string
+                    example: '+12125551234'
+                  address:
+                    type: object
+                    properties:
+                      address1:
+                        type: string
+                      address2:
+                        type: string
+                      city:
+                        type: string
+                      state:
+                        type: string
+                        enum:
+                        - AL
+                        - AK
+                        - AZ
+                        - AR
+                        - CA
+                        - CO
+                        - CT
+                        - DE
+                        - FL
+                        - GA
+                        - HI
+                        - ID
+                        - IL
+                        - IN
+                        - IA
+                        - KS
+                        - KY
+                        - LA
+                        - ME
+                        - MD
+                        - MA
+                        - MI
+                        - MN
+                        - MS
+                        - MO
+                        - MT
+                        - NE
+                        - NV
+                        - NH
+                        - NJ
+                        - NM
+                        - NY
+                        - NC
+                        - ND
+                        - OH
+                        - OK
+                        - OR
+                        - PA
+                        - RI
+                        - SC
+                        - SD
+                        - TN
+                        - TX
+                        - UT
+                        - VT
+                        - VA
+                        - WA
+                        - WV
+                        - WI
+                        - WY
+                        - DC
+                        - AS
+                        - GU
+                        - MP
+                        - PR
+                        - VI
+                      postalCode:
+                        type: string
+                        pattern: ^\d{5}(?:[ -]?\d{4})?$
+                    required:
+                    - address1
+                    - city
+                    - state
+                    - postalCode
+                  bankingVerified:
+                    type: boolean
+                  brokerVendor:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                      ein:
+                        type: string
+                    required:
+                    - id
+                    - name
+                  ein:
+                    type: string
+                    pattern: ^(\d{2}-\d{7}|\d{9})$
+                    example: '123456789'
+                  structure:
+                    type: string
+                    enum:
+                    - C_Corporation
+                    - LLC
+                    - LLP
+                    - Nonprofit_Organization
+                    - Partnership
+                    - Professional_Association
+                    - Professional_Corporation
+                    - S_Corporation
+                    - General_Partnership
+                    - Limited_Partnership
+                    - Sole_Proprietorship
+                    - Government_Entity
+                  businessType:
+                    type: string
+                    enum:
+                    - company
+                    - government_entity
+                    - non_profit
+                  invoicingEmails:
+                    type: array
+                    items:
+                      type: string
+                      format: email
+                      pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+                  contractEmails:
+                    type: array
+                    items:
+                      type: string
+                      format: email
+                      pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+                required:
+                - id
+                - namespace
+                - name
+                - invoicingEmails
+                - contractEmails
+              rules:
+                type: object
+                properties:
+                  accumulatorPeriod:
+                    type: string
+                    enum:
+                    - planYear
+                    - calendarYear
+                  runIn:
+                    type: boolean
+                  loadAccumulators:
+                    type: boolean
+                  cobraExempt:
+                    type: boolean
+                  erisaExempt:
+                    type: boolean
+                  enrollmentWaitingPeriodType:
+                    type: string
+                    enum:
+                    - months
+                    - days
+                  enrollmentWaitingPeriod:
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                    example: 1
+                  waitingPeriodRules:
+                    default: []
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        employeeClassTagName:
+                          type: string
+                          minLength: 1
+                        days:
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        rounding:
+                          type: string
+                          enum:
+                          - none
+                          - firstOfMonth
+                          - firstOfCalendarMonth
+                      required:
+                      - employeeClassTagName
+                      - days
+                      - rounding
+                  externalCobraVendorId:
+                    type: string
+                  externalCobraVendor:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      phoneNumber:
+                        type: string
+                        example: '+12125551234'
+                    required:
+                    - name
+                    - phoneNumber
+                  isCobraManagedByYuzu:
+                    type: boolean
+                required:
+                - accumulatorPeriod
+                - runIn
+                - loadAccumulators
+                - cobraExempt
+                - erisaExempt
+                - enrollmentWaitingPeriodType
+                - enrollmentWaitingPeriod
+            required:
+            - id
+            - startDate
+            - endDate
+            - groupId
+            - plans
+            - sponsor
+        startAfter:
+          anyOf:
+          - type: string
+          - type: 'null'
+          x-nestjs_zod-empty-type: true
+      required:
+      - results
+    Uint8Array:
+      type: object
+      properties: {}
+    CareEventCreationDto:
+      type: object
+      properties:
+        action:
+          type: string
+          enum:
+          - pendClaims
+          - repriceClaims
+          - setTier
+        benefitTierId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          x-nestjs_zod-empty-type: true
+        startDate:
+          anyOf:
+          - type: string
+          - type: 'null'
+          x-nestjs_zod-empty-type: true
+        endDate:
+          anyOf:
+          - type: string
+          - type: 'null'
+          x-nestjs_zod-empty-type: true
+        notes:
+          anyOf:
+          - type: string
+          - type: 'null'
+          x-nestjs_zod-empty-type: true
+        id:
+          type: string
+        providerLastOrgName:
+          anyOf:
+          - type: string
+          - type: 'null'
+          x-nestjs_zod-empty-type: true
+        providerNpi:
+          anyOf:
+          - type: string
+            pattern: ^\d{10}$
+            example: '1265284533'
+          - type: 'null'
+          x-nestjs_zod-empty-type: true
+        providerTaxID:
+          anyOf:
+          - type: string
+            pattern: ^(\d{2}-\d{7}|\d{9})$
+            example: '123456789'
+          - type: 'null'
+          x-nestjs_zod-empty-type: true
+        rate:
+          oneOf:
+          - type: object
+            properties:
+              type:
+                type: string
+                const: medicarePct
+              medicarePct:
+                type: number
+                exclusiveMinimum: 0
+                maximum: 1000
+              planYear:
+                default: null
+                anyOf:
+                - type: integer
+                  minimum: 2018
+                  maximum: 2100
+                - type: 'null'
+              medicareFallbackPct:
+                default: null
+                anyOf:
+                - type: number
+                  exclusiveMinimum: 0
+                  maximum: 100
+                - type: 'null'
+            required:
+            - type
+            - medicarePct
+          - type: object
+            properties:
+              type:
+                type: string
+                const: billedChargesPct
+              billedChargesPct:
+                type: number
+                exclusiveMinimum: 0
+                maximum: 100
+            required:
+            - type
+            - billedChargesPct
+          x-nestjs_zod-empty-type: true
+      required:
+      - action
+      - benefitTierId
+      - startDate
+      - endDate
+      - notes
+      - providerLastOrgName
+      - providerNpi
+      - providerTaxID
+    EnrollmentRequestDto:
+      type: object
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+          enum:
+          - ingested
+          - failed
+          - denied
+          - submitted
+          - applied
+          - rejected
+          - processing
+          - approved
+          - queued
+          - pendingApproval
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              subscriber:
+                anyOf:
+                - type: string
+                - type: 'null'
+              message:
+                type: string
+            required:
+            - subscriber
+            - message
+      required:
+      - id
+      - status
+      - errors
+    BenefitsDto:
+      type: object
+      properties:
+        tiers:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              waivePrecertRequirements:
+                default: false
+                type: boolean
+              excludeLimitations:
+                default: false
+                type: boolean
+              providerNetworkIds:
+                type: array
+                items:
+                  type: string
+            required:
+            - id
+            - name
+            - providerNetworkIds
+        rx:
+          type: object
+          properties:
+            accumulator:
+              type: object
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+                individualMaxOOPCents:
+                  type: number
+                familyMaxOOPCents:
+                  type: number
+                individualDeductibleCents:
+                  type: number
+                familyDeductibleCents:
+                  type: number
+              required:
+              - id
+              - individualMaxOOPCents
+              - familyMaxOOPCents
+              - individualDeductibleCents
+              - familyDeductibleCents
+            days30:
+              type: object
+              properties:
+                genericDrug:
+                  type: string
+                preferredDrug:
+                  type: string
+                nonPreferredDrug:
+                  type: string
+                specialtyDrug:
+                  type: string
+            days90:
+              type: object
+              properties:
+                genericDrug:
+                  type: string
+                preferredDrug:
+                  type: string
+                nonPreferredDrug:
+                  type: string
+                specialtyDrug:
+                  type: string
+          required:
+          - accumulator
+        medical:
+          type: object
+          properties:
+            accumulators:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  individualMaxOOPCents:
+                    type: number
+                  familyMaxOOPCents:
+                    type: number
+                  individualDeductibleCents:
+                    type: number
+                  familyDeductibleCents:
+                    type: number
+                required:
+                - id
+                - individualMaxOOPCents
+                - familyMaxOOPCents
+                - individualDeductibleCents
+                - familyDeductibleCents
+            benefits:
+              type: array
+              items:
+                type: object
+                properties:
+                  benefitCategory:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      description:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      legalDescription:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                    required:
+                    - name
+                  costSharing:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        tierId:
+                          type: string
+                        covered:
+                          type: boolean
+                        copayCents:
+                          anyOf:
+                          - type: integer
+                            minimum: -9007199254740991
+                            maximum: 9007199254740991
+                          - type: 'null'
+                        ifApplicable:
+                          default: false
+                          type: boolean
+                        coinsurancePct:
+                          anyOf:
+                          - type: integer
+                            minimum: -9007199254740991
+                            maximum: 9007199254740991
+                          - type: 'null'
+                        requiresDeductibleMet:
+                          default: false
+                          type: boolean
+                        waiveCopayAfterDays:
+                          anyOf:
+                          - type: integer
+                            minimum: -9007199254740991
+                            maximum: 9007199254740991
+                          - type: 'null'
+                        waiveCostSharingForVisits:
+                          anyOf:
+                          - type: integer
+                            minimum: -9007199254740991
+                            maximum: 9007199254740991
+                          - type: 'null'
+                        notes:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                      required:
+                      - tierId
+                      - covered
+                      - copayCents
+                      - coinsurancePct
+                      - waiveCopayAfterDays
+                      - waiveCostSharingForVisits
+                      - notes
+                  limitations:
+                    type: object
+                    properties:
+                      maxVisitsPerYear:
+                        anyOf:
+                        - type: integer
+                          minimum: -9007199254740991
+                          maximum: 9007199254740991
+                        - type: 'null'
+                      maxDaysPerYear:
+                        anyOf:
+                        - type: integer
+                          minimum: -9007199254740991
+                          maximum: 9007199254740991
+                        - type: 'null'
+                      moneyPerLifetimeCents:
+                        anyOf:
+                        - type: integer
+                          minimum: -9007199254740991
+                          maximum: 9007199254740991
+                        - type: 'null'
+                      maxDaysPerLifetime:
+                        anyOf:
+                        - type: integer
+                          minimum: -9007199254740991
+                          maximum: 9007199254740991
+                        - type: 'null'
+                      moneyPerFillCents:
+                        anyOf:
+                        - type: integer
+                          minimum: -9007199254740991
+                          maximum: 9007199254740991
+                        - type: 'null'
+                      maxHoursPerVisit:
+                        anyOf:
+                        - type: integer
+                          minimum: -9007199254740991
+                          maximum: 9007199254740991
+                        - type: 'null'
+                      excludeChildDependents:
+                        anyOf:
+                        - type: boolean
+                        - type: 'null'
+                      notes:
+                        anyOf:
+                        - type: string
+                        - type: 'null'
+                      precertMayBeRequired:
+                        default: false
+                        type: boolean
+                    required:
+                    - maxVisitsPerYear
+                    - maxDaysPerYear
+                    - moneyPerLifetimeCents
+                    - maxDaysPerLifetime
+                    - moneyPerFillCents
+                    - maxHoursPerVisit
+                    - excludeChildDependents
+                    - notes
+                required:
+                - benefitCategory
+                - costSharing
+          required:
+          - accumulators
+          - benefits
+        exclusions:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              description:
+                anyOf:
+                - type: string
+                - type: 'null'
+              legalDescription:
+                anyOf:
+                - type: string
+                - type: 'null'
+            required:
+            - name
+      required:
+      - tiers
+      - rx
+      - medical
+      - exclusions
+    CareEventArrayDto:
+      type: object
+      properties:
+        careEvents:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              coverageId:
+                type: string
+              action:
+                type: string
+                enum:
+                - pendClaims
+                - repriceClaims
+                - setTier
+              startDate:
+                anyOf:
+                - type: string
+                - type: 'null'
+              endDate:
+                anyOf:
+                - type: string
+                - type: 'null'
+              notes:
+                anyOf:
+                - type: string
+                - type: 'null'
+              benefitTierId:
+                anyOf:
+                - type: string
+                - type: 'null'
+              rate:
+                anyOf:
+                - oneOf:
+                  - type: object
+                    properties:
+                      type:
+                        type: string
+                        const: medicarePct
+                      medicarePct:
+                        type: number
+                        exclusiveMinimum: 0
+                        maximum: 1000
+                      planYear:
+                        default: null
+                        anyOf:
+                        - type: integer
+                          minimum: 2018
+                          maximum: 2100
+                        - type: 'null'
+                      medicareFallbackPct:
+                        default: null
+                        anyOf:
+                        - type: number
+                          exclusiveMinimum: 0
+                          maximum: 100
+                        - type: 'null'
+                    required:
+                    - type
+                    - medicarePct
+                  - type: object
+                    properties:
+                      type:
+                        type: string
+                        const: billedChargesPct
+                      billedChargesPct:
+                        type: number
+                        exclusiveMinimum: 0
+                        maximum: 100
+                    required:
+                    - type
+                    - billedChargesPct
+                - type: 'null'
+              provider:
+                anyOf:
+                - type: object
+                  properties:
+                    lastOrOrganizationName:
+                      anyOf:
+                      - type: string
+                      - type: 'null'
+                    npi:
+                      anyOf:
+                      - type: string
+                        pattern: ^\d{10}$
+                        example: '1265284533'
+                      - type: 'null'
+                    tin:
+                      anyOf:
+                      - type: string
+                        pattern: ^(\d{2}-\d{7}|\d{9})$
+                        example: '123456789'
+                      - type: 'null'
+                  required:
+                  - lastOrOrganizationName
+                  - npi
+                  - tin
+                - type: 'null'
+              archived:
+                type: boolean
+            required:
+            - id
+            - coverageId
+            - action
+            - startDate
+            - endDate
+            - notes
+            - benefitTierId
+            - rate
+            - provider
+            - archived
+      required:
+      - careEvents
+    PlanCreationDto:
+      type: object
+      properties:
+        planDesignId:
+          type: string
+        broker:
+          type: object
+          properties:
+            planFees:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  isVariable:
+                    default: false
+                    type: boolean
+                  isReserve:
+                    default: false
+                    type: boolean
+                  eeCents:
+                    default: 0
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                  esCents:
+                    default: 0
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                  ecCents:
+                    default: 0
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                  efCents:
+                    default: 0
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                  adultCents:
+                    default: 0
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                  minorCents:
+                    default: 0
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                  flatCents:
+                    default: 0
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                required:
+                - name
+                - eeCents
+                - esCents
+                - ecCents
+                - efCents
+                - adultCents
+                - minorCents
+                - flatCents
+            vendorId:
+              type: string
+          required:
+          - planFees
+          - vendorId
+        stoploss:
+          type: object
+          properties:
+            planFees:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  isVariable:
+                    default: false
+                    type: boolean
+                  isReserve:
+                    default: false
+                    type: boolean
+                  eeCents:
+                    default: 0
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                  esCents:
+                    default: 0
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                  ecCents:
+                    default: 0
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                  efCents:
+                    default: 0
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                  adultCents:
+                    default: 0
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                  minorCents:
+                    default: 0
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                  flatCents:
+                    default: 0
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                required:
+                - name
+                - eeCents
+                - esCents
+                - ecCents
+                - efCents
+                - adultCents
+                - minorCents
+                - flatCents
+            vendorId:
+              type: string
+            contract:
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                  - specific
+                  - aggregate
+                  - specAndAgg
+                policyNumber:
+                  type: string
+                specAttachmentCents:
+                  type: number
+                aggAccommodationDeductibleCents:
+                  type: number
+                aggregatingSpecDeductibleCents:
+                  type: number
+                minAggAttachmentCents:
+                  type: string
+                  pattern: ^\d+$
+                incurredMonths:
+                  type: number
+                paidMonths:
+                  type: number
+                aggEeCents:
+                  default: 0
+                  type: integer
+                  minimum: 0
+                  maximum: 9007199254740991
+                aggEsCents:
+                  default: 0
+                  type: integer
+                  minimum: 0
+                  maximum: 9007199254740991
+                aggEcCents:
+                  default: 0
+                  type: integer
+                  minimum: 0
+                  maximum: 9007199254740991
+                aggEfCents:
+                  default: 0
+                  type: integer
+                  minimum: 0
+                  maximum: 9007199254740991
+              required:
+              - aggEeCents
+              - aggEsCents
+              - aggEcCents
+              - aggEfCents
+          required:
+          - planFees
+          - vendorId
+        cobra:
+          type: object
+          properties:
+            planFees:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  isVariable:
+                    default: false
+                    type: boolean
+                  isReserve:
+                    default: false
+                    type: boolean
+                  eeCents:
+                    default: 0
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                  esCents:
+                    default: 0
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                  ecCents:
+                    default: 0
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                  efCents:
+                    default: 0
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                  adultCents:
+                    default: 0
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                  minorCents:
+                    default: 0
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                  flatCents:
+                    default: 0
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                required:
+                - name
+                - eeCents
+                - esCents
+                - ecCents
+                - efCents
+                - adultCents
+                - minorCents
+                - flatCents
+            vendorId:
+              type: string
+          required:
+          - planFees
+          - vendorId
+      required:
+      - planDesignId
+    PaginatedMemberDto:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              lastName:
+                type: string
+              firstName:
+                type: string
+              sex:
+                type: string
+                enum:
+                - M
+                - F
+              birthDate:
+                type: string
+                example: '2025-01-01'
+              phone:
+                type: string
+                example: '+12125551234'
+              emailAddress:
+                type: string
+                format: email
+                pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+              ssnLastFour:
+                type: string
+              coordinationOfBenefits:
+                type: object
+                properties:
+                  lastReviewed:
+                    type: string
+                  coverages:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        startDate:
+                          type: string
+                          example: '2025-01-01'
+                        endDate:
+                          type: string
+                          example: '2025-01-01'
+                        payerResponsibility:
+                          type: string
+                          enum:
+                          - primary
+                          - secondary
+                          - tertiary
+                          - four
+                          - five
+                          - six
+                          - seven
+                          - eight
+                          - nine
+                          - ten
+                          - eleven
+                          - unknown
+                        organizationName:
+                          type: string
+                        subscriberFirstName:
+                          type: string
+                        subscriberLastName:
+                          type: string
+                      required:
+                      - id
+                required:
+                - coverages
+              currentAddresses:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    address1:
+                      type: string
+                    address2:
+                      type: string
+                    city:
+                      type: string
+                    state:
+                      type: string
+                      enum:
+                      - AL
+                      - AK
+                      - AZ
+                      - AR
+                      - CA
+                      - CO
+                      - CT
+                      - DE
+                      - FL
+                      - GA
+                      - HI
+                      - ID
+                      - IL
+                      - IN
+                      - IA
+                      - KS
+                      - KY
+                      - LA
+                      - ME
+                      - MD
+                      - MA
+                      - MI
+                      - MN
+                      - MS
+                      - MO
+                      - MT
+                      - NE
+                      - NV
+                      - NH
+                      - NJ
+                      - NM
+                      - NY
+                      - NC
+                      - ND
+                      - OH
+                      - OK
+                      - OR
+                      - PA
+                      - RI
+                      - SC
+                      - SD
+                      - TN
+                      - TX
+                      - UT
+                      - VT
+                      - VA
+                      - WA
+                      - WV
+                      - WI
+                      - WY
+                      - DC
+                      - AS
+                      - GU
+                      - MP
+                      - PR
+                      - VI
+                    postalCode:
+                      type: string
+                      pattern: ^\d{5}(?:[ -]?\d{4})?$
+                  required:
+                  - address1
+                  - city
+                  - state
+                  - postalCode
+              coverages:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    coverageStatus:
+                      type: string
+                      enum:
+                      - active
+                      - inactive
+                      - pending
+                      - cobra
+                      - annulled
+                    eligibilitySince:
+                      type: string
+                      example: '2025-01-01'
+                    eligibilityUntil:
+                      type: string
+                      example: '2025-01-01'
+                    groupId:
+                      type: string
+                    planId:
+                      type: string
+                    subscriberId:
+                      anyOf:
+                      - type: string
+                      - type: 'null'
+                    memberNumber:
+                      type: string
+                    relationship:
+                      type: string
+                      enum:
+                      - subscriber
+                      - spouse
+                      - child
+                    alternateID:
+                      type: string
+                    fees:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                          name:
+                            type: string
+                          startDate:
+                            type: string
+                            example: '2025-01-01'
+                          endDate:
+                            type: string
+                            example: '2025-01-01'
+                          planFeeId:
+                            type: string
+                          vendorId:
+                            type: string
+                        required:
+                        - id
+                        - name
+                        - startDate
+                        - endDate
+                        - planFeeId
+                        - vendorId
+                    pcpPreferences:
+                      type: object
+                      properties:
+                        optOut:
+                          type: boolean
+                      required:
+                      - optOut
+                    locations:
+                      type: array
+                      items:
+                        type: string
+                    departments:
+                      type: array
+                      items:
+                        type: string
+                    employeeClass:
+                      type: string
+                  required:
+                  - id
+                  - coverageStatus
+                  - eligibilitySince
+                  - eligibilityUntil
+                  - groupId
+                  - planId
+                  - subscriberId
+                  - memberNumber
+                  - relationship
+                  - fees
+                  - locations
+                  - departments
+            required:
+            - id
+            - lastName
+            - firstName
+            - sex
+            - birthDate
+            - coordinationOfBenefits
+            - currentAddresses
+            - coverages
+        startAfter:
+          anyOf:
+          - type: string
+          - type: 'null'
+          x-nestjs_zod-empty-type: true
+      required:
+      - results
+    PlanDesignArrayDto:
+      type: object
+      properties:
+        planDesigns:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              nickname:
+                type: string
+              type:
+                type: string
+                enum:
+                - RBP
+                - PPO
+                - PPO_RBP
+                - Cash
+                - Dental
+                - Vision
+                - MEC
+                - EPO
+                - Supplemental
+              status:
+                type: string
+                enum:
+                - draft
+                - inReview
+                - active
+                - archived
+              tags:
+                type: array
+                items:
+                  type: string
+              minNumberOfMembers:
+                anyOf:
+                - type: integer
+                  minimum: 0
+                  maximum: 9007199254740991
+                - type: 'null'
+                example: 100
+              planDesignVendorRelationships:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    vendor:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        ein:
+                          type: string
+                      required:
+                      - id
+                      - name
+                    planDesignFees:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                          name:
+                            type: string
+                          eeCents:
+                            default: 0
+                            type: integer
+                            minimum: -9007199254740991
+                            maximum: 9007199254740991
+                          esCents:
+                            default: 0
+                            type: integer
+                            minimum: -9007199254740991
+                            maximum: 9007199254740991
+                          ecCents:
+                            default: 0
+                            type: integer
+                            minimum: -9007199254740991
+                            maximum: 9007199254740991
+                          efCents:
+                            default: 0
+                            type: integer
+                            minimum: -9007199254740991
+                            maximum: 9007199254740991
+                          adultCents:
+                            default: 0
+                            type: integer
+                            minimum: -9007199254740991
+                            maximum: 9007199254740991
+                          minorCents:
+                            default: 0
+                            type: integer
+                            minimum: -9007199254740991
+                            maximum: 9007199254740991
+                          flatCents:
+                            default: 0
+                            type: integer
+                            minimum: -9007199254740991
+                            maximum: 9007199254740991
+                        required:
+                        - id
+                        - name
+                        - eeCents
+                        - esCents
+                        - ecCents
+                        - efCents
+                        - adultCents
+                        - minorCents
+                        - flatCents
+                    relationshipTypes:
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                        - planDesigner
+                        - tpa
+                        - stoploss
+                        - pbm
+                        - network
+                        - utilizationManagement
+                        - careNavigator
+                        - telehealth
+                  required:
+                  - id
+                  - vendor
+                  - planDesignFees
+                  - relationshipTypes
+            required:
+            - id
+            - nickname
+            - type
+            - status
+            - tags
+            - minNumberOfMembers
+            - planDesignVendorRelationships
+      required:
+      - planDesigns
+    InitialEnrollmentDto:
+      type: object
+      properties:
+        action:
+          type: string
+          enum:
+          - mergeAndAppend
+          - replace
+        subscribers:
+          type: array
+          items:
+            type: object
+            properties:
+              cobraStartDate:
+                anyOf:
+                - type: string
+                  example: '2025-01-01'
+                - type: 'null'
+              termedByEmployerDate:
+                type: string
+                example: '2025-01-01'
+              location:
+                type: string
+              department:
+                type: string
+              employeeClass:
+                type: string
+              self:
+                type: object
+                properties:
+                  line1:
+                    type: string
+                  state:
+                    default: ''
+                    type: string
+                    enum:
+                    - AL
+                    - AK
+                    - AZ
+                    - AR
+                    - CA
+                    - CO
+                    - CT
+                    - DE
+                    - FL
+                    - GA
+                    - HI
+                    - ID
+                    - IL
+                    - IN
+                    - IA
+                    - KS
+                    - KY
+                    - LA
+                    - ME
+                    - MD
+                    - MA
+                    - MI
+                    - MN
+                    - MS
+                    - MO
+                    - MT
+                    - NE
+                    - NV
+                    - NH
+                    - NJ
+                    - NM
+                    - NY
+                    - NC
+                    - ND
+                    - OH
+                    - OK
+                    - OR
+                    - PA
+                    - RI
+                    - SC
+                    - SD
+                    - TN
+                    - TX
+                    - UT
+                    - VT
+                    - VA
+                    - WA
+                    - WV
+                    - WI
+                    - WY
+                    - DC
+                    - AS
+                    - GU
+                    - MP
+                    - PR
+                    - VI
+                  city:
+                    type: string
+                  zip:
+                    type: string
+                    pattern: ^\d{5}(?:[ -]?\d{4})?$
+                  sex:
+                    default: ''
+                    type: string
+                    enum:
+                    - M
+                    - F
+                  ssn:
+                    anyOf:
+                    - example: '{ raw: "123-45-6789", masked: "***-**-6789" }'
+                      type: string
+                    - type: 'null'
+                  line2:
+                    anyOf:
+                    - type: string
+                    - type: 'null'
+                  firstName:
+                    type: string
+                  middleName:
+                    anyOf:
+                    - type: string
+                      minLength: 1
+                    - type: 'null'
+                  lastName:
+                    type: string
+                  suffix:
+                    anyOf:
+                    - type: string
+                      enum:
+                      - Jr
+                      - Sr
+                      - II
+                      - III
+                      - IV
+                      - V
+                      - VI
+                      - VII
+                      - VIII
+                    - type: 'null'
+                  alternateID:
+                    anyOf:
+                    - type: string
+                    - type: 'null'
+                  email:
+                    anyOf:
+                    - type: string
+                      format: email
+                      pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+                    - type: 'null'
+                  phoneNumber:
+                    anyOf:
+                    - type: string
+                      example: '+12125551234'
+                    - type: 'null'
+                  birthday:
+                    type: string
+                    example: '2025-01-01'
+                  planFeeIds:
+                    default: []
+                    type: array
+                    items:
+                      type: string
+                  __id:
+                    type: string
+                required:
+                - line1
+                - city
+                - zip
+                - firstName
+                - lastName
+                - birthday
+              spouse:
+                type: object
+                properties:
+                  line1:
+                    type: string
+                  state:
+                    default: ''
+                    type: string
+                    enum:
+                    - AL
+                    - AK
+                    - AZ
+                    - AR
+                    - CA
+                    - CO
+                    - CT
+                    - DE
+                    - FL
+                    - GA
+                    - HI
+                    - ID
+                    - IL
+                    - IN
+                    - IA
+                    - KS
+                    - KY
+                    - LA
+                    - ME
+                    - MD
+                    - MA
+                    - MI
+                    - MN
+                    - MS
+                    - MO
+                    - MT
+                    - NE
+                    - NV
+                    - NH
+                    - NJ
+                    - NM
+                    - NY
+                    - NC
+                    - ND
+                    - OH
+                    - OK
+                    - OR
+                    - PA
+                    - RI
+                    - SC
+                    - SD
+                    - TN
+                    - TX
+                    - UT
+                    - VT
+                    - VA
+                    - WA
+                    - WV
+                    - WI
+                    - WY
+                    - DC
+                    - AS
+                    - GU
+                    - MP
+                    - PR
+                    - VI
+                  city:
+                    type: string
+                  zip:
+                    type: string
+                    pattern: ^\d{5}(?:[ -]?\d{4})?$
+                  sex:
+                    default: ''
+                    type: string
+                    enum:
+                    - M
+                    - F
+                  ssn:
+                    anyOf:
+                    - example: '{ raw: "123-45-6789", masked: "***-**-6789" }'
+                      type: string
+                    - type: 'null'
+                  line2:
+                    anyOf:
+                    - type: string
+                    - type: 'null'
+                  firstName:
+                    type: string
+                  middleName:
+                    anyOf:
+                    - type: string
+                      minLength: 1
+                    - type: 'null'
+                  lastName:
+                    type: string
+                  suffix:
+                    anyOf:
+                    - type: string
+                      enum:
+                      - Jr
+                      - Sr
+                      - II
+                      - III
+                      - IV
+                      - V
+                      - VI
+                      - VII
+                      - VIII
+                    - type: 'null'
+                  alternateID:
+                    anyOf:
+                    - type: string
+                    - type: 'null'
+                  email:
+                    anyOf:
+                    - type: string
+                      format: email
+                      pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+                    - type: 'null'
+                  phoneNumber:
+                    anyOf:
+                    - type: string
+                      example: '+12125551234'
+                    - type: 'null'
+                  birthday:
+                    type: string
+                    example: '2025-01-01'
+                  planFeeIds:
+                    default: []
+                    type: array
+                    items:
+                      type: string
+                  __id:
+                    type: string
+                required:
+                - line1
+                - city
+                - zip
+                - firstName
+                - lastName
+                - birthday
+              children:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    line1:
+                      type: string
+                    state:
+                      default: ''
+                      type: string
+                      enum:
+                      - AL
+                      - AK
+                      - AZ
+                      - AR
+                      - CA
+                      - CO
+                      - CT
+                      - DE
+                      - FL
+                      - GA
+                      - HI
+                      - ID
+                      - IL
+                      - IN
+                      - IA
+                      - KS
+                      - KY
+                      - LA
+                      - ME
+                      - MD
+                      - MA
+                      - MI
+                      - MN
+                      - MS
+                      - MO
+                      - MT
+                      - NE
+                      - NV
+                      - NH
+                      - NJ
+                      - NM
+                      - NY
+                      - NC
+                      - ND
+                      - OH
+                      - OK
+                      - OR
+                      - PA
+                      - RI
+                      - SC
+                      - SD
+                      - TN
+                      - TX
+                      - UT
+                      - VT
+                      - VA
+                      - WA
+                      - WV
+                      - WI
+                      - WY
+                      - DC
+                      - AS
+                      - GU
+                      - MP
+                      - PR
+                      - VI
+                    city:
+                      type: string
+                    zip:
+                      type: string
+                      pattern: ^\d{5}(?:[ -]?\d{4})?$
+                    sex:
+                      default: ''
+                      type: string
+                      enum:
+                      - M
+                      - F
+                    ssn:
+                      anyOf:
+                      - example: '{ raw: "123-45-6789", masked: "***-**-6789" }'
+                        type: string
+                      - type: 'null'
+                    line2:
+                      anyOf:
+                      - type: string
+                      - type: 'null'
+                    firstName:
+                      type: string
+                    middleName:
+                      anyOf:
+                      - type: string
+                        minLength: 1
+                      - type: 'null'
+                    lastName:
+                      type: string
+                    suffix:
+                      anyOf:
+                      - type: string
+                        enum:
+                        - Jr
+                        - Sr
+                        - II
+                        - III
+                        - IV
+                        - V
+                        - VI
+                        - VII
+                        - VIII
+                      - type: 'null'
+                    alternateID:
+                      anyOf:
+                      - type: string
+                      - type: 'null'
+                    email:
+                      anyOf:
+                      - type: string
+                        format: email
+                        pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+                      - type: 'null'
+                    phoneNumber:
+                      anyOf:
+                      - type: string
+                        example: '+12125551234'
+                      - type: 'null'
+                    birthday:
+                      type: string
+                      example: '2025-01-01'
+                    planFeeIds:
+                      default: []
+                      type: array
+                      items:
+                        type: string
+                    __id:
+                      type: string
+                  required:
+                  - line1
+                  - city
+                  - zip
+                  - firstName
+                  - lastName
+                  - birthday
+              isCobraEligible:
+                type: boolean
+              hireDate:
+                type: string
+                example: '2025-01-01'
+              retirementDate:
+                type: string
+                example: '2025-01-01'
+              plans:
+                minItems: 1
+                maxItems: 1
+                type: array
+                items:
+                  type: string
+              __id:
+                type: string
+            required:
+            - self
+            - plans
+      required:
+      - action
+      - subscribers
+    GroupCreationDto:
+      type: object
+      properties:
+        startDate:
+          type: string
+        endDate:
+          type: string
+        groupId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        website:
+          type: string
+          format: uri
+        phoneNumber:
+          type: string
+          example: '+12125551234'
+        businessType:
+          type: string
+          enum:
+          - company
+          - government_entity
+          - non_profit
+        address:
+          type: object
+          properties:
+            address1:
+              type: string
+            address2:
+              type: string
+            city:
+              type: string
+            state:
+              type: string
+              enum:
+              - AL
+              - AK
+              - AZ
+              - AR
+              - CA
+              - CO
+              - CT
+              - DE
+              - FL
+              - GA
+              - HI
+              - ID
+              - IL
+              - IN
+              - IA
+              - KS
+              - KY
+              - LA
+              - ME
+              - MD
+              - MA
+              - MI
+              - MN
+              - MS
+              - MO
+              - MT
+              - NE
+              - NV
+              - NH
+              - NJ
+              - NM
+              - NY
+              - NC
+              - ND
+              - OH
+              - OK
+              - OR
+              - PA
+              - RI
+              - SC
+              - SD
+              - TN
+              - TX
+              - UT
+              - VT
+              - VA
+              - WA
+              - WV
+              - WI
+              - WY
+              - DC
+              - AS
+              - GU
+              - MP
+              - PR
+              - VI
+            postalCode:
+              type: string
+              pattern: ^\d{5}(?:[ -]?\d{4})?$
+          required:
+          - address1
+          - city
+          - state
+          - postalCode
+        ein:
+          type: string
+          pattern: ^(\d{2}-\d{7}|\d{9})$
+          example: '123456789'
+        structure:
+          type: string
+          enum:
+          - C_Corporation
+          - LLC
+          - LLP
+          - Nonprofit_Organization
+          - Partnership
+          - Professional_Association
+          - Professional_Corporation
+          - S_Corporation
+          - General_Partnership
+          - Limited_Partnership
+          - Sole_Proprietorship
+          - Government_Entity
+        adminEmail:
+          description: Deprecated. Use admin.email instead.
+          deprecated: true
+          type: string
+          format: email
+          pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+        admin:
+          type: object
+          properties:
+            email:
+              type: string
+              format: email
+              pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+            name:
+              type: string
+            phoneNumber:
+              type: string
+              example: '+12125551234'
+            jobTitle:
+              type: string
+            roles:
+              type: array
+              items:
+                type: string
+                enum:
+                - finance
+                - implementation
+                - legal
+                - planDesignLead
+                - hr
+                - privacyOfficer
+                - invoiceRegenerator
+                example: hr
+          required:
+          - email
+        invoicingEmails:
+          type: array
+          items:
+            type: string
+            format: email
+            pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+        contractEmails:
+          type: array
+          items:
+            type: string
+            format: email
+            pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+        plans:
+          type: array
+          items:
+            type: object
+            properties:
+              planDesignId:
+                type: string
+              broker:
+                type: object
+                properties:
+                  planFees:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        isVariable:
+                          default: false
+                          type: boolean
+                        isReserve:
+                          default: false
+                          type: boolean
+                        eeCents:
+                          default: 0
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        esCents:
+                          default: 0
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        ecCents:
+                          default: 0
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        efCents:
+                          default: 0
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        adultCents:
+                          default: 0
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        minorCents:
+                          default: 0
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        flatCents:
+                          default: 0
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                      required:
+                      - name
+                      - eeCents
+                      - esCents
+                      - ecCents
+                      - efCents
+                      - adultCents
+                      - minorCents
+                      - flatCents
+                  vendorId:
+                    type: string
+                required:
+                - planFees
+                - vendorId
+              stoploss:
+                type: object
+                properties:
+                  planFees:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        isVariable:
+                          default: false
+                          type: boolean
+                        isReserve:
+                          default: false
+                          type: boolean
+                        eeCents:
+                          default: 0
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        esCents:
+                          default: 0
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        ecCents:
+                          default: 0
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        efCents:
+                          default: 0
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        adultCents:
+                          default: 0
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        minorCents:
+                          default: 0
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        flatCents:
+                          default: 0
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                      required:
+                      - name
+                      - eeCents
+                      - esCents
+                      - ecCents
+                      - efCents
+                      - adultCents
+                      - minorCents
+                      - flatCents
+                  vendorId:
+                    type: string
+                  contract:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        enum:
+                        - specific
+                        - aggregate
+                        - specAndAgg
+                      policyNumber:
+                        type: string
+                      specAttachmentCents:
+                        type: number
+                      aggAccommodationDeductibleCents:
+                        type: number
+                      aggregatingSpecDeductibleCents:
+                        type: number
+                      minAggAttachmentCents:
+                        type: string
+                        pattern: ^\d+$
+                      incurredMonths:
+                        type: number
+                      paidMonths:
+                        type: number
+                      aggEeCents:
+                        default: 0
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                      aggEsCents:
+                        default: 0
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                      aggEcCents:
+                        default: 0
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                      aggEfCents:
+                        default: 0
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                    required:
+                    - aggEeCents
+                    - aggEsCents
+                    - aggEcCents
+                    - aggEfCents
+                required:
+                - planFees
+                - vendorId
+              cobra:
+                type: object
+                properties:
+                  planFees:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        isVariable:
+                          default: false
+                          type: boolean
+                        isReserve:
+                          default: false
+                          type: boolean
+                        eeCents:
+                          default: 0
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        esCents:
+                          default: 0
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        ecCents:
+                          default: 0
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        efCents:
+                          default: 0
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        adultCents:
+                          default: 0
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        minorCents:
+                          default: 0
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        flatCents:
+                          default: 0
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                      required:
+                      - name
+                      - eeCents
+                      - esCents
+                      - ecCents
+                      - efCents
+                      - adultCents
+                      - minorCents
+                      - flatCents
+                  vendorId:
+                    type: string
+                required:
+                - planFees
+                - vendorId
+            required:
+            - planDesignId
+        rules:
+          type: object
+          properties:
+            accumulatorPeriod:
+              type: string
+              enum:
+              - planYear
+              - calendarYear
+            runIn:
+              type: boolean
+            loadAccumulators:
+              type: boolean
+            cobraExempt:
+              type: boolean
+            erisaExempt:
+              type: boolean
+            enrollmentWaitingPeriodType:
+              type: string
+              enum:
+              - months
+              - days
+            enrollmentWaitingPeriod:
+              type: integer
+              minimum: 0
+              maximum: 9007199254740991
+              example: 1
+            waitingPeriodRules:
+              default: []
+              type: array
+              items:
+                type: object
+                properties:
+                  employeeClassTagName:
+                    type: string
+                    minLength: 1
+                  days:
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                  rounding:
+                    type: string
+                    enum:
+                    - none
+                    - firstOfMonth
+                    - firstOfCalendarMonth
+                required:
+                - employeeClassTagName
+                - days
+                - rounding
+            externalCobraVendorId:
+              type: string
+            externalCobraVendor:
+              type: object
+              properties:
+                name:
+                  type: string
+                phoneNumber:
+                  type: string
+                  example: '+12125551234'
+              required:
+              - name
+              - phoneNumber
+            isCobraManagedByYuzu:
+              type: boolean
+          required:
+          - accumulatorPeriod
+          - runIn
+          - loadAccumulators
+          - cobraExempt
+          - erisaExempt
+          - enrollmentWaitingPeriodType
+          - enrollmentWaitingPeriod
+      required:
+      - startDate
+      - endDate
+      - groupId
+      - name
+      - ein
+      - plans
+    CareEventDto:
+      type: object
+      properties:
+        id:
+          type: string
+        coverageId:
+          type: string
+        action:
+          type: string
+          enum:
+          - pendClaims
+          - repriceClaims
+          - setTier
+        startDate:
+          anyOf:
+          - type: string
+          - type: 'null'
+          x-nestjs_zod-empty-type: true
+        endDate:
+          anyOf:
+          - type: string
+          - type: 'null'
+          x-nestjs_zod-empty-type: true
+        notes:
+          anyOf:
+          - type: string
+          - type: 'null'
+          x-nestjs_zod-empty-type: true
+        benefitTierId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          x-nestjs_zod-empty-type: true
+        rate:
+          anyOf:
+          - oneOf:
+            - type: object
+              properties:
+                type:
+                  type: string
+                  const: medicarePct
+                medicarePct:
+                  type: number
+                  exclusiveMinimum: 0
+                  maximum: 1000
+                planYear:
+                  default: null
+                  anyOf:
+                  - type: integer
+                    minimum: 2018
+                    maximum: 2100
+                  - type: 'null'
+                medicareFallbackPct:
+                  default: null
+                  anyOf:
+                  - type: number
+                    exclusiveMinimum: 0
+                    maximum: 100
+                  - type: 'null'
+              required:
+              - type
+              - medicarePct
+            - type: object
+              properties:
+                type:
+                  type: string
+                  const: billedChargesPct
+                billedChargesPct:
+                  type: number
+                  exclusiveMinimum: 0
+                  maximum: 100
+              required:
+              - type
+              - billedChargesPct
+          - type: 'null'
+          x-nestjs_zod-empty-type: true
+        provider:
+          anyOf:
+          - type: object
+            properties:
+              lastOrOrganizationName:
+                anyOf:
+                - type: string
+                - type: 'null'
+              npi:
+                anyOf:
+                - type: string
+                  pattern: ^\d{10}$
+                  example: '1265284533'
+                - type: 'null'
+              tin:
+                anyOf:
+                - type: string
+                  pattern: ^(\d{2}-\d{7}|\d{9})$
+                  example: '123456789'
+                - type: 'null'
+            required:
+            - lastOrOrganizationName
+            - npi
+            - tin
+          - type: 'null'
+          x-nestjs_zod-empty-type: true
+        archived:
+          type: boolean
+      required:
+      - id
+      - coverageId
+      - action
+      - startDate
+      - endDate
+      - notes
+      - benefitTierId
+      - rate
+      - provider
+      - archived
+    NewSubscribersEnrollmentDto:
+      type: object
+      properties:
+        subscribers:
+          minItems: 1
+          type: array
+          items:
+            type: object
+            properties:
+              cobraStartDate:
+                anyOf:
+                - type: string
+                  example: '2025-01-01'
+                - type: 'null'
+              termedByEmployerDate:
+                type: string
+                example: '2025-01-01'
+              location:
+                type: string
+              department:
+                type: string
+              employeeClass:
+                type: string
+              self:
+                type: object
+                properties:
+                  line1:
+                    type: string
+                  state:
+                    default: ''
+                    type: string
+                    enum:
+                    - AL
+                    - AK
+                    - AZ
+                    - AR
+                    - CA
+                    - CO
+                    - CT
+                    - DE
+                    - FL
+                    - GA
+                    - HI
+                    - ID
+                    - IL
+                    - IN
+                    - IA
+                    - KS
+                    - KY
+                    - LA
+                    - ME
+                    - MD
+                    - MA
+                    - MI
+                    - MN
+                    - MS
+                    - MO
+                    - MT
+                    - NE
+                    - NV
+                    - NH
+                    - NJ
+                    - NM
+                    - NY
+                    - NC
+                    - ND
+                    - OH
+                    - OK
+                    - OR
+                    - PA
+                    - RI
+                    - SC
+                    - SD
+                    - TN
+                    - TX
+                    - UT
+                    - VT
+                    - VA
+                    - WA
+                    - WV
+                    - WI
+                    - WY
+                    - DC
+                    - AS
+                    - GU
+                    - MP
+                    - PR
+                    - VI
+                  city:
+                    type: string
+                  zip:
+                    type: string
+                    pattern: ^\d{5}(?:[ -]?\d{4})?$
+                  sex:
+                    default: ''
+                    type: string
+                    enum:
+                    - M
+                    - F
+                  ssn:
+                    anyOf:
+                    - example: '{ raw: "123-45-6789", masked: "***-**-6789" }'
+                      type: string
+                    - type: 'null'
+                  line2:
+                    anyOf:
+                    - type: string
+                    - type: 'null'
+                  firstName:
+                    type: string
+                  middleName:
+                    anyOf:
+                    - type: string
+                      minLength: 1
+                    - type: 'null'
+                  lastName:
+                    type: string
+                  suffix:
+                    anyOf:
+                    - type: string
+                      enum:
+                      - Jr
+                      - Sr
+                      - II
+                      - III
+                      - IV
+                      - V
+                      - VI
+                      - VII
+                      - VIII
+                    - type: 'null'
+                  alternateID:
+                    anyOf:
+                    - type: string
+                    - type: 'null'
+                  email:
+                    anyOf:
+                    - type: string
+                      format: email
+                      pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+                    - type: 'null'
+                  phoneNumber:
+                    anyOf:
+                    - type: string
+                      example: '+12125551234'
+                    - type: 'null'
+                  birthday:
+                    type: string
+                    example: '2025-01-01'
+                  planFeeIds:
+                    default: []
+                    type: array
+                    items:
+                      type: string
+                  __id:
+                    type: string
+                required:
+                - line1
+                - city
+                - zip
+                - firstName
+                - lastName
+                - birthday
+              spouse:
+                type: object
+                properties:
+                  line1:
+                    type: string
+                  state:
+                    default: ''
+                    type: string
+                    enum:
+                    - AL
+                    - AK
+                    - AZ
+                    - AR
+                    - CA
+                    - CO
+                    - CT
+                    - DE
+                    - FL
+                    - GA
+                    - HI
+                    - ID
+                    - IL
+                    - IN
+                    - IA
+                    - KS
+                    - KY
+                    - LA
+                    - ME
+                    - MD
+                    - MA
+                    - MI
+                    - MN
+                    - MS
+                    - MO
+                    - MT
+                    - NE
+                    - NV
+                    - NH
+                    - NJ
+                    - NM
+                    - NY
+                    - NC
+                    - ND
+                    - OH
+                    - OK
+                    - OR
+                    - PA
+                    - RI
+                    - SC
+                    - SD
+                    - TN
+                    - TX
+                    - UT
+                    - VT
+                    - VA
+                    - WA
+                    - WV
+                    - WI
+                    - WY
+                    - DC
+                    - AS
+                    - GU
+                    - MP
+                    - PR
+                    - VI
+                  city:
+                    type: string
+                  zip:
+                    type: string
+                    pattern: ^\d{5}(?:[ -]?\d{4})?$
+                  sex:
+                    default: ''
+                    type: string
+                    enum:
+                    - M
+                    - F
+                  ssn:
+                    anyOf:
+                    - example: '{ raw: "123-45-6789", masked: "***-**-6789" }'
+                      type: string
+                    - type: 'null'
+                  line2:
+                    anyOf:
+                    - type: string
+                    - type: 'null'
+                  firstName:
+                    type: string
+                  middleName:
+                    anyOf:
+                    - type: string
+                      minLength: 1
+                    - type: 'null'
+                  lastName:
+                    type: string
+                  suffix:
+                    anyOf:
+                    - type: string
+                      enum:
+                      - Jr
+                      - Sr
+                      - II
+                      - III
+                      - IV
+                      - V
+                      - VI
+                      - VII
+                      - VIII
+                    - type: 'null'
+                  alternateID:
+                    anyOf:
+                    - type: string
+                    - type: 'null'
+                  email:
+                    anyOf:
+                    - type: string
+                      format: email
+                      pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+                    - type: 'null'
+                  phoneNumber:
+                    anyOf:
+                    - type: string
+                      example: '+12125551234'
+                    - type: 'null'
+                  birthday:
+                    type: string
+                    example: '2025-01-01'
+                  planFeeIds:
+                    default: []
+                    type: array
+                    items:
+                      type: string
+                  __id:
+                    type: string
+                required:
+                - line1
+                - city
+                - zip
+                - firstName
+                - lastName
+                - birthday
+              children:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    line1:
+                      type: string
+                    state:
+                      default: ''
+                      type: string
+                      enum:
+                      - AL
+                      - AK
+                      - AZ
+                      - AR
+                      - CA
+                      - CO
+                      - CT
+                      - DE
+                      - FL
+                      - GA
+                      - HI
+                      - ID
+                      - IL
+                      - IN
+                      - IA
+                      - KS
+                      - KY
+                      - LA
+                      - ME
+                      - MD
+                      - MA
+                      - MI
+                      - MN
+                      - MS
+                      - MO
+                      - MT
+                      - NE
+                      - NV
+                      - NH
+                      - NJ
+                      - NM
+                      - NY
+                      - NC
+                      - ND
+                      - OH
+                      - OK
+                      - OR
+                      - PA
+                      - RI
+                      - SC
+                      - SD
+                      - TN
+                      - TX
+                      - UT
+                      - VT
+                      - VA
+                      - WA
+                      - WV
+                      - WI
+                      - WY
+                      - DC
+                      - AS
+                      - GU
+                      - MP
+                      - PR
+                      - VI
+                    city:
+                      type: string
+                    zip:
+                      type: string
+                      pattern: ^\d{5}(?:[ -]?\d{4})?$
+                    sex:
+                      default: ''
+                      type: string
+                      enum:
+                      - M
+                      - F
+                    ssn:
+                      anyOf:
+                      - example: '{ raw: "123-45-6789", masked: "***-**-6789" }'
+                        type: string
+                      - type: 'null'
+                    line2:
+                      anyOf:
+                      - type: string
+                      - type: 'null'
+                    firstName:
+                      type: string
+                    middleName:
+                      anyOf:
+                      - type: string
+                        minLength: 1
+                      - type: 'null'
+                    lastName:
+                      type: string
+                    suffix:
+                      anyOf:
+                      - type: string
+                        enum:
+                        - Jr
+                        - Sr
+                        - II
+                        - III
+                        - IV
+                        - V
+                        - VI
+                        - VII
+                        - VIII
+                      - type: 'null'
+                    alternateID:
+                      anyOf:
+                      - type: string
+                      - type: 'null'
+                    email:
+                      anyOf:
+                      - type: string
+                        format: email
+                        pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+                      - type: 'null'
+                    phoneNumber:
+                      anyOf:
+                      - type: string
+                        example: '+12125551234'
+                      - type: 'null'
+                    birthday:
+                      type: string
+                      example: '2025-01-01'
+                    planFeeIds:
+                      default: []
+                      type: array
+                      items:
+                        type: string
+                    __id:
+                      type: string
+                  required:
+                  - line1
+                  - city
+                  - zip
+                  - firstName
+                  - lastName
+                  - birthday
+              isCobraEligible:
+                type: boolean
+              hireDate:
+                type: string
+                example: '2025-01-01'
+              retirementDate:
+                type: string
+                example: '2025-01-01'
+              plans:
+                minItems: 1
+                maxItems: 1
+                type: array
+                items:
+                  type: string
+                  format: uuid
+                  pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$
+              __id:
+                type: string
+            required:
+            - self
+            - hireDate
+            - plans
+      required:
+      - subscribers
+  securitySchemes:
+    public-api-auth:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

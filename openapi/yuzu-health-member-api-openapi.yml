@@ -1,0 +1,758 @@
+openapi: 3.0.0
+info:
+  title: Yuzu Accumulator (Experimental) Accumulator (Experimental) Member API
+  description: Yuzu's Public API
+  version: '0.5'
+  contact: {}
+servers: []
+tags:
+- name: Member
+paths:
+  /v2/members:
+    get:
+      description: Retrieve a paginated list of all members across sponsors/plans. Use optional filters like planId to narrow results.
+      operationId: PublicMemberController_listAllMembers
+      parameters:
+      - name: startAfter
+        required: false
+        in: query
+        description: Pagination cursor
+        schema:
+          type: string
+      - name: planId
+        required: false
+        in: query
+        description: Filter by plan ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Paginated Members
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedMemberDto'
+      security:
+      - public-api-auth: []
+      summary: Retrieve all members
+      tags:
+      - Member
+  /v2/members/{memberId}:
+    get:
+      description: Fetch details for a specific member, including demographics, address, and coverage informations.
+      operationId: PublicMemberController_getMember
+      parameters:
+      - name: memberId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Member
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemberDto'
+      security:
+      - public-api-auth: []
+      summary: Retrieve a member
+      tags:
+      - Member
+    patch:
+      description: Update demographic fields (name, sex, SSN, date of birth, and address) for a specific member. Only the provided fields are changed. Email and phone are updated via the updateLogin endpoint.
+      operationId: PublicMemberController_updateMemberDemographics
+      parameters:
+      - name: memberId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateMemberDemographicsDto'
+      responses:
+        '200':
+          description: Member updated successfully
+      security:
+      - public-api-auth: []
+      summary: Update a member's demographics
+      tags:
+      - Member
+  /v2/members/{memberId}/updateLogin:
+    post:
+      description: 'Update the email address and/or phone number for a specific member
+
+        Null values are allowed to clear the field'
+      operationId: PublicMemberController_updateMemberLogin
+      parameters:
+      - name: memberId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateMemberLoginDto'
+      responses:
+        '201':
+          description: Member updated successfully
+      security:
+      - public-api-auth: []
+      summary: Update the login information for a member
+      tags:
+      - Member
+components:
+  schemas:
+    MemberDto:
+      type: object
+      properties:
+        id:
+          type: string
+        lastName:
+          type: string
+        firstName:
+          type: string
+        sex:
+          type: string
+          enum:
+          - M
+          - F
+        birthDate:
+          type: string
+          example: '2025-01-01'
+        phone:
+          type: string
+          example: '+12125551234'
+        emailAddress:
+          type: string
+          format: email
+          pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+        ssnLastFour:
+          type: string
+        coordinationOfBenefits:
+          type: object
+          properties:
+            lastReviewed:
+              type: string
+            coverages:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  startDate:
+                    type: string
+                    example: '2025-01-01'
+                  endDate:
+                    type: string
+                    example: '2025-01-01'
+                  payerResponsibility:
+                    type: string
+                    enum:
+                    - primary
+                    - secondary
+                    - tertiary
+                    - four
+                    - five
+                    - six
+                    - seven
+                    - eight
+                    - nine
+                    - ten
+                    - eleven
+                    - unknown
+                  organizationName:
+                    type: string
+                  subscriberFirstName:
+                    type: string
+                  subscriberLastName:
+                    type: string
+                required:
+                - id
+          required:
+          - coverages
+        currentAddresses:
+          type: array
+          items:
+            type: object
+            properties:
+              address1:
+                type: string
+              address2:
+                type: string
+              city:
+                type: string
+              state:
+                type: string
+                enum:
+                - AL
+                - AK
+                - AZ
+                - AR
+                - CA
+                - CO
+                - CT
+                - DE
+                - FL
+                - GA
+                - HI
+                - ID
+                - IL
+                - IN
+                - IA
+                - KS
+                - KY
+                - LA
+                - ME
+                - MD
+                - MA
+                - MI
+                - MN
+                - MS
+                - MO
+                - MT
+                - NE
+                - NV
+                - NH
+                - NJ
+                - NM
+                - NY
+                - NC
+                - ND
+                - OH
+                - OK
+                - OR
+                - PA
+                - RI
+                - SC
+                - SD
+                - TN
+                - TX
+                - UT
+                - VT
+                - VA
+                - WA
+                - WV
+                - WI
+                - WY
+                - DC
+                - AS
+                - GU
+                - MP
+                - PR
+                - VI
+              postalCode:
+                type: string
+                pattern: ^\d{5}(?:[ -]?\d{4})?$
+            required:
+            - address1
+            - city
+            - state
+            - postalCode
+        coverages:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              coverageStatus:
+                type: string
+                enum:
+                - active
+                - inactive
+                - pending
+                - cobra
+                - annulled
+              eligibilitySince:
+                type: string
+                example: '2025-01-01'
+              eligibilityUntil:
+                type: string
+                example: '2025-01-01'
+              groupId:
+                type: string
+              planId:
+                type: string
+              subscriberId:
+                anyOf:
+                - type: string
+                - type: 'null'
+              memberNumber:
+                type: string
+              relationship:
+                type: string
+                enum:
+                - subscriber
+                - spouse
+                - child
+              alternateID:
+                type: string
+              fees:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    name:
+                      type: string
+                    startDate:
+                      type: string
+                      example: '2025-01-01'
+                    endDate:
+                      type: string
+                      example: '2025-01-01'
+                    planFeeId:
+                      type: string
+                    vendorId:
+                      type: string
+                  required:
+                  - id
+                  - name
+                  - startDate
+                  - endDate
+                  - planFeeId
+                  - vendorId
+              pcpPreferences:
+                type: object
+                properties:
+                  optOut:
+                    type: boolean
+                required:
+                - optOut
+              locations:
+                type: array
+                items:
+                  type: string
+              departments:
+                type: array
+                items:
+                  type: string
+              employeeClass:
+                type: string
+            required:
+            - id
+            - coverageStatus
+            - eligibilitySince
+            - eligibilityUntil
+            - groupId
+            - planId
+            - subscriberId
+            - memberNumber
+            - relationship
+            - fees
+            - locations
+            - departments
+      required:
+      - id
+      - lastName
+      - firstName
+      - sex
+      - birthDate
+      - coordinationOfBenefits
+      - currentAddresses
+      - coverages
+    PaginatedMemberDto:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              lastName:
+                type: string
+              firstName:
+                type: string
+              sex:
+                type: string
+                enum:
+                - M
+                - F
+              birthDate:
+                type: string
+                example: '2025-01-01'
+              phone:
+                type: string
+                example: '+12125551234'
+              emailAddress:
+                type: string
+                format: email
+                pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+              ssnLastFour:
+                type: string
+              coordinationOfBenefits:
+                type: object
+                properties:
+                  lastReviewed:
+                    type: string
+                  coverages:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        startDate:
+                          type: string
+                          example: '2025-01-01'
+                        endDate:
+                          type: string
+                          example: '2025-01-01'
+                        payerResponsibility:
+                          type: string
+                          enum:
+                          - primary
+                          - secondary
+                          - tertiary
+                          - four
+                          - five
+                          - six
+                          - seven
+                          - eight
+                          - nine
+                          - ten
+                          - eleven
+                          - unknown
+                        organizationName:
+                          type: string
+                        subscriberFirstName:
+                          type: string
+                        subscriberLastName:
+                          type: string
+                      required:
+                      - id
+                required:
+                - coverages
+              currentAddresses:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    address1:
+                      type: string
+                    address2:
+                      type: string
+                    city:
+                      type: string
+                    state:
+                      type: string
+                      enum:
+                      - AL
+                      - AK
+                      - AZ
+                      - AR
+                      - CA
+                      - CO
+                      - CT
+                      - DE
+                      - FL
+                      - GA
+                      - HI
+                      - ID
+                      - IL
+                      - IN
+                      - IA
+                      - KS
+                      - KY
+                      - LA
+                      - ME
+                      - MD
+                      - MA
+                      - MI
+                      - MN
+                      - MS
+                      - MO
+                      - MT
+                      - NE
+                      - NV
+                      - NH
+                      - NJ
+                      - NM
+                      - NY
+                      - NC
+                      - ND
+                      - OH
+                      - OK
+                      - OR
+                      - PA
+                      - RI
+                      - SC
+                      - SD
+                      - TN
+                      - TX
+                      - UT
+                      - VT
+                      - VA
+                      - WA
+                      - WV
+                      - WI
+                      - WY
+                      - DC
+                      - AS
+                      - GU
+                      - MP
+                      - PR
+                      - VI
+                    postalCode:
+                      type: string
+                      pattern: ^\d{5}(?:[ -]?\d{4})?$
+                  required:
+                  - address1
+                  - city
+                  - state
+                  - postalCode
+              coverages:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    coverageStatus:
+                      type: string
+                      enum:
+                      - active
+                      - inactive
+                      - pending
+                      - cobra
+                      - annulled
+                    eligibilitySince:
+                      type: string
+                      example: '2025-01-01'
+                    eligibilityUntil:
+                      type: string
+                      example: '2025-01-01'
+                    groupId:
+                      type: string
+                    planId:
+                      type: string
+                    subscriberId:
+                      anyOf:
+                      - type: string
+                      - type: 'null'
+                    memberNumber:
+                      type: string
+                    relationship:
+                      type: string
+                      enum:
+                      - subscriber
+                      - spouse
+                      - child
+                    alternateID:
+                      type: string
+                    fees:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                          name:
+                            type: string
+                          startDate:
+                            type: string
+                            example: '2025-01-01'
+                          endDate:
+                            type: string
+                            example: '2025-01-01'
+                          planFeeId:
+                            type: string
+                          vendorId:
+                            type: string
+                        required:
+                        - id
+                        - name
+                        - startDate
+                        - endDate
+                        - planFeeId
+                        - vendorId
+                    pcpPreferences:
+                      type: object
+                      properties:
+                        optOut:
+                          type: boolean
+                      required:
+                      - optOut
+                    locations:
+                      type: array
+                      items:
+                        type: string
+                    departments:
+                      type: array
+                      items:
+                        type: string
+                    employeeClass:
+                      type: string
+                  required:
+                  - id
+                  - coverageStatus
+                  - eligibilitySince
+                  - eligibilityUntil
+                  - groupId
+                  - planId
+                  - subscriberId
+                  - memberNumber
+                  - relationship
+                  - fees
+                  - locations
+                  - departments
+            required:
+            - id
+            - lastName
+            - firstName
+            - sex
+            - birthDate
+            - coordinationOfBenefits
+            - currentAddresses
+            - coverages
+        startAfter:
+          anyOf:
+          - type: string
+          - type: 'null'
+          x-nestjs_zod-empty-type: true
+      required:
+      - results
+    UpdateMemberLoginDto:
+      type: object
+      properties:
+        email:
+          anyOf:
+          - type: string
+            format: email
+            pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+          - type: 'null'
+          x-nestjs_zod-empty-type: true
+        phoneNumber:
+          anyOf:
+          - type: string
+            example: '+12125551234'
+          - type: 'null'
+          x-nestjs_zod-empty-type: true
+    UpdateMemberDemographicsDto:
+      type: object
+      properties:
+        firstName:
+          type: string
+        middleName:
+          anyOf:
+          - type: string
+          - type: 'null'
+          x-nestjs_zod-empty-type: true
+        lastName:
+          type: string
+        suffix:
+          anyOf:
+          - type: string
+            enum:
+            - Jr
+            - Sr
+            - II
+            - III
+            - IV
+            - V
+            - VI
+            - VII
+            - VIII
+          - type: 'null'
+          x-nestjs_zod-empty-type: true
+        sex:
+          type: string
+          enum:
+          - M
+          - F
+        ssn:
+          anyOf:
+          - example: '{ raw: "123-45-6789", masked: "***-**-6789" }'
+            type: string
+          - type: 'null'
+          x-nestjs_zod-empty-type: true
+        birthday:
+          type: string
+        line1:
+          type: string
+        line2:
+          anyOf:
+          - type: string
+          - type: 'null'
+          x-nestjs_zod-empty-type: true
+        city:
+          type: string
+        state:
+          type: string
+          enum:
+          - AL
+          - AK
+          - AZ
+          - AR
+          - CA
+          - CO
+          - CT
+          - DE
+          - FL
+          - GA
+          - HI
+          - ID
+          - IL
+          - IN
+          - IA
+          - KS
+          - KY
+          - LA
+          - ME
+          - MD
+          - MA
+          - MI
+          - MN
+          - MS
+          - MO
+          - MT
+          - NE
+          - NV
+          - NH
+          - NJ
+          - NM
+          - NY
+          - NC
+          - ND
+          - OH
+          - OK
+          - OR
+          - PA
+          - RI
+          - SC
+          - SD
+          - TN
+          - TX
+          - UT
+          - VT
+          - VA
+          - WA
+          - WV
+          - WI
+          - WY
+          - DC
+          - AS
+          - GU
+          - MP
+          - PR
+          - VI
+        zip:
+          type: string
+          pattern: ^\d{5}(?:[ -]?\d{4})?$
+  securitySchemes:
+    public-api-auth:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

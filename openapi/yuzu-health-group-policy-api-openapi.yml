@@ -1,0 +1,245 @@
+openapi: 3.0.0
+info:
+  title: Yuzu Accumulator (Experimental) Accumulator (Experimental) Group Policy API
+  description: Yuzu's Public API
+  version: '0.5'
+  contact: {}
+servers: []
+tags:
+- name: Group Policy
+paths:
+  /v2/groups/{groupPolicyId}/renew:
+    post:
+      description: Renew a group policy
+      operationId: PublicGroupPolicyController_renewGroupPolicy
+      parameters:
+      - name: groupPolicyId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ID of the new group policy with copied plans, benefit bundles and follows the same renewal process as the portal
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupPolicyRenewalResponseDto'
+      security:
+      - public-api-auth: []
+      summary: Renew a group policy
+      tags:
+      - Group Policy
+  /v2/groups/{groupPolicyId}/rules:
+    get:
+      description: Get the rules of a group policy
+      operationId: PublicGroupPolicyController_getGroupPolicyRules
+      parameters:
+      - name: groupPolicyId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Group Policy Rules
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupPolicyRulesDto'
+      security:
+      - public-api-auth: []
+      summary: Get the rules of a group policy
+      tags:
+      - Group Policy
+    patch:
+      description: Update the rules of a group policy
+      operationId: PublicGroupPolicyController_updateGroupPolicyRules
+      parameters:
+      - name: groupPolicyId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        description: Group Policy Rules Update Data
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupPolicyRulesUpdateDto'
+      responses:
+        '200':
+          description: Group Policy Rules
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupPolicyRulesDto'
+      security:
+      - public-api-auth: []
+      summary: Update the rules of a group policy
+      tags:
+      - Group Policy
+components:
+  schemas:
+    GroupPolicyRulesDto:
+      type: object
+      properties:
+        id:
+          type: string
+        terminationRule:
+          type: string
+          enum:
+          - lastDayOfEmployment
+          - endOfMonth
+        ageOutTerminationRule:
+          type: string
+          enum:
+          - endOfMonth
+          - endOfPlanYear
+        enrollmentWaitingPeriodType:
+          type: string
+          enum:
+          - months
+          - days
+        accumulatorPeriod:
+          type: string
+          enum:
+          - planYear
+          - calendarYear
+        loadAccumulators:
+          type: boolean
+        enrollmentWaitingPeriod:
+          type: integer
+          minimum: 0
+          maximum: 9007199254740991
+        isCobraManagedByYuzu:
+          type: boolean
+        externalCobraVendor:
+          anyOf:
+          - type: object
+            properties:
+              name:
+                type: string
+              phoneNumber:
+                type: string
+                example: '+12125551234'
+            required:
+            - name
+            - phoneNumber
+          - type: 'null'
+          x-nestjs_zod-empty-type: true
+        humanReadableEnrollmentWaitingPeriod:
+          description: Human readable enrollment waiting period
+          type: string
+        waitingPeriodRules:
+          default: []
+          type: array
+          items:
+            type: object
+            properties:
+              employeeClassTagName:
+                type: string
+                minLength: 1
+              days:
+                type: integer
+                minimum: 0
+                maximum: 9007199254740991
+              rounding:
+                type: string
+                enum:
+                - none
+                - firstOfMonth
+                - firstOfCalendarMonth
+            required:
+            - employeeClassTagName
+            - days
+            - rounding
+      required:
+      - id
+      - terminationRule
+      - ageOutTerminationRule
+      - enrollmentWaitingPeriodType
+      - accumulatorPeriod
+      - loadAccumulators
+      - enrollmentWaitingPeriod
+      - isCobraManagedByYuzu
+    GroupPolicyRenewalResponseDto:
+      type: object
+      properties:
+        groupPolicyId:
+          type: string
+      required:
+      - groupPolicyId
+    GroupPolicyRulesUpdateDto:
+      type: object
+      properties:
+        terminationRule:
+          type: string
+          enum:
+          - lastDayOfEmployment
+          - endOfMonth
+        ageOutTerminationRule:
+          type: string
+          enum:
+          - endOfMonth
+          - endOfPlanYear
+        enrollmentWaitingPeriodType:
+          type: string
+          enum:
+          - months
+          - days
+        accumulatorPeriod:
+          type: string
+          enum:
+          - planYear
+          - calendarYear
+        loadAccumulators:
+          type: boolean
+        enrollmentWaitingPeriod:
+          type: integer
+          minimum: 0
+          maximum: 9007199254740991
+        isCobraManagedByYuzu:
+          type: boolean
+        externalCobraVendor:
+          anyOf:
+          - type: object
+            properties:
+              name:
+                type: string
+              phoneNumber:
+                type: string
+                example: '+12125551234'
+            required:
+            - name
+            - phoneNumber
+          - type: 'null'
+          x-nestjs_zod-empty-type: true
+        waitingPeriodRules:
+          type: array
+          items:
+            type: object
+            properties:
+              employeeClassTagName:
+                type: string
+                minLength: 1
+              days:
+                type: integer
+                minimum: 0
+                maximum: 9007199254740991
+              rounding:
+                type: string
+                enum:
+                - none
+                - firstOfMonth
+                - firstOfCalendarMonth
+            required:
+            - employeeClassTagName
+            - days
+            - rounding
+  securitySchemes:
+    public-api-auth:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http
