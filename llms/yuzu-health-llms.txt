@@ -1,0 +1,31 @@
+# Yuzu Health
+
+> Yuzu Health is a platform for building and operating custom, self-funded health plans end to end - plan design, enrollment/eligibility, in-house claims adjudication (medical + pharmacy), benefits accumulators, EOBs, ID cards, and payments - via a REST API. The public API is bearer-JWT authenticated (API keys minted in the vendor portal), versioned by URL prefix (v1/v2/v3), and uses cursor pagination.
+
+## APIs
+- [Yuzu API (OpenAPI 3.0)](https://api.yuzu.health/api/docs-json): 76 operations across members, groups/policies, sponsors, coverages, claims (medical/pharmacy/plan), enrollment, benefits, accumulators, care events, EOBs, and ID cards.
+- [Interactive API docs](https://api.yuzu.health/api/docs)
+
+## Docs
+- [API guide](https://yuzu.health/docs/guides/api)
+- [Developer portal / API keys](https://yuzu.health): Settings > Developer tab
+- [Test environment](https://backend.yuzu.earth/api/docs): Yuzu Earth demo backend
+- [Blog](https://yuzu.health/blog)
+
+## Specs & Artifacts
+- [OpenAPI (original)](openapi/yuzu-health-openapi-original.json)
+- [Authentication](authentication/yuzu-health-authentication.yml)
+- [Conventions (pagination, versioning, errors)](conventions/yuzu-health-conventions.yml)
+- [Error catalog](errors/yuzu-health-problem-types.yml)
+- [Lifecycle](lifecycle/yuzu-health-lifecycle.yml)
+- [Data model](data-model/yuzu-health-data-model.yml)
+- [Sandbox](sandbox/yuzu-health-sandbox.yml)
+
+## Operations
+- Auth: bearer JWT (API key) via header Authorization: Bearer <key>
+- Pagination: cursor - limit (default 50; members 100), startAfter object-id
+- Versioning: URL prefix v1/v2/v3; additive-within-version
+- Errors: {timestamp, path, message} + Zod errors[] on 400
+- Idempotency: not supported
+- Status: https://status.yuzu.health
+- Trust center: https://trust.yuzu.health

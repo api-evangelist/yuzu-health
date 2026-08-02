@@ -1,8 +1,26 @@
 aid: yuzu-health
 name: Yuzu Health
-description: Yuzu Health is a company surfaced as a portfolio company of general-catalyst, menlo-ventures
-  and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the
-  enrichment pipeline.
+description: >-
+  Yuzu Health is a technology platform for building and operating custom, self-funded health plans
+  end to end - plan design, member enrollment and eligibility, in-house medical and pharmacy claims
+  adjudication, benefit accumulators, EOBs, ID cards, and payments - without legacy TPA systems. Its
+  public REST API (bearer-JWT API keys, URL-prefix versioning v1/v2/v3, cursor pagination) exposes 76
+  operations across members, sponsors, groups/policies, coverages, claims, enrollment, benefits, care
+  events, and accumulators, plus a white-label portal. Yuzu is backed by General Catalyst and Menlo
+  Ventures.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://cdn.yuzu.health/image.png
 url: https://raw.githubusercontent.com/api-evangelist/yuzu-health/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -13,10 +31,220 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-apis: []
+- Health
+- Healthcare
+- Insurance
+- Health Plans
+- Benefits Administration
+- Claims
+- Enrollment
+- Payers
+- Self-Funded
+apis:
+- aid: yuzu-health:yuzu-health-accumulator-experimental-api
+  name: Yuzu Health Accumulator (Experimental) API
+  description: >-
+    The Accumulator (Experimental) API from Yuzu Health — 2 operation(s) for accumulator (experimental).
+  humanURL: https://yuzu.health/docs/guides/api
+  baseURL: https://api.yuzu.health
+  tags:
+  - Accumulator (Experimental)
+  properties:
+  - type: OpenAPI
+    url: openapi/yuzu-health-accumulator-experimental-api-openapi.yml
+  - type: Documentation
+    url: https://yuzu.health/docs/guides/api
+  - type: APIReference
+    url: https://api.yuzu.health/api/docs
+  - type: GettingStarted
+    url: https://yuzu.health/docs/guides/api
+  - type: Authentication
+    url: authentication/yuzu-health-authentication.yml
+  - type: OpenAPIOverlay
+    url: overlays/yuzu-health-openapi-overlay.yaml
+- aid: yuzu-health:yuzu-health-benefits-api
+  name: Yuzu Health Benefits API
+  description: The Benefits API from Yuzu Health — 2 operation(s) for benefits.
+  humanURL: https://yuzu.health/docs/guides/api
+  baseURL: https://api.yuzu.health
+  tags:
+  - Benefits
+  properties:
+  - type: OpenAPI
+    url: openapi/yuzu-health-benefits-api-openapi.yml
+  - type: Documentation
+    url: https://yuzu.health/docs/guides/api
+  - type: APIReference
+    url: https://api.yuzu.health/api/docs
+  - type: GettingStarted
+    url: https://yuzu.health/docs/guides/api
+  - type: Authentication
+    url: authentication/yuzu-health-authentication.yml
+  - type: OpenAPIOverlay
+    url: overlays/yuzu-health-openapi-overlay.yaml
+- aid: yuzu-health:yuzu-health-coverage-api
+  name: Yuzu Health Coverage API
+  description: The Coverage API from Yuzu Health — 3 operation(s) for coverage.
+  humanURL: https://yuzu.health/docs/guides/api
+  baseURL: https://api.yuzu.health
+  tags:
+  - Coverage
+  properties:
+  - type: OpenAPI
+    url: openapi/yuzu-health-coverage-api-openapi.yml
+  - type: Documentation
+    url: https://yuzu.health/docs/guides/api
+  - type: APIReference
+    url: https://api.yuzu.health/api/docs
+  - type: GettingStarted
+    url: https://yuzu.health/docs/guides/api
+  - type: Authentication
+    url: authentication/yuzu-health-authentication.yml
+  - type: OpenAPIOverlay
+    url: overlays/yuzu-health-openapi-overlay.yaml
+- aid: yuzu-health:yuzu-health-enrollment-api
+  name: Yuzu Health Enrollment API
+  description: The Enrollment API from Yuzu Health — 3 operation(s) for enrollment.
+  humanURL: https://yuzu.health/docs/guides/api
+  baseURL: https://api.yuzu.health
+  tags:
+  - Enrollment
+  properties:
+  - type: OpenAPI
+    url: openapi/yuzu-health-enrollment-api-openapi.yml
+  - type: Documentation
+    url: https://yuzu.health/docs/guides/api
+  - type: APIReference
+    url: https://api.yuzu.health/api/docs
+  - type: GettingStarted
+    url: https://yuzu.health/docs/guides/api
+  - type: Authentication
+    url: authentication/yuzu-health-authentication.yml
+  - type: OpenAPIOverlay
+    url: overlays/yuzu-health-openapi-overlay.yaml
+- aid: yuzu-health:yuzu-health-eob-experimental-api
+  name: Yuzu Health EOB (Experimental) API
+  description: The EOB (Experimental) API from Yuzu Health — 1 operation(s) for eob (experimental).
+  humanURL: https://yuzu.health/docs/guides/api
+  baseURL: https://api.yuzu.health
+  tags:
+  - EOB (Experimental)
+  properties:
+  - type: OpenAPI
+    url: openapi/yuzu-health-eob-experimental-api-openapi.yml
+  - type: Documentation
+    url: https://yuzu.health/docs/guides/api
+  - type: APIReference
+    url: https://api.yuzu.health/api/docs
+  - type: GettingStarted
+    url: https://yuzu.health/docs/guides/api
+  - type: Authentication
+    url: authentication/yuzu-health-authentication.yml
+  - type: OpenAPIOverlay
+    url: overlays/yuzu-health-openapi-overlay.yaml
+- aid: yuzu-health:yuzu-health-group-policy-api
+  name: Yuzu Health Group Policy API
+  description: The Group Policy API from Yuzu Health — 2 operation(s) for group policy.
+  humanURL: https://yuzu.health/docs/guides/api
+  baseURL: https://api.yuzu.health
+  tags:
+  - Group Policy
+  properties:
+  - type: OpenAPI
+    url: openapi/yuzu-health-group-policy-api-openapi.yml
+  - type: Documentation
+    url: https://yuzu.health/docs/guides/api
+  - type: APIReference
+    url: https://api.yuzu.health/api/docs
+  - type: GettingStarted
+    url: https://yuzu.health/docs/guides/api
+  - type: Authentication
+    url: authentication/yuzu-health-authentication.yml
+  - type: OpenAPIOverlay
+    url: overlays/yuzu-health-openapi-overlay.yaml
+- aid: yuzu-health:yuzu-health-member-api
+  name: Yuzu Health Member API
+  description: The Member API from Yuzu Health — 3 operation(s) for member.
+  humanURL: https://yuzu.health/docs/guides/api
+  baseURL: https://api.yuzu.health
+  tags:
+  - Member
+  properties:
+  - type: OpenAPI
+    url: openapi/yuzu-health-member-api-openapi.yml
+  - type: Documentation
+    url: https://yuzu.health/docs/guides/api
+  - type: APIReference
+    url: https://api.yuzu.health/api/docs
+  - type: GettingStarted
+    url: https://yuzu.health/docs/guides/api
+  - type: Authentication
+    url: authentication/yuzu-health-authentication.yml
+  - type: OpenAPIOverlay
+    url: overlays/yuzu-health-openapi-overlay.yaml
+- aid: yuzu-health:yuzu-health-publicapiv1-api
+  name: Yuzu Health PublicApiV1 API
+  description: The PublicApiV1 API from Yuzu Health — 34 operation(s) for publicapiv1.
+  humanURL: https://yuzu.health/docs/guides/api
+  baseURL: https://api.yuzu.health
+  tags:
+  - PublicApiV1
+  properties:
+  - type: OpenAPI
+    url: openapi/yuzu-health-publicapiv1-api-openapi.yml
+  - type: Documentation
+    url: https://yuzu.health/docs/guides/api
+  - type: APIReference
+    url: https://api.yuzu.health/api/docs
+  - type: GettingStarted
+    url: https://yuzu.health/docs/guides/api
+  - type: Authentication
+    url: authentication/yuzu-health-authentication.yml
+  - type: OpenAPIOverlay
+    url: overlays/yuzu-health-openapi-overlay.yaml
+- aid: yuzu-health:yuzu-health-publicapiv2-api
+  name: Yuzu Health PublicApiV2 API
+  description: The PublicApiV2 API from Yuzu Health — 14 operation(s) for publicapiv2.
+  humanURL: https://yuzu.health/docs/guides/api
+  baseURL: https://api.yuzu.health
+  tags:
+  - PublicApiV2
+  properties:
+  - type: OpenAPI
+    url: openapi/yuzu-health-publicapiv2-api-openapi.yml
+  - type: Documentation
+    url: https://yuzu.health/docs/guides/api
+  - type: APIReference
+    url: https://api.yuzu.health/api/docs
+  - type: GettingStarted
+    url: https://yuzu.health/docs/guides/api
+  - type: Authentication
+    url: authentication/yuzu-health-authentication.yml
+  - type: OpenAPIOverlay
+    url: overlays/yuzu-health-openapi-overlay.yaml
+- aid: yuzu-health:yuzu-health-sponsor-api
+  name: Yuzu Health Sponsor API
+  description: The Sponsor API from Yuzu Health — 1 operation(s) for sponsor.
+  humanURL: https://yuzu.health/docs/guides/api
+  baseURL: https://api.yuzu.health
+  tags:
+  - Sponsor
+  properties:
+  - type: OpenAPI
+    url: openapi/yuzu-health-sponsor-api-openapi.yml
+  - type: Documentation
+    url: https://yuzu.health/docs/guides/api
+  - type: APIReference
+    url: https://api.yuzu.health/api/docs
+  - type: GettingStarted
+    url: https://yuzu.health/docs/guides/api
+  - type: Authentication
+    url: authentication/yuzu-health-authentication.yml
+  - type: OpenAPIOverlay
+    url: overlays/yuzu-health-openapi-overlay.yaml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -25,3 +253,62 @@ maintainers:
 common:
 - type: Website
   url: https://yuzu.health
+- type: Documentation
+  url: https://yuzu.health/docs/guides/api
+- type: APIReference
+  url: https://api.yuzu.health/api/docs
+- type: GettingStarted
+  url: https://yuzu.health/docs/guides/api
+- type: DeveloperPortal
+  url: https://yuzu.health/docs/guides/api
+- type: Blog
+  url: https://yuzu.health/blog
+- type: Support
+  url: https://yuzu.health/contact
+- type: Login
+  url: https://yuzu.health/signin
+- type: TermsOfService
+  url: https://yuzu.health/legal/terms-of-service
+- type: PrivacyPolicy
+  url: https://yuzu.health/legal/privacy-policy
+- type: GitHubOrganization
+  url: https://github.com/yuzu-health
+- type: StatusPage
+  url: https://status.yuzu.health
+- type: Deprecation
+  url: https://yuzu.health/docs/guides/api
+- type: TrustCenter
+  url: https://trust.yuzu.health
+- type: Authentication
+  url: authentication/yuzu-health-authentication.yml
+- type: DomainSecurity
+  url: security/yuzu-health-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/yuzu-health-agentic-access.yml
+- type: Conventions
+  url: conventions/yuzu-health-conventions.yml
+- type: ErrorCatalog
+  url: errors/yuzu-health-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/yuzu-health-lifecycle.yml
+- type: Sandbox
+  url: sandbox/yuzu-health-sandbox.yml
+- type: DataModel
+  url: data-model/yuzu-health-data-model.yml
+- type: Conformance
+  url: conformance/yuzu-health-conformance.yml
+- type: MCPServer
+  url: mcp/yuzu-health-mcp.yml
+- type: LLMsTxt
+  url: llms/yuzu-health-llms.txt
+- type: WellKnown
+  url: well-known/yuzu-health-well-known.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Overlay
+  url: overlays/yuzu-health-openapi-overlay.yaml
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 16
+  pass: local-v1

@@ -1,0 +1,29 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/yuzu-health-openapi-original.json
+docs: https://yuzu.health/docs/guides/api
+standards:
+- id: oauth2
+  conforms: false
+  evidence: securityScheme is http bearer (JWT API key), no oauth2 flows declared
+- id: oidc
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: errors use a custom {timestamp, path, message} envelope, not application/problem+json
+- id: cursor-pagination
+  conforms: true
+  evidence: deterministic createdAt+id ordering with startAfter object-id cursor across paginated DTOs
+- id: idempotency-key
+  conforms: false
+  evidence: no idempotency key/header documented
+- id: fhir
+  conforms: false
+  evidence: proprietary benefits/claims DTOs, not FHIR resources
+- id: json-api
+  conforms: false
+- id: hipaa
+  conforms: unknown
+  evidence: platform processes PHI (medical/pharmacy claims, members, EOBs) and is described as
+    HIPAA-eligible in partner materials; no self-published certification confirmed. See
+    security/yuzu-health-trust-center.yml (Vanta trust center).

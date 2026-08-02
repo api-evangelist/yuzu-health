@@ -1,0 +1,26 @@
+generated: '2026-07-21'
+method: searched
+source: https://yuzu.health/docs/guides/api
+versioning:
+  scheme: uri-path
+  current: v3
+  versions_in_spec: [v1, v2, v3]
+  policy: Within a version only additive changes are made; new functionality is introduced as new
+    optional fields or new endpoints.
+  docs: https://yuzu.health/docs/guides/api
+deprecation:
+  policy_url: https://yuzu.health/docs/guides/api
+  sunset_header: false
+  codified_timeline: false
+  practice: No codified sunset timeline / guaranteed notice period, but Yuzu proactively reaches out
+    to partners before all deprecations. Deprecated DTOs exist in-spec (DeprecatedSponsorDto,
+    DeprecatedSponsorCreationDto, DeprecatedSponsorUpdateDto).
+sla:
+  url: null
+  uptime_target: null
+status_page: https://status.yuzu.health
+deprecated_operations: []
+deprecated_schemas:
+- DeprecatedSponsorDto
+- DeprecatedSponsorCreationDto
+- DeprecatedSponsorUpdateDto

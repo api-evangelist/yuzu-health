@@ -1,0 +1,239 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: openapi/yuzu-health-openapi-original.json
+note: No official hosted MCP server found on Yuzu docs/GitHub as of 2026-07-21. Tool list derived one-per-operation
+  from the public OpenAPI as a candidate for an MCP wrapper.
+server:
+  name: yuzu-health
+  transport: http
+  url: null
+tools:
+- name: PublicApiV1Controller_listAllMembers
+  description: Retrieve all members
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_listAllMembers
+- name: PublicApiV1Controller_getMember
+  description: Retrieve a member
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_getMember
+- name: PublicApiV1Controller_listAllNetworks
+  description: Retrieve all networks
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_listAllNetworks
+- name: PublicApiV1Controller_listAllProviders
+  description: Retrieve all providers for a network
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_listAllProviders
+- name: PublicApiV1Controller_createProvider
+  description: Create a provider
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_createProvider
+- name: PublicApiV1Controller_updateProvider
+  description: Update a provider
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_updateProvider
+- name: PublicApiV1Controller_deleteProvider
+  description: Delete a provider
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_deleteProvider
+- name: PublicApiV1Controller_getCoverage
+  description: Retrieve a coverage
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_getCoverage
+- name: PublicApiV1Controller_createCoverageFee
+  description: Create a coverage fee
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_createCoverageFee
+- name: PublicApiV1Controller_updateCoverageFee
+  description: Update a coverage fee
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_updateCoverageFee
+- name: PublicApiV1Controller_deleteCoverageFee
+  description: Delete a coverage fee
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_deleteCoverageFee
+- name: PublicApiV1Controller_createSponsor
+  description: Create a sponsor
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_createSponsor
+- name: PublicApiV1Controller_listAllSponsors
+  description: List all sponsors
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_listAllSponsors
+- name: PublicApiV1Controller_getSponsor
+  description: Retrieve a sponsor
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_getSponsor
+- name: PublicApiV1Controller_updateSponsor
+  description: Update a sponsor
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_updateSponsor
+- name: PublicApiV1Controller_createInitialEnrollment
+  description: Create initial enrollment for a sponsor
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_createInitialEnrollment
+- name: PublicApiV1Controller_listSponsorMembers
+  description: List members of a sponsor
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_listSponsorMembers
+- name: PublicApiV1Controller_listVendorRelationships
+  description: List vendor relationships for a plan
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_listVendorRelationships
+- name: PublicApiV1Controller_deletePlan
+  description: Delete a plan
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_deletePlan
+- name: PublicApiV1Controller_editPlanFee
+  description: Edit a plan fee
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_editPlanFee
+- name: PublicApiV1Controller_getVendor
+  description: Retrieve a vendor
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_getVendor
+- name: PublicApiV1Controller_listAllVendors
+  description: List all vendors
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_listAllVendors
+- name: PublicApiV1Controller_getMedicalClaim
+  description: Retrieve a medical claim
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_getMedicalClaim
+- name: PublicApiV1Controller_listAllMedicalClaims
+  description: List all medical claims
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_listAllMedicalClaims
+- name: PublicApiV1Controller_getPharmacyClaim
+  description: Retrieve a pharmacy claim
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_getPharmacyClaim
+- name: PublicApiV1Controller_listAllPharmacyClaims
+  description: List all pharmacy claims
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_listAllPharmacyClaims
+- name: PublicApiV1Controller_getPreCert
+  description: Retrieve a pre-certification
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_getPreCert
+- name: PublicApiV1Controller_listAllPreCerts
+  description: list all pre-certifications
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_listAllPreCerts
+- name: PublicApiV1Controller_getCashCard
+  description: Retrieve a cash card
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_getCashCard
+- name: PublicApiV1Controller_getEnrollmentRequest
+  description: Retrieve an enrollment request
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_getEnrollmentRequest
+- name: PublicApiV1Controller_getSubmittedAccumulatorRollover
+  description: Retrieve a submitted accumulator rollover
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_getSubmittedAccumulatorRollover
+- name: PublicApiV1Controller_getPlanClaim
+  description: Retrieve a plan claim
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_getPlanClaim
+- name: PublicApiV1Controller_getPaginatedPlanClaims
+  description: List all plan claims
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_getPaginatedPlanClaims
+- name: PublicApiV1Controller_createPlanClaim
+  description: Create a plan claim
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_createPlanClaim
+- name: PublicApiV1Controller_createPharmacyClaim
+  description: Create a pharmacy claim
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_createPharmacyClaim
+- name: PublicApiV1Controller_createProfessionalClaim
+  description: Create a professional claim
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_createProfessionalClaim
+- name: PublicApiV1Controller_createInstitutionalClaim
+  description: Create an institutional claim
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_createInstitutionalClaim
+- name: PublicApiV1Controller_getBenefits
+  description: Retrieve plan benefits
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_getBenefits
+- name: PublicApiV1Controller_setBenefits
+  description: Update plan benefits
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_setBenefits
+- name: PublicApiV1Controller_getSbc
+  description: Retrieve plan SBC
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV1Controller_getSbc
+- name: PublicApiV2Controller_createGroup
+  description: Create a group
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV2Controller_createGroup
+- name: PublicApiV2Controller_listAllGroups
+  description: List all group policies
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV2Controller_listAllGroups
+- name: PublicApiV2Controller_getGroup
+  description: Retrieve a group policy
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV2Controller_getGroup
+- name: PublicApiV2Controller_createInitialEnrollment
+  description: Create an initial enrollment
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV2Controller_createInitialEnrollment
+- name: PublicApiV2Controller_createNewSubscribersEnrollment
+  description: Add new subscribers to an existing plan
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV2Controller_createNewSubscribersEnrollment
+- name: PublicApiV2Controller_getEnrollmentRequestStatus
+  description: Get enrollment request status
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV2Controller_getEnrollmentRequestStatus
+- name: PublicApiV2Controller_listGroupMembers
+  description: List group members
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV2Controller_listGroupMembers
+- name: PublicApiV2Controller_removePlanFromGroup
+  description: Remove a plan from a group
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV2Controller_removePlanFromGroup
+- name: PublicApiV2Controller_addPlanToGroup
+  description: Add a plan to a group
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV2Controller_addPlanToGroup
+- name: PublicApiV2Controller_getSpd
+  description: Retrieve plan SPD
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV2Controller_getSpd
+- name: PublicApiV2Controller_getDesigns
+  description: List all plan designs
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV2Controller_getDesigns
+- name: PublicApiV2Controller_createCareEvent
+  description: Create a care event
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV2Controller_createCareEvent
+- name: PublicApiV2Controller_listCareEvents
+  description: List care events
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV2Controller_listCareEvents
+- name: PublicApiV2Controller_replaceCareEvent
+  description: Replace a care event
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV2Controller_replaceCareEvent
+- name: PublicApiV2Controller_deleteCareEvent
+  description: Delete a care event
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV2Controller_deleteCareEvent
+- name: PublicApiV2Controller_getDesignBenefits
+  description: Retrieve plan design benefits
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicApiV2Controller_getDesignBenefits
+- name: PublicAccumulatorController_getCoverageBuckets
+  description: Get coverage buckets
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicAccumulatorController_getCoverageBuckets
+- name: PublicAccumulatorController_getCoverageAccums
+  description: Get coverage accumulators
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicAccumulatorController_getCoverageAccums
+- name: PublicBenefitsController_getBenefitLookup
+  description: Retrieve benefit lookup data for a coverage
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicBenefitsController_getBenefitLookup
+- name: PublicBenefitsController_getBenefitLookupByCode
+  description: Look up a single code under a coverage
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicBenefitsController_getBenefitLookupByCode
+- name: PublicEobController_downloadEob
+  description: Download EOB PDF by claim ID
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicEobController_downloadEob
+- name: PublicCoverageController_generateIDCardSvg
+  description: Generate an ID card
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicCoverageController_generateIDCardSvg
+- name: PublicCoverageController_generateIDCardB64
+  description: Generate an ID card
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicCoverageController_generateIDCardB64
+- name: PublicCoverageController_generateIDCardPdf
+  description: Generate an ID card
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicCoverageController_generateIDCardPdf
+- name: PublicEnrollmentApplicationController_createAddSubscriber
+  description: Add subscribers to an existing plan
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicEnrollmentApplicationController_createAddSubscriber
+- name: PublicEnrollmentApplicationController_createAddDependent
+  description: Add a dependent to an existing subscriber
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicEnrollmentApplicationController_createAddDependent
+- name: PublicEnrollmentApplicationController_createTermination
+  description: Terminate coverage on an existing plan
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicEnrollmentApplicationController_createTermination
+- name: PublicGroupPolicyController_renewGroupPolicy
+  description: Renew a group policy
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicGroupPolicyController_renewGroupPolicy
+- name: PublicGroupPolicyController_getGroupPolicyRules
+  description: Get the rules of a group policy
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicGroupPolicyController_getGroupPolicyRules
+- name: PublicGroupPolicyController_updateGroupPolicyRules
+  description: Update the rules of a group policy
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicGroupPolicyController_updateGroupPolicyRules
+- name: PublicMemberController_listAllMembers
+  description: Retrieve all members
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicMemberController_listAllMembers
+- name: PublicMemberController_getMember
+  description: Retrieve a member
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicMemberController_getMember
+- name: PublicMemberController_updateMemberDemographics
+  description: Update a member's demographics
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicMemberController_updateMemberDemographics
+- name: PublicMemberController_updateMemberLogin
+  description: Update the login information for a member
+  source_operation: openapi/yuzu-health-openapi-original.json#PublicMemberController_updateMemberLogin
+- name: SponsorPublicController_getSponsor
+  description: Retrieve a sponsor
+  source_operation: openapi/yuzu-health-openapi-original.json#SponsorPublicController_getSponsor
+- name: SponsorPublicController_updateSponsor
+  description: Update a sponsor
+  source_operation: openapi/yuzu-health-openapi-original.json#SponsorPublicController_updateSponsor

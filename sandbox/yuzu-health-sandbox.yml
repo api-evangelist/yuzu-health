@@ -1,0 +1,20 @@
+generated: '2026-07-21'
+method: searched
+source: https://yuzu.health/docs/guides/api
+environments:
+- name: production
+  base_url: https://api.yuzu.health
+  docs: https://api.yuzu.health/api/docs
+- name: test
+  base_url: https://backend.yuzu.earth
+  docs: https://backend.yuzu.earth/api/docs
+  note: Yuzu allows testing the API through the yuzu.earth (Yuzu Earth) demo environment.
+test_vs_live:
+  separation: separate host (yuzu.earth demo backend vs api.yuzu.health production)
+  key_prefixes: not published
+credentials:
+  how: API keys are generated per environment in the vendor portal Settings > Developer tab and passed
+    as bearer tokens.
+test_data:
+  note: No published magic test identifiers, test cards, or fixture triggers. Yuzu is a self-funded
+    health-plan / claims-administration platform, not a card acquirer - there are no test card numbers.

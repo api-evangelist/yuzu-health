@@ -1,0 +1,16 @@
+generated: '2026-07-21'
+method: searched
+source: openapi/yuzu-health-openapi-original.json
+docs: https://yuzu.health/docs/guides/api
+notes: API keys are minted in the vendor portal (Settings > Developer), each key maps to an owning
+  org/employee, and are passed as a bearer token (JWT) in the Authorization header.
+summary:
+  types:
+  - http
+schemes:
+- name: public-api-auth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  sources:
+  - openapi/yuzu-health-openapi-original.json

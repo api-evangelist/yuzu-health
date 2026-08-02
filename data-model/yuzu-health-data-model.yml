@@ -1,0 +1,125 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/yuzu-health-openapi-original.json
+note: Entity graph derived from OpenAPI schema id-reference fields and resource nesting. id-prefixes not
+  published in the object reference.
+entities:
+- BenefitTier
+- Benefits
+- CareEvent
+- CashCard
+- Coverage
+- CoverageFee
+- Group
+- GroupPolicy
+- MedicalClaim
+- Member
+- Network
+- NetworkProvider
+- PharmacyClaim
+- Plan
+- PlanClaim
+- PlanDesign
+- PlanFee
+- PreCert
+- Sponsor
+- SubmittedAccumulatorRollover
+- Termination
+- Vendor
+relationships:
+- from: Network
+  to: NetworkProvider
+  type: has_many
+  via: networkId
+- from: Sponsor
+  to: Member
+  type: has_many
+  via: sponsorNamespace
+- from: Group
+  to: GroupPolicy
+  type: has_many
+  via: groupId
+- from: GroupPolicy
+  to: Member
+  type: has_many
+  via: groupPolicyId
+- from: Coverage
+  to: CareEvent
+  type: has_many
+  via: coverageId
+- from: Coverage
+  to: MedicalClaim
+  type: has_many
+  via: coverageId
+- from: Coverage
+  to: PharmacyClaim
+  type: has_many
+  via: coverageId
+- from: Coverage
+  to: PreCert
+  type: has_many
+  via: coverageId
+- from: Plan
+  to: Benefits
+  type: has_one
+  via: planId
+- from: Coverage
+  to: Group
+  type: belongs_to
+  via: groupId
+- from: Coverage
+  to: Plan
+  type: belongs_to
+  via: planId
+- from: Coverage
+  to: Member
+  type: belongs_to
+  via: subscriberId
+- from: CareEvent
+  to: Coverage
+  type: belongs_to
+  via: coverageId
+- from: CareEvent
+  to: BenefitTier
+  type: belongs_to
+  via: benefitTierId
+- from: CashCard
+  to: Coverage
+  type: belongs_to
+  via: coverageId
+- from: MedicalClaim
+  to: Coverage
+  type: belongs_to
+  via: coverageId
+- from: PharmacyClaim
+  to: Coverage
+  type: belongs_to
+  via: coverageId
+- from: PlanClaim
+  to: GroupPolicy
+  type: belongs_to
+  via: groupPolicyId
+- from: PlanClaim
+  to: Vendor
+  type: belongs_to
+  via: vendorId
+- from: Plan
+  to: PlanDesign
+  type: belongs_to
+  via: planDesignId
+- from: PreCert
+  to: Coverage
+  type: belongs_to
+  via: coverageId
+- from: CoverageFee
+  to: PlanFee
+  type: belongs_to
+  via: planFeeId
+- from: SubmittedAccumulatorRollover
+  to: Coverage
+  type: belongs_to
+  via: coverageId
+- from: Termination
+  to: Coverage
+  type: belongs_to
+  via: coverageId

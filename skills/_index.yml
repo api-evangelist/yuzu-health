@@ -1,0 +1,23 @@
+generated: '2026-07-21'
+method: generated
+source: openapi/yuzu-health-openapi-original.json
+skills:
+- file: yuzu-health-create-group-and-enroll.md
+  name: Create a group policy and enroll members
+  api: openapi/yuzu-health-openapi-original.json
+  operations:
+  - PublicApiV2Controller_createGroup
+  - PublicApiV2Controller_createInitialEnrollment
+  - PublicApiV2Controller_getEnrollmentRequestStatus
+  - PublicEnrollmentApplicationController_createAddSubscriber
+  - PublicApiV2Controller_listGroupMembers
+- file: yuzu-health-pull-claims-and-accumulators.md
+  name: Pull claims and coverage accumulators
+  api: openapi/yuzu-health-openapi-original.json
+  operations:
+  - PublicApiV1Controller_listAllMedicalClaims
+  - PublicApiV1Controller_getMedicalClaim
+  - PublicApiV1Controller_listAllPharmacyClaims
+  - PublicAccumulatorController_getCoverageAccums
+  - PublicAccumulatorController_getCoverageBuckets
+  - PublicEobController_downloadEob

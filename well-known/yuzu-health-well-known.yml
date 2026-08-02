@@ -1,0 +1,25 @@
+generated: '2026-07-21'
+method: searched
+source: live probes 2026-07-21
+hosts:
+- host: https://api.yuzu.health
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://yuzu.health
+  documents:
+  - path: /.well-known/security.txt
+    status: 307
+    note: marketing site redirect, no security.txt served
+  - path: /.well-known/openid-configuration
+    status: 307
+note: No .well-known discovery documents are published on the API host as of 2026-07-21.
+  Authentication is bearer JWT via API keys minted in the vendor portal (no OIDC/OAuth discovery).

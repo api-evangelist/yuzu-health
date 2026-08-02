@@ -1,0 +1,13 @@
+generated: '2026-07-21'
+method: searched
+source: https://trust.yuzu.health
+url: https://trust.yuzu.health
+platform: Vanta (assets.vanta.com trust report)
+certifications: []
+note: Yuzu operates a Vanta-hosted trust center at trust.yuzu.health. The report is JS-rendered so
+  the specific named certifications could not be extracted verbatim on 2026-07-21; no Compliance
+  pointer is emitted until specific certs (e.g. SOC 2 / HIPAA) are confirmed. The platform handles
+  PHI (claims, members, EOBs) and is described as HIPAA-eligible in partner materials.
+evidence:
+- source: https://trust.yuzu.health
+  keywords: [vanta, trust center]

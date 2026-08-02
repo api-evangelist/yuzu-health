@@ -1,0 +1,33 @@
+generated: '2026-07-21'
+method: searched
+source: https://yuzu.health/docs/guides/api
+also_derived_from: openapi/yuzu-health-openapi-original.json
+authentication:
+  style: bearer-token
+  scheme: API key passed as a bearer token (JWT); keys minted in the vendor portal Settings > Developer
+  detail: Each key maps to an owning org/employee. See authentication/yuzu-health-authentication.yml
+idempotency:
+  supported: false
+  note: Yuzu documents no idempotency key or header. Writes (enrollment, claims, care events) are not
+    idempotent by an explicit client-supplied key as of 2026-07-21.
+pagination:
+  style: cursor
+  params:
+    limit: default 50; member-listing endpoints default 100
+    startAfter: object id cursor (pass the id of the last item from the previous page)
+  ordering: deterministic by createdAt then id, so startAfter is an object id
+  response_fields: paginated DTOs (PaginatedMemberDto, PaginatedMedicalClaimDto, etc.) wrap items
+versioning:
+  style: uri-path
+  detail: Public API is versioned by URL prefix (v1, v2, v3). Within a version only additive changes
+    are made - new functionality arrives as new optional fields or new endpoints.
+  see: lifecycle/yuzu-health-lifecycle.yml
+error_envelope:
+  fields: [timestamp, path, message]
+  validation: 400 BadRequest additionally includes a Zod errors[] array of field-level failures
+  see: errors/yuzu-health-problem-types.yml
+rate_limiting:
+  signaled: false
+  note: No rate-limit headers or published quotas documented as of 2026-07-21.
+metadata: null
+request_tracing: null

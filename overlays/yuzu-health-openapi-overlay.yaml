@@ -1,0 +1,25 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Yuzu API
+  version: 1.0.0
+extends: openapi/yuzu-health-openapi-original.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enriched: '2026-07-21'
+    x-apievangelist-provider: yuzu-health
+    x-servers-note: The published spec has an empty servers[]; production base URL is
+      https://api.yuzu.health and the test environment is https://backend.yuzu.earth.
+- target: $.servers
+  update:
+  - url: https://api.yuzu.health
+    description: Production
+  - url: https://backend.yuzu.earth
+    description: Test (Yuzu Earth demo environment)
+- target: $.info
+  update:
+    x-apievangelist-conventions:
+      pagination: cursor (startAfter object-id; limit 50, members 100)
+      error-envelope: '{timestamp, path, message} + Zod errors[] on 400'
+      versioning: uri-path (v1/v2/v3), additive-within-version
+      idempotency: not supported

@@ -1,0 +1,23 @@
+generated: '2026-07-21'
+method: searched
+source: openapi/yuzu-health-openapi-original.json
+docs: https://yuzu.health/docs/guides/api
+format: custom
+envelope:
+  description: All errors return a consistent JSON body with the appropriate HTTP status. 400 BadRequest
+    validation failures additionally include a Zod errors array detailing which fields failed.
+  fields:
+  - timestamp
+  - path
+  - message
+  validation_extra: errors[] (Zod field-level validation array) on 400
+problems:
+- status: 400
+  title: Bad Request
+  description: Request validation failed; body includes a Zod errors[] array of field errors.
+  count: 1
+- status: 404
+  title: Not Found
+  description: The referenced resource (member, coverage, claim, group, sponsor, plan, etc.) does not
+    exist or is not visible to the API key's owning org.
+  count: 2

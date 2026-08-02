@@ -1,0 +1,980 @@
+generated: '2026-07-21'
+method: generated
+source: openapi/yuzu-health-openapi-original.json
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 76
+  by_action_class:
+    connected: 42
+    acting: 34
+  by_consequence:
+    read: 42
+    safety-critical: 34
+  human_in_the_loop_required: 34
+operations:
+- path: /v1/members
+  method: get
+  operationId: PublicApiV1Controller_listAllMembers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/members/{memberId}
+  method: get
+  operationId: PublicApiV1Controller_getMember
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/networks
+  method: get
+  operationId: PublicApiV1Controller_listAllNetworks
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/networks/{networkId}/providers
+  method: get
+  operationId: PublicApiV1Controller_listAllProviders
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/networks/{networkId}/providers
+  method: post
+  operationId: PublicApiV1Controller_createProvider
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v1/providers/{networkProviderId}
+  method: patch
+  operationId: PublicApiV1Controller_updateProvider
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v1/providers/{networkProviderId}
+  method: delete
+  operationId: PublicApiV1Controller_deleteProvider
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v1/coverages/{coverageId}
+  method: get
+  operationId: PublicApiV1Controller_getCoverage
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/coverages/{coverageId}/fees
+  method: post
+  operationId: PublicApiV1Controller_createCoverageFee
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v1/coverages/{coverageId}/fees/{coverageFeeId}
+  method: patch
+  operationId: PublicApiV1Controller_updateCoverageFee
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v1/coverages/{coverageId}/fees/{coverageFeeId}
+  method: delete
+  operationId: PublicApiV1Controller_deleteCoverageFee
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v1/sponsors
+  method: post
+  operationId: PublicApiV1Controller_createSponsor
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v1/sponsors
+  method: get
+  operationId: PublicApiV1Controller_listAllSponsors
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/sponsors/{sponsorNamespace}
+  method: get
+  operationId: PublicApiV1Controller_getSponsor
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/sponsors/{sponsorNamespace}
+  method: patch
+  operationId: PublicApiV1Controller_updateSponsor
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v1/sponsors/{sponsorNamespace}/enroll/initial-enrollment
+  method: post
+  operationId: PublicApiV1Controller_createInitialEnrollment
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v1/sponsors/{sponsorNamespace}/members
+  method: get
+  operationId: PublicApiV1Controller_listSponsorMembers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/plans/{planId}/vendorRelationships
+  method: get
+  operationId: PublicApiV1Controller_listVendorRelationships
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/plans/{planId}
+  method: delete
+  operationId: PublicApiV1Controller_deletePlan
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v1/planFees/{planFeeId}
+  method: post
+  operationId: PublicApiV1Controller_editPlanFee
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v1/vendors/{vendorId}
+  method: get
+  operationId: PublicApiV1Controller_getVendor
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/vendors
+  method: get
+  operationId: PublicApiV1Controller_listAllVendors
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/claims/medical/{claimId}
+  method: get
+  operationId: PublicApiV1Controller_getMedicalClaim
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/claims/medical
+  method: get
+  operationId: PublicApiV1Controller_listAllMedicalClaims
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/claims/pharmacy/{claimId}
+  method: get
+  operationId: PublicApiV1Controller_getPharmacyClaim
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/claims/pharmacy
+  method: get
+  operationId: PublicApiV1Controller_listAllPharmacyClaims
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/preCerts/{preCertId}
+  method: get
+  operationId: PublicApiV1Controller_getPreCert
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/preCerts
+  method: get
+  operationId: PublicApiV1Controller_listAllPreCerts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/cashCards/{cashCardId}
+  method: get
+  operationId: PublicApiV1Controller_getCashCard
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/enrollmentRequests/{enrollmentRequestId}
+  method: get
+  operationId: PublicApiV1Controller_getEnrollmentRequest
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/submittedAccumulatorRollovers/{submittedAccumulatorRolloverId}
+  method: get
+  operationId: PublicApiV1Controller_getSubmittedAccumulatorRollover
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/claims/plan/{planClaimId}
+  method: get
+  operationId: PublicApiV1Controller_getPlanClaim
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/claims/plan
+  method: get
+  operationId: PublicApiV1Controller_getPaginatedPlanClaims
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/claims/plan/{planId}
+  method: post
+  operationId: PublicApiV1Controller_createPlanClaim
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v1/claims/pharmacy/{coverageId}
+  method: post
+  operationId: PublicApiV1Controller_createPharmacyClaim
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v1/claims/medical/professional/{coverageId}
+  method: post
+  operationId: PublicApiV1Controller_createProfessionalClaim
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v1/claims/medical/institutional/{coverageId}
+  method: post
+  operationId: PublicApiV1Controller_createInstitutionalClaim
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v1/plans/{planId}/benefits
+  method: get
+  operationId: PublicApiV1Controller_getBenefits
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/plans/{planId}/benefits
+  method: patch
+  operationId: PublicApiV1Controller_setBenefits
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v1/plans/{planId}/sbc
+  method: get
+  operationId: PublicApiV1Controller_getSbc
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/groups
+  method: post
+  operationId: PublicApiV2Controller_createGroup
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v2/groups
+  method: get
+  operationId: PublicApiV2Controller_listAllGroups
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/groups/{groupPolicyId}
+  method: get
+  operationId: PublicApiV2Controller_getGroup
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/groups/{groupPolicyId}/enroll/initial-enrollment
+  method: post
+  operationId: PublicApiV2Controller_createInitialEnrollment
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v2/groups/{groupPolicyId}/enroll/new-subscribers
+  method: post
+  operationId: PublicApiV2Controller_createNewSubscribersEnrollment
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v2/enroll/{enrollmentRequestId}/status
+  method: post
+  operationId: PublicApiV2Controller_getEnrollmentRequestStatus
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v2/groups/{groupPolicyId}/members
+  method: get
+  operationId: PublicApiV2Controller_listGroupMembers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/groups/{groupPolicyId}/plans/remove/{planIdToRemove}
+  method: delete
+  operationId: PublicApiV2Controller_removePlanFromGroup
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v2/groups/{groupPolicyId}/plans/add
+  method: post
+  operationId: PublicApiV2Controller_addPlanToGroup
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v2/plans/{planId}/spd
+  method: get
+  operationId: PublicApiV2Controller_getSpd
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/designs
+  method: get
+  operationId: PublicApiV2Controller_getDesigns
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/coverages/{coverageId}/care-events
+  method: post
+  operationId: PublicApiV2Controller_createCareEvent
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v2/coverages/{coverageId}/care-events
+  method: get
+  operationId: PublicApiV2Controller_listCareEvents
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/coverages/{coverageId}/care-events/{careEventId}/replacement
+  method: post
+  operationId: PublicApiV2Controller_replaceCareEvent
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v2/coverages/{coverageId}/care-events/{careEventId}
+  method: delete
+  operationId: PublicApiV2Controller_deleteCareEvent
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v2/designs/{planDesignId}/benefits
+  method: get
+  operationId: PublicApiV2Controller_getDesignBenefits
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/accumulator/coverage/buckets/{coverageId}
+  method: get
+  operationId: PublicAccumulatorController_getCoverageBuckets
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/accumulator/coverage/{coverageId}
+  method: get
+  operationId: PublicAccumulatorController_getCoverageAccums
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/coverages/{coverageId}/benefit-lookup
+  method: get
+  operationId: PublicBenefitsController_getBenefitLookup
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/coverages/{coverageId}/benefit-lookup/codes/{code}
+  method: post
+  operationId: PublicBenefitsController_getBenefitLookupByCode
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v2/eob/download/{claimId}
+  method: get
+  operationId: PublicEobController_downloadEob
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/coverages/{coverageId}/generate-id-card/svg
+  method: get
+  operationId: PublicCoverageController_generateIDCardSvg
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/coverages/{coverageId}/generate-id-card/b64
+  method: get
+  operationId: PublicCoverageController_generateIDCardB64
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/coverages/{coverageId}/generate-id-card/pdf
+  method: get
+  operationId: PublicCoverageController_generateIDCardPdf
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v3/groups/{groupPolicyId}/enroll/add-subscriber
+  method: post
+  operationId: PublicEnrollmentApplicationController_createAddSubscriber
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v3/groups/{groupPolicyId}/enroll/{subscriberCoverageId}/add-dependent
+  method: post
+  operationId: PublicEnrollmentApplicationController_createAddDependent
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v3/groups/{groupPolicyId}/enroll/terminate
+  method: post
+  operationId: PublicEnrollmentApplicationController_createTermination
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v2/groups/{groupPolicyId}/renew
+  method: post
+  operationId: PublicGroupPolicyController_renewGroupPolicy
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v2/groups/{groupPolicyId}/rules
+  method: get
+  operationId: PublicGroupPolicyController_getGroupPolicyRules
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/groups/{groupPolicyId}/rules
+  method: patch
+  operationId: PublicGroupPolicyController_updateGroupPolicyRules
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v2/members
+  method: get
+  operationId: PublicMemberController_listAllMembers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/members/{memberId}
+  method: get
+  operationId: PublicMemberController_getMember
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/members/{memberId}
+  method: patch
+  operationId: PublicMemberController_updateMemberDemographics
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v2/members/{memberId}/updateLogin
+  method: post
+  operationId: PublicMemberController_updateMemberLogin
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /v2/sponsors/{sponsorNamespace}
+  method: get
+  operationId: SponsorPublicController_getSponsor
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/sponsors/{sponsorNamespace}
+  method: patch
+  operationId: SponsorPublicController_updateSponsor
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
