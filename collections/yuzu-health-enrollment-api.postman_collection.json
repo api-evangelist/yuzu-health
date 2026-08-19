@@ -1,0 +1,441 @@
+{
+  "item": [
+    {
+      "id": "10f23ea1-f0a3-4db6-85ed-d341fdd01f7e",
+      "name": "Enrollment",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1aaceb2f-411e-47c6-8b75-8727a055664e",
+          "name": "Add subscribers to an existing plan",
+          "request": {
+            "name": "Add subscribers to an existing plan",
+            "description": {
+              "content": "Enroll one or more new subscribers and their families on an existing plan. For reason `newHire`, each subscriber's coverage start is derived from their hire date and the plan's waiting-period rules. For a qualifying-life-event reason, coverage starts on the provided effectiveDate.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "groups",
+                ":groupPolicyId",
+                "enroll",
+                "add-subscriber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupPolicyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subscribers\": [\n    {\n      \"plan\": \"<uuid>\",\n      \"self\": {\n        \"line1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"zip\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"birthday\": \"<string>\",\n        \"state\": \"\",\n        \"sex\": \"\",\n        \"ssn\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"middleName\": \"<string>\",\n        \"suffix\": \"<string>\",\n        \"alternateID\": \"<string>\",\n        \"email\": \"<email>\",\n        \"phoneNumber\": \"<string>\",\n        \"__id\": \"<string>\"\n      },\n      \"spouse\": {\n        \"line1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"zip\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"birthday\": \"<string>\",\n        \"state\": \"\",\n        \"sex\": \"\",\n        \"ssn\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"middleName\": \"<string>\",\n        \"suffix\": \"<string>\",\n        \"alternateID\": \"<string>\",\n        \"email\": \"<email>\",\n        \"phoneNumber\": \"<string>\",\n        \"__id\": \"<string>\"\n      },\n      \"children\": [\n        {\n          \"line1\": \"<string>\",\n          \"city\": \"<string>\",\n          \"zip\": \"<string>\",\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\",\n          \"birthday\": \"<string>\",\n          \"state\": \"\",\n          \"sex\": \"\",\n          \"ssn\": \"<string>\",\n          \"line2\": \"<string>\",\n          \"middleName\": \"<string>\",\n          \"suffix\": \"<string>\",\n          \"alternateID\": \"<string>\",\n          \"email\": \"<email>\",\n          \"phoneNumber\": \"<string>\",\n          \"__id\": \"<string>\"\n        },\n        {\n          \"line1\": \"<string>\",\n          \"city\": \"<string>\",\n          \"zip\": \"<string>\",\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\",\n          \"birthday\": \"<string>\",\n          \"state\": \"\",\n          \"sex\": \"\",\n          \"ssn\": \"<string>\",\n          \"line2\": \"<string>\",\n          \"middleName\": \"<string>\",\n          \"suffix\": \"<string>\",\n          \"alternateID\": \"<string>\",\n          \"email\": \"<email>\",\n          \"phoneNumber\": \"<string>\",\n          \"__id\": \"<string>\"\n        }\n      ],\n      \"hireDate\": \"<string>\",\n      \"cobraStartDate\": \"<string>\",\n      \"termedByEmployerDate\": \"<string>\",\n      \"isCobraEligible\": \"<boolean>\",\n      \"retirementDate\": \"<string>\",\n      \"__id\": \"<string>\"\n    }\n  ],\n  \"reason\": \"<string>\",\n  \"effectiveDate\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6d21e76a-4e4c-4b3d-9d95-52aa7dd0f4f5",
+              "name": "Enrollment Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "groups",
+                    ":groupPolicyId",
+                    "enroll",
+                    "add-subscriber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupPolicyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscribers\": [\n    {\n      \"plan\": \"<uuid>\",\n      \"self\": {\n        \"line1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"zip\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"birthday\": \"2025-01-01\",\n        \"state\": \"\",\n        \"sex\": \"\",\n        \"ssn\": \"{ raw: \\\"123-45-6789\\\", masked: \\\"***-**-6789\\\" }\",\n        \"line2\": \"<string>\",\n        \"middleName\": \"<string>\",\n        \"suffix\": \"<string>\",\n        \"alternateID\": \"<string>\",\n        \"email\": \"<email>\",\n        \"phoneNumber\": \"+12125551234\",\n        \"__id\": \"<string>\"\n      },\n      \"spouse\": {\n        \"line1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"zip\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"birthday\": \"2025-01-01\",\n        \"state\": \"\",\n        \"sex\": \"\",\n        \"ssn\": \"{ raw: \\\"123-45-6789\\\", masked: \\\"***-**-6789\\\" }\",\n        \"line2\": \"<string>\",\n        \"middleName\": \"<string>\",\n        \"suffix\": \"<string>\",\n        \"alternateID\": \"<string>\",\n        \"email\": \"<email>\",\n        \"phoneNumber\": \"+12125551234\",\n        \"__id\": \"<string>\"\n      },\n      \"children\": [\n        {\n          \"line1\": \"<string>\",\n          \"city\": \"<string>\",\n          \"zip\": \"<string>\",\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\",\n          \"birthday\": \"2025-01-01\",\n          \"state\": \"\",\n          \"sex\": \"\",\n          \"ssn\": \"{ raw: \\\"123-45-6789\\\", masked: \\\"***-**-6789\\\" }\",\n          \"line2\": \"<string>\",\n          \"middleName\": \"<string>\",\n          \"suffix\": \"<string>\",\n          \"alternateID\": \"<string>\",\n          \"email\": \"<email>\",\n          \"phoneNumber\": \"+12125551234\",\n          \"__id\": \"<string>\"\n        },\n        {\n          \"line1\": \"<string>\",\n          \"city\": \"<string>\",\n          \"zip\": \"<string>\",\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\",\n          \"birthday\": \"2025-01-01\",\n          \"state\": \"\",\n          \"sex\": \"\",\n          \"ssn\": \"{ raw: \\\"123-45-6789\\\", masked: \\\"***-**-6789\\\" }\",\n          \"line2\": \"<string>\",\n          \"middleName\": \"<string>\",\n          \"suffix\": \"<string>\",\n          \"alternateID\": \"<string>\",\n          \"email\": \"<email>\",\n          \"phoneNumber\": \"+12125551234\",\n          \"__id\": \"<string>\"\n        }\n      ],\n      \"hireDate\": \"2025-01-01\",\n      \"cobraStartDate\": \"2025-01-01\",\n      \"termedByEmployerDate\": \"2025-01-01\",\n      \"isCobraEligible\": \"<boolean>\",\n      \"retirementDate\": \"2025-01-01\",\n      \"__id\": \"<string>\"\n    }\n  ],\n  \"reason\": \"<string>\",\n  \"effectiveDate\": \"2025-01-01\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"status\": \"rejected\",\n  \"errors\": [\n    {\n      \"subscriber\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"subscriber\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c4931377-0fa2-491e-ad3f-59aac4d3f5c2",
+          "name": "Add a dependent to an existing subscriber",
+          "request": {
+            "name": "Add a dependent to an existing subscriber",
+            "description": {
+              "content": "Enroll a single dependent (spouse or child) under an existing subscriber, identified by the subscriber's coverage id (the `subscriberId` field returned on a coverage). The dependent is added to that coverage's plan and coverage starts on the provided effectiveDate.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "groups",
+                ":groupPolicyId",
+                "enroll",
+                ":subscriberCoverageId",
+                "add-dependent"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupPolicyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriberCoverageId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dependent\": {\n    \"line1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"birthday\": \"<string>\",\n    \"state\": \"\",\n    \"sex\": \"\",\n    \"ssn\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"middleName\": \"<string>\",\n    \"suffix\": \"<string>\",\n    \"alternateID\": \"<string>\",\n    \"email\": \"<email>\",\n    \"phoneNumber\": \"<string>\",\n    \"__id\": \"<string>\"\n  },\n  \"relationship\": \"<string>\",\n  \"effectiveDate\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2bfcb154-cd82-4da3-be7e-a1c3c9c3c21d",
+              "name": "Enrollment Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "groups",
+                    ":groupPolicyId",
+                    "enroll",
+                    ":subscriberCoverageId",
+                    "add-dependent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupPolicyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriberCoverageId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dependent\": {\n    \"line1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"birthday\": \"2025-01-01\",\n    \"state\": \"\",\n    \"sex\": \"\",\n    \"ssn\": \"{ raw: \\\"123-45-6789\\\", masked: \\\"***-**-6789\\\" }\",\n    \"line2\": \"<string>\",\n    \"middleName\": \"<string>\",\n    \"suffix\": \"<string>\",\n    \"alternateID\": \"<string>\",\n    \"email\": \"<email>\",\n    \"phoneNumber\": \"+12125551234\",\n    \"__id\": \"<string>\"\n  },\n  \"relationship\": \"<string>\",\n  \"effectiveDate\": \"2025-01-01\",\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"status\": \"denied\",\n  \"errors\": [\n    {\n      \"subscriber\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"subscriber\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7a25c611-ee08-4210-83e9-7e5f6297fd8b",
+          "name": "Terminate coverage on an existing plan",
+          "request": {
+            "name": "Terminate coverage on an existing plan",
+            "description": {
+              "content": "Terminate the coverage identified by coverageId, dispatching by reason. A subscriber's coverage terminates the whole family; a dependent's coverage terminates only that dependent. Employment termination is only valid on a subscriber's coverage. terminationDate is required for every reason except mistakeEnrollment (a mistaken-enrollment correction). For employment termination COBRA eligibility is taken from cobraEligible; for every other reason it is derived from the reason.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "groups",
+                ":groupPolicyId",
+                "enroll",
+                "terminate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupPolicyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"coverageId\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"terminationDate\": \"<string>\",\n  \"cobraEligible\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e1f2ffb3-fc93-4cde-9dd6-e37a379941a7",
+              "name": "Enrollment Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "groups",
+                    ":groupPolicyId",
+                    "enroll",
+                    "terminate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupPolicyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"coverageId\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"terminationDate\": \"2025-01-01\",\n  \"cobraEligible\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"status\": \"denied\",\n  \"errors\": [\n    {\n      \"subscriber\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"subscriber\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "42e803d0-3be8-4bc9-a1ea-a54c31ff206f",
+    "name": "Yuzu Accumulator (Experimental) Accumulator (Experimental) Enrollment API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Yuzu's Public API",
+      "type": "text/plain"
+    }
+  }
+}

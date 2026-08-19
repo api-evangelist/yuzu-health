@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Yuzu Accumulator (Experimental) Accumulator (Experimental) Accumulator (Experimental) API",
+    "version": "0.5"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Accumulator (Experimental)",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get coverage buckets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/accumulator/coverage/buckets/:coverageId",
+            "params": [
+              {
+                "name": "coverageId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get coverage buckets for a coverage. Note: buckets are filtered out if cost sharing is $0."
+        },
+        {
+          "info": {
+            "name": "Get coverage accumulators",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/accumulator/coverage/:coverageId",
+            "params": [
+              {
+                "name": "coverageId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get coverage accumulators for a coverage. Note: accumulators are filtered out if 0."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

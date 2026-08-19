@@ -1,0 +1,265 @@
+{
+  "item": [
+    {
+      "id": "f6b36523-f554-40eb-9186-f565e07f0495",
+      "name": "Sponsor",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "703d03d2-50e2-4490-ace0-ec871439d886",
+          "name": "Retrieve a sponsor",
+          "request": {
+            "name": "Retrieve a sponsor",
+            "description": {
+              "content": "Fetch details for a specific sponsor by its namespace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "sponsors",
+                ":sponsorNamespace"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sponsorNamespace",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "91268586-6f83-4957-84f3-dab320dbd399",
+              "name": "Sponsor",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "sponsors",
+                    ":sponsorNamespace"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sponsorNamespace",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"namespace\": \"string\",\n  \"name\": \"string\",\n  \"businessType\": \"company\",\n  \"contactEmails\": [\n    \"LjzSlzi0_2@bxTZ.rIp810uG5oL.rCvmhfyqEIy\",\n    \"bmo_C@zgZcm.Yr2j9wx2nO.BueQMsa-rTA.vI\"\n  ],\n  \"address\": {\n    \"address1\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"NC\",\n    \"postalCode\": \"955427565\",\n    \"address2\": \"string\"\n  },\n  \"bankingVerified\": false,\n  \"brokerVendor\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"ein\": \"string\"\n  },\n  \"ein\": \"123456789\",\n  \"website\": \"https://soZPSsGQ.eczns5z\",\n  \"phoneNumber\": \"+12125551234\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "79093858-c214-4e9a-868d-f89c858e877a",
+          "name": "Update a sponsor",
+          "request": {
+            "name": "Update a sponsor",
+            "description": {
+              "content": "Update details of an existing sponsor by its namespace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "sponsors",
+                ":sponsorNamespace"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sponsorNamespace",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"address\": {\n    \"address1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"address2\": \"<string>\"\n  },\n  \"ein\": \"<string>\",\n  \"contactEmails\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"name\": \"<string>\",\n  \"website\": \"<uri>\",\n  \"phoneNumber\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "496d9571-1bcf-4deb-8db9-53ad662d211a",
+              "name": "Sponsor",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "sponsors",
+                    ":sponsorNamespace"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sponsorNamespace",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": {\n    \"address1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"address2\": \"<string>\"\n  },\n  \"ein\": \"123456789\",\n  \"contactEmails\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"name\": \"<string>\",\n  \"website\": \"<uri>\",\n  \"phoneNumber\": \"+12125551234\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"namespace\": \"string\",\n  \"name\": \"string\",\n  \"businessType\": \"company\",\n  \"contactEmails\": [\n    \"fu8eQDreN07@SQft38.6HSY.m8zb5JQ.HKTEmnDM\",\n    \"3EVYmXB8PtC@oBdTo0.ann7.I5ZJ.UkRzjMu9.yAeIDRLJQV.UntbnMW.Jujm6.xk.sMUsuNzqBY\"\n  ],\n  \"address\": {\n    \"address1\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"WA\",\n    \"postalCode\": \"10074 3517\",\n    \"address2\": \"string\"\n  },\n  \"bankingVerified\": false,\n  \"brokerVendor\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"ein\": \"string\"\n  },\n  \"ein\": \"123456789\",\n  \"website\": \"https://klamVEzIFsbtbUmBsoqSDdtKmAshnUGM.mucgnRf0ZZfCQuRAt1R08YEWIx3c,rFbV1AUutEuOFHp7\",\n  \"phoneNumber\": \"+12125551234\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ff22637c-fccc-474c-8d1e-6207b4a2e030",
+    "name": "Yuzu Accumulator (Experimental) Accumulator (Experimental) Sponsor API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Yuzu's Public API",
+      "type": "text/plain"
+    }
+  }
+}

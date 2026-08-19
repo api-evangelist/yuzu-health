@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Yuzu Accumulator (Experimental) Accumulator (Experimental) Coverage API",
+    "version": "0.5"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Coverage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate an ID card",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/coverages/:coverageId/generate-id-card/svg",
+            "params": [
+              {
+                "name": "coverageId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Generate an ID card for a coverage as an SVG"
+        },
+        {
+          "info": {
+            "name": "Generate an ID card",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/coverages/:coverageId/generate-id-card/b64",
+            "params": [
+              {
+                "name": "coverageId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Generate an ID card for a coverage as a b64 encoded string of the PNG image"
+        },
+        {
+          "info": {
+            "name": "Generate an ID card",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/coverages/:coverageId/generate-id-card/pdf",
+            "params": [
+              {
+                "name": "coverageId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Generate an ID card for a coverage as a pdf file."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

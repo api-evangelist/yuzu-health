@@ -1,0 +1,471 @@
+{
+  "item": [
+    {
+      "id": "af05d02b-c9ef-496f-a6c9-de73efb58a6e",
+      "name": "Benefits",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7e9595b1-3f3f-430f-9973-522873b3577c",
+          "name": "Retrieve benefit lookup data for a coverage",
+          "request": {
+            "name": "Retrieve benefit lookup data for a coverage",
+            "description": {
+              "content": "Return all benefits available under a coverage, formatted for code- and name-based lookup. Suitable for answering questions like \"is this covered?\" and \"who do I call to set up pre-cert?\"",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "coverages",
+                ":coverageId",
+                "benefit-lookup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "coverageId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "322e1ded-4beb-456f-b0f4-c716b2235997",
+              "name": "Benefit lookup data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "coverages",
+                    ":coverageId",
+                    "benefit-lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "coverageId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"benefits\": [\n    {\n      \"benefitCategory\": {\n        \"id\": \"550e8400-e29b-41d4-a716-446655440010\",\n        \"name\": \"Primary Care Office Visit\",\n        \"description\": \"In-office visit with a primary care provider.\",\n        \"legalDescription\": null\n      },\n      \"costSharing\": [\n        {\n          \"tierId\": \"tier-in-network\",\n          \"covered\": true,\n          \"copayCents\": 2500,\n          \"coinsurancePct\": null,\n          \"ifApplicable\": false,\n          \"requiresDeductibleMet\": false,\n          \"waiveCopayAfterDays\": null,\n          \"waiveCostSharingForVisits\": null,\n          \"notes\": null\n        },\n        {\n          \"tierId\": \"tier-out-of-network\",\n          \"covered\": true,\n          \"copayCents\": null,\n          \"coinsurancePct\": 40,\n          \"ifApplicable\": false,\n          \"requiresDeductibleMet\": true,\n          \"waiveCopayAfterDays\": null,\n          \"waiveCostSharingForVisits\": null,\n          \"notes\": null\n        }\n      ],\n      \"benefitNotes\": null,\n      \"precertRequirements\": [],\n      \"procedureCodeRanges\": [\n        \"99201-99205\",\n        \"99211-99215\"\n      ],\n      \"revenueCodeRanges\": [],\n      \"humanReadable\": {\n        \"payments\": [\n          {\n            \"tierId\": \"tier-in-network\",\n            \"tierName\": \"In-Network\",\n            \"payment\": \"$25.00 Copay\"\n          },\n          {\n            \"tierId\": \"tier-out-of-network\",\n            \"tierName\": \"Out-of-Network\",\n            \"payment\": \"40% Coinsurance after deductible\"\n          }\n        ],\n        \"precertRequirements\": []\n      }\n    },\n    {\n      \"benefitCategory\": {\n        \"id\": \"550e8400-e29b-41d4-a716-446655440011\",\n        \"name\": \"Physical Therapy\",\n        \"description\": \"Outpatient physical, occupational, and speech therapy.\",\n        \"legalDescription\": null\n      },\n      \"costSharing\": [\n        {\n          \"tierId\": \"tier-in-network\",\n          \"covered\": true,\n          \"copayCents\": 4000,\n          \"coinsurancePct\": null,\n          \"ifApplicable\": false,\n          \"requiresDeductibleMet\": true,\n          \"waiveCopayAfterDays\": null,\n          \"waiveCostSharingForVisits\": 3,\n          \"notes\": null\n        }\n      ],\n      \"limitations\": {\n        \"maxVisitsPerYear\": 30,\n        \"maxDaysPerYear\": null,\n        \"moneyPerLifetimeCents\": null,\n        \"maxDaysPerLifetime\": null,\n        \"moneyPerFillCents\": null,\n        \"maxHoursPerVisit\": null,\n        \"excludeChildDependents\": null,\n        \"limitationNotes\": \"Combined PT/OT/ST limit\",\n        \"precertMayBeRequired\": false\n      },\n      \"benefitNotes\": \"Members may self-refer to a network therapist.\",\n      \"precertRequirements\": [],\n      \"procedureCodeRanges\": [\n        \"97110-97546\"\n      ],\n      \"revenueCodeRanges\": [\n        \"0420-0429\"\n      ],\n      \"humanReadable\": {\n        \"payments\": [\n          {\n            \"tierId\": \"tier-in-network\",\n            \"tierName\": \"In-Network\",\n            \"payment\": \"$40.00 Copay after deductible. $0 for the first 3 visits\"\n          }\n        ],\n        \"limitation\": \"30 visits per year. Combined PT/OT/ST limit. Members may self-refer to a network therapist.\",\n        \"precertRequirements\": []\n      }\n    },\n    {\n      \"benefitCategory\": {\n        \"id\": \"550e8400-e29b-41d4-a716-446655440012\",\n        \"name\": \"Inpatient Hospital Admission\",\n        \"description\": \"Inpatient acute-care hospital stays.\",\n        \"legalDescription\": null\n      },\n      \"costSharing\": [\n        {\n          \"tierId\": \"tier-in-network\",\n          \"covered\": true,\n          \"copayCents\": null,\n          \"coinsurancePct\": 20,\n          \"ifApplicable\": false,\n          \"requiresDeductibleMet\": true,\n          \"waiveCopayAfterDays\": null,\n          \"waiveCostSharingForVisits\": null,\n          \"notes\": null\n        }\n      ],\n      \"benefitNotes\": null,\n      \"precertRequirements\": [\n        {\n          \"benefitCategoryId\": \"550e8400-e29b-41d4-a716-446655440012\",\n          \"rule\": {\n            \"minHoursPerAdmission\": 24,\n            \"minAge\": null,\n            \"minMoneyPerServiceLineCents\": null,\n            \"minDaysPerClaim\": null,\n            \"excludePosCode\": \"23\"\n          }\n        }\n      ],\n      \"procedureCodeRanges\": [\n        \"99221-99239\"\n      ],\n      \"revenueCodeRanges\": [\n        \"0100-0219\"\n      ],\n      \"humanReadable\": {\n        \"payments\": [\n          {\n            \"tierId\": \"tier-in-network\",\n            \"tierName\": \"In-Network\",\n            \"payment\": \"20% Coinsurance after deductible\"\n          }\n        ],\n        \"precertRequirements\": [\n          {\n            \"benefitCategoryId\": \"550e8400-e29b-41d4-a716-446655440012\",\n            \"rule\": \"Admission is over 24 hours or POS code is not 23\"\n          }\n        ]\n      }\n    }\n  ],\n  \"exclusions\": [\n    {\n      \"id\": \"550e8400-e29b-41d4-a716-446655440099\",\n      \"name\": \"Cosmetic Surgery\",\n      \"description\": \"Procedures performed primarily for cosmetic purposes.\",\n      \"legalDescription\": null\n    },\n    {\n      \"id\": \"550e8400-e29b-41d4-a716-446655440098\",\n      \"name\": \"Experimental Treatments\",\n      \"description\": \"Services, supplies, or treatments that are experimental, investigational, or not generally accepted medical practice.\",\n      \"legalDescription\": null\n    }\n  ],\n  \"tiers\": [\n    {\n      \"id\": \"tier-in-network\",\n      \"name\": \"In-Network\",\n      \"waivePrecertRequirements\": false,\n      \"excludeLimitations\": false,\n      \"networks\": [\n        {\n          \"name\": \"Acme PPO\",\n          \"url\": \"https://example.com/find-a-provider\",\n          \"phone\": \"+18005551212\"\n        }\n      ]\n    },\n    {\n      \"id\": \"tier-out-of-network\",\n      \"name\": \"Out-of-Network\",\n      \"waivePrecertRequirements\": false,\n      \"excludeLimitations\": false,\n      \"networks\": []\n    }\n  ],\n  \"precertVendorInfo\": {\n    \"name\": \"MedWatch\",\n    \"phone\": \"+18004328421\"\n  },\n  \"telehealthDisclaimer\": {\n    \"orgName\": \"Teladoc\"\n  },\n  \"humanReadable\": {\n    \"precertDisclaimer\": \"To initiate the precertification process, call MedWatch at +18004328421\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "db7f7e02-79bd-4f3f-b159-3549a80ef45b",
+              "name": "The coverage does not exist or its plan has no benefit bundle configured.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "coverages",
+                    ":coverageId",
+                    "benefit-lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "coverageId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "56895f88-733b-4b88-bdab-7a5d58c27a3f",
+          "name": "Look up a single code under a coverage",
+          "request": {
+            "name": "Look up a single code under a coverage",
+            "description": {
+              "content": "Resolve a supplied code through the same code-search path used by the portal benefit lookup. Returns matching benefit(s), the structured precert status (including network-waiver outcome when a provider TIN is supplied in the body), matched exclusions, and RxBuy status when the shared lookup returns one.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "coverages",
+                ":coverageId",
+                "benefit-lookup",
+                "codes",
+                ":code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "coverageId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "code",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"providerTin\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "434116c2-ff56-4a9a-bf0b-2e8bc3748eeb",
+              "name": "Code lookup result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "coverages",
+                    ":coverageId",
+                    "benefit-lookup",
+                    "codes",
+                    ":code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "coverageId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"providerTin\": \"123456789\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"codeSet\": \"Procedure\",\n  \"label\": \"Office or other outpatient visit, established patient, 30-39 minutes\",\n  \"matchedBenefits\": [\n    {\n      \"benefitCategory\": {\n        \"id\": \"550e8400-e29b-41d4-a716-446655440010\",\n        \"name\": \"Primary Care Office Visit\",\n        \"description\": \"In-office visit with a primary care provider.\",\n        \"legalDescription\": null\n      },\n      \"costSharing\": [\n        {\n          \"tierId\": \"tier-in-network\",\n          \"covered\": true,\n          \"copayCents\": 2500,\n          \"coinsurancePct\": null,\n          \"ifApplicable\": false,\n          \"requiresDeductibleMet\": false,\n          \"waiveCopayAfterDays\": null,\n          \"waiveCostSharingForVisits\": null,\n          \"notes\": null\n        },\n        {\n          \"tierId\": \"tier-out-of-network\",\n          \"covered\": true,\n          \"copayCents\": null,\n          \"coinsurancePct\": 40,\n          \"ifApplicable\": false,\n          \"requiresDeductibleMet\": true,\n          \"waiveCopayAfterDays\": null,\n          \"waiveCostSharingForVisits\": null,\n          \"notes\": null\n        }\n      ],\n      \"benefitNotes\": null,\n      \"precertRequirements\": [],\n      \"procedureCodeRanges\": [\n        \"99201-99205\",\n        \"99211-99215\"\n      ],\n      \"revenueCodeRanges\": [],\n      \"humanReadable\": {\n        \"payments\": [\n          {\n            \"tierId\": \"tier-in-network\",\n            \"tierName\": \"In-Network\",\n            \"payment\": \"$25.00 Copay\"\n          },\n          {\n            \"tierId\": \"tier-out-of-network\",\n            \"tierName\": \"Out-of-Network\",\n            \"payment\": \"40% Coinsurance after deductible\"\n          }\n        ],\n        \"precertRequirements\": []\n      }\n    }\n  ],\n  \"tiers\": [\n    {\n      \"id\": \"tier-in-network\",\n      \"name\": \"In-Network\",\n      \"waivePrecertRequirements\": false,\n      \"excludeLimitations\": false,\n      \"networks\": [\n        {\n          \"name\": \"Acme PPO\",\n          \"url\": \"https://example.com/find-a-provider\",\n          \"phone\": \"+18005551212\"\n        }\n      ]\n    },\n    {\n      \"id\": \"tier-out-of-network\",\n      \"name\": \"Out-of-Network\",\n      \"waivePrecertRequirements\": false,\n      \"excludeLimitations\": false,\n      \"networks\": []\n    }\n  ],\n  \"matchedExclusions\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3f5532e8-fede-4b1b-af54-cafbb455fdf9",
+              "name": "The request body failed validation (for example, `providerTin` did not match the 9-digit / `XX-XXXXXXX` TIN pattern). Response body includes the standard Yuzu error envelope plus a `errors[]` array of Zod issues.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "coverages",
+                    ":coverageId",
+                    "benefit-lookup",
+                    "codes",
+                    ":code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "coverageId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"providerTin\": \"123456789\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c1f26573-40dc-4ca5-ba39-db850df69335",
+              "name": "The coverage does not exist or its plan has no benefit bundle configured.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "coverages",
+                    ":coverageId",
+                    "benefit-lookup",
+                    "codes",
+                    ":code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "coverageId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"providerTin\": \"123456789\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "eb943960-2d5d-4269-9825-8ccc4b741cb2",
+    "name": "Yuzu Accumulator (Experimental) Accumulator (Experimental) Benefits API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Yuzu's Public API",
+      "type": "text/plain"
+    }
+  }
+}

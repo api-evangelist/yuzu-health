@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Yuzu Accumulator (Experimental) Accumulator (Experimental) Benefits API",
+    "version": "0.5"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Benefits",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve benefit lookup data for a coverage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/coverages/:coverageId/benefit-lookup",
+            "params": [
+              {
+                "name": "coverageId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Return all benefits available under a coverage, formatted for code- and name-based lookup. Suitable for answering questions like \"is this covered?\" and \"who do I call to set up pre-cert?\""
+        },
+        {
+          "info": {
+            "name": "Look up a single code under a coverage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/coverages/:coverageId/benefit-lookup/codes/:code",
+            "params": [
+              {
+                "name": "coverageId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "code",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Resolve a supplied code through the same code-search path used by the portal benefit lookup. Returns matching benefit(s), the structured precert status (including network-waiver outcome when a provider TIN is supplied in the body), matched exclusions, and RxBuy status when the shared lookup returns one."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

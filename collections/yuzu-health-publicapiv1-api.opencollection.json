@@ -1,0 +1,1085 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Yuzu Accumulator (Experimental) Accumulator (Experimental) PublicApiV1 API",
+    "version": "0.5"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "PublicApiV1",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve all members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/members",
+            "params": [
+              {
+                "name": "startAfter",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              },
+              {
+                "name": "planId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by plan ID"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve a paginated list of all members across sponsors/plans. Use optional filters like planId to narrow results."
+        },
+        {
+          "info": {
+            "name": "Retrieve a member",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/members/:memberId",
+            "params": [
+              {
+                "name": "memberId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch details for a specific member, including demographics, address, and coverage informations."
+        },
+        {
+          "info": {
+            "name": "Retrieve all networks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/networks",
+            "params": [
+              {
+                "name": "startAfter",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch a paginated list of all networks"
+        },
+        {
+          "info": {
+            "name": "Retrieve all providers for a network",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/networks/:networkId/providers",
+            "params": [
+              {
+                "name": "networkId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "startAfter",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              },
+              {
+                "name": "includeNested",
+                "value": "",
+                "type": "query",
+                "description": "When true, also returns providers from the network's direct child (affiliate) networks. Defaults to false."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch a paginated list of all providers within a specific network. Set includeNested=true to also include providers from the network's direct child (affiliate) networks."
+        },
+        {
+          "info": {
+            "name": "Create a provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/networks/:networkId/providers",
+            "params": [
+              {
+                "name": "networkId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a new provider within a specific network."
+        },
+        {
+          "info": {
+            "name": "Update a provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/providers/:networkProviderId",
+            "params": [
+              {
+                "name": "networkProviderId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update details of an existing provider by its ID."
+        },
+        {
+          "info": {
+            "name": "Delete a provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/providers/:networkProviderId",
+            "params": [
+              {
+                "name": "networkProviderId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Remove an existing provider by its ID."
+        },
+        {
+          "info": {
+            "name": "Retrieve a coverage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/coverages/:coverageId",
+            "params": [
+              {
+                "name": "coverageId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch details for a specific coverage by its ID."
+        },
+        {
+          "info": {
+            "name": "Create a coverage fee",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/coverages/:coverageId/fees",
+            "params": [
+              {
+                "name": "coverageId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a new fee for a specific coverage."
+        },
+        {
+          "info": {
+            "name": "Update a coverage fee",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/coverages/:coverageId/fees/:coverageFeeId",
+            "params": [
+              {
+                "name": "coverageId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "coverageFeeId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update an existing fee for a specific coverage."
+        },
+        {
+          "info": {
+            "name": "Delete a coverage fee",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/coverages/:coverageId/fees/:coverageFeeId",
+            "params": [
+              {
+                "name": "coverageId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "coverageFeeId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Remove an existing fee for a specific coverage."
+        },
+        {
+          "info": {
+            "name": "List all sponsors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/sponsors",
+            "params": [
+              {
+                "name": "startAfter",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch a paginated list of all sponsors."
+        },
+        {
+          "info": {
+            "name": "Create a sponsor",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/sponsors",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a new sponsor with the provided details. This endpoint is deprecated, please use the v2 endpoint."
+        },
+        {
+          "info": {
+            "name": "Retrieve a sponsor",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/sponsors/:sponsorNamespace",
+            "params": [
+              {
+                "name": "sponsorNamespace",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch details for a specific sponsor by its namespace. This endpoint is deprecated, please use the v2 endpoint."
+        },
+        {
+          "info": {
+            "name": "Update a sponsor",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/sponsors/:sponsorNamespace",
+            "params": [
+              {
+                "name": "sponsorNamespace",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update details of an existing sponsor by its namespace. This endpoint is\n      deprecated, please use the v2 endpoint. Note: this endpoint deletes omitted\n      plans."
+        },
+        {
+          "info": {
+            "name": "Create initial enrollment for a sponsor",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/sponsors/:sponsorNamespace/enroll/initial-enrollment",
+            "params": [
+              {
+                "name": "sponsorNamespace",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create an initial enrollment for a sponsor with the provided member data. This endpoint is deprecated, please use the v2 endpoint."
+        },
+        {
+          "info": {
+            "name": "List members of a sponsor",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/sponsors/:sponsorNamespace/members",
+            "params": [
+              {
+                "name": "sponsorNamespace",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "startAfter",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch a paginated list of members for a specific sponsor. This endpoint is deprecated, please use the v2 endpoint."
+        },
+        {
+          "info": {
+            "name": "List vendor relationships for a plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/plans/:planId/vendorRelationships",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch a paginated list of vendor relationships for a specific plan."
+        },
+        {
+          "info": {
+            "name": "Delete a plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/plans/:planId",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Remove an existing plan by its ID."
+        },
+        {
+          "info": {
+            "name": "Edit a plan fee",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/planFees/:planFeeId",
+            "params": [
+              {
+                "name": "planFeeId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update an existing plan fee by its ID."
+        },
+        {
+          "info": {
+            "name": "Retrieve a vendor",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/vendors/:vendorId",
+            "params": [
+              {
+                "name": "vendorId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch details for a specific vendor by its ID."
+        },
+        {
+          "info": {
+            "name": "List all vendors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/vendors",
+            "params": [
+              {
+                "name": "startAfter",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch a paginated list of all vendors."
+        },
+        {
+          "info": {
+            "name": "Retrieve a medical claim",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/claims/medical/:claimId",
+            "params": [
+              {
+                "name": "claimId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch details for a specific medical claim by its ID."
+        },
+        {
+          "info": {
+            "name": "List all medical claims",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/claims/medical",
+            "params": [
+              {
+                "name": "serviceStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter by service start date"
+              },
+              {
+                "name": "serviceEndDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter by service end date"
+              },
+              {
+                "name": "groupPolicyId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by group policy ID"
+              },
+              {
+                "name": "coverageId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by coverage ID"
+              },
+              {
+                "name": "startAfter",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch a paginated list of all medical claims with optional filters."
+        },
+        {
+          "info": {
+            "name": "Retrieve a pharmacy claim",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/claims/pharmacy/:claimId",
+            "params": [
+              {
+                "name": "claimId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch details for a specific pharmacy claim by its ID."
+        },
+        {
+          "info": {
+            "name": "List all pharmacy claims",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/claims/pharmacy",
+            "params": [
+              {
+                "name": "fillStartDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fillEndDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "groupPolicyId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by group policy ID"
+              },
+              {
+                "name": "coverageId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by coverage ID"
+              },
+              {
+                "name": "startAfter",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              },
+              {
+                "name": "serviceEndDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter by service end date"
+              },
+              {
+                "name": "serviceStartDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter by service start date"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch a paginated list of all pharmacy claims with optional filters."
+        },
+        {
+          "info": {
+            "name": "Retrieve a pre-certification",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/preCerts/:preCertId",
+            "params": [
+              {
+                "name": "preCertId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch details for a specific pre-certification by its ID."
+        },
+        {
+          "info": {
+            "name": "list all pre-certifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/preCerts",
+            "params": [
+              {
+                "name": "startAfter",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              },
+              {
+                "name": "coverageId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by coverage ID"
+              },
+              {
+                "name": "groupPolicyId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by group policy ID"
+              },
+              {
+                "name": "serviceDateFrom",
+                "value": "",
+                "type": "query",
+                "description": "Filter by service date from (include preCerts with serviceDateFrom >= this date)"
+              },
+              {
+                "name": "serviceDateTo",
+                "value": "",
+                "type": "query",
+                "description": "Filter by service date to (include preCerts with serviceDateTo <= this date)"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch details for all pre-certifications."
+        },
+        {
+          "info": {
+            "name": "Retrieve a cash card",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/cashCards/:cashCardId",
+            "params": [
+              {
+                "name": "cashCardId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch details for a specific cash card by its ID."
+        },
+        {
+          "info": {
+            "name": "Retrieve an enrollment request",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/enrollmentRequests/:enrollmentRequestId",
+            "params": [
+              {
+                "name": "enrollmentRequestId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch details for a specific enrollment request by its ID."
+        },
+        {
+          "info": {
+            "name": "Retrieve a submitted accumulator rollover",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/submittedAccumulatorRollovers/:submittedAccumulatorRolloverId",
+            "params": [
+              {
+                "name": "submittedAccumulatorRolloverId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch details for a specific submitted accumulator rollover by its ID."
+        },
+        {
+          "info": {
+            "name": "Retrieve a plan claim",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/claims/plan/:planClaimId",
+            "params": [
+              {
+                "name": "planClaimId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "includeAttachments",
+                "value": "",
+                "type": "query",
+                "description": "When true, downloads and returns the plan claim's attachments as base64 data URIs. Defaults to false."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch details for a specific plan claim by its ID."
+        },
+        {
+          "info": {
+            "name": "List all plan claims",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/claims/plan",
+            "params": [
+              {
+                "name": "startAfter",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              },
+              {
+                "name": "incurredBeforeDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter by incurred before date"
+              },
+              {
+                "name": "incurredAfterDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter by incurred after date"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch a paginated list of all plan claims with optional filters."
+        },
+        {
+          "info": {
+            "name": "Create a plan claim",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/claims/plan/:planId",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a new plan claim for a specific plan with the provided data."
+        },
+        {
+          "info": {
+            "name": "Create a pharmacy claim",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/claims/pharmacy/:coverageId",
+            "params": [
+              {
+                "name": "coverageId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a new pharmacy claim for a specific coverage with the provided data."
+        },
+        {
+          "info": {
+            "name": "Create a professional claim",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/claims/medical/professional/:coverageId",
+            "params": [
+              {
+                "name": "coverageId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a new professional claim for a specific coverage with the provided data."
+        },
+        {
+          "info": {
+            "name": "Create an institutional claim",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/claims/medical/institutional/:coverageId",
+            "params": [
+              {
+                "name": "coverageId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a new institutional claim for a specific coverage with the provided data."
+        },
+        {
+          "info": {
+            "name": "Retrieve plan benefits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/plans/:planId/benefits",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch details for a specific plan's benefits."
+        },
+        {
+          "info": {
+            "name": "Update plan benefits",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/plans/:planId/benefits",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update the benefits for a specific plan."
+        },
+        {
+          "info": {
+            "name": "Retrieve plan SBC",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/plans/:planId/sbc",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch a specific plan's Summary of Benefits and Coverage (SBC) as a PDF file"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

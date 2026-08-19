@@ -1,0 +1,488 @@
+{
+  "item": [
+    {
+      "id": "7f60372d-8bf8-4db1-bac7-7f96a8437774",
+      "name": "Member",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "24e6f35e-2675-4f57-be3a-cb8b4d6ee03b",
+          "name": "Retrieve all members",
+          "request": {
+            "name": "Retrieve all members",
+            "description": {
+              "content": "Retrieve a paginated list of all members across sponsors/plans. Use optional filters like planId to narrow results.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "members"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startAfter",
+                  "value": "<string>",
+                  "description": "Pagination cursor"
+                },
+                {
+                  "disabled": false,
+                  "key": "planId",
+                  "value": "<string>",
+                  "description": "Filter by plan ID"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3f8e59ae-4b3c-45e5-9811-2cf7f599c2a4",
+              "name": "Paginated Members",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startAfter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "planId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"id\": \"string\",\n      \"lastName\": \"string\",\n      \"firstName\": \"string\",\n      \"sex\": \"F\",\n      \"birthDate\": \"2025-01-01\",\n      \"coordinationOfBenefits\": {\n        \"coverages\": [\n          {\n            \"id\": \"string\",\n            \"startDate\": \"2025-01-01\",\n            \"endDate\": \"2025-01-01\",\n            \"payerResponsibility\": \"four\",\n            \"organizationName\": \"string\",\n            \"subscriberFirstName\": \"string\",\n            \"subscriberLastName\": \"string\"\n          },\n          {\n            \"id\": \"string\",\n            \"startDate\": \"2025-01-01\",\n            \"endDate\": \"2025-01-01\",\n            \"payerResponsibility\": \"secondary\",\n            \"organizationName\": \"string\",\n            \"subscriberFirstName\": \"string\",\n            \"subscriberLastName\": \"string\"\n          }\n        ],\n        \"lastReviewed\": \"string\"\n      },\n      \"currentAddresses\": [\n        {\n          \"address1\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"WV\",\n          \"postalCode\": \"76300 4136\",\n          \"address2\": \"string\"\n        },\n        {\n          \"address1\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"DC\",\n          \"postalCode\": \"36805 5084\",\n          \"address2\": \"string\"\n        }\n      ],\n      \"coverages\": [\n        {\n          \"id\": \"string\",\n          \"coverageStatus\": \"annulled\",\n          \"eligibilitySince\": \"2025-01-01\",\n          \"eligibilityUntil\": \"2025-01-01\",\n          \"groupId\": \"string\",\n          \"planId\": \"string\",\n          \"subscriberId\": \"string\",\n          \"memberNumber\": \"string\",\n          \"relationship\": \"child\",\n          \"fees\": [\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"startDate\": \"2025-01-01\",\n              \"endDate\": \"2025-01-01\",\n              \"planFeeId\": \"string\",\n              \"vendorId\": \"string\"\n            },\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"startDate\": \"2025-01-01\",\n              \"endDate\": \"2025-01-01\",\n              \"planFeeId\": \"string\",\n              \"vendorId\": \"string\"\n            }\n          ],\n          \"locations\": [\n            \"string\",\n            \"string\"\n          ],\n          \"departments\": [\n            \"string\",\n            \"string\"\n          ],\n          \"alternateID\": \"string\",\n          \"pcpPreferences\": {\n            \"optOut\": true\n          },\n          \"employeeClass\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"coverageStatus\": \"inactive\",\n          \"eligibilitySince\": \"2025-01-01\",\n          \"eligibilityUntil\": \"2025-01-01\",\n          \"groupId\": \"string\",\n          \"planId\": \"string\",\n          \"subscriberId\": \"string\",\n          \"memberNumber\": \"string\",\n          \"relationship\": \"spouse\",\n          \"fees\": [\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"startDate\": \"2025-01-01\",\n              \"endDate\": \"2025-01-01\",\n              \"planFeeId\": \"string\",\n              \"vendorId\": \"string\"\n            },\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"startDate\": \"2025-01-01\",\n              \"endDate\": \"2025-01-01\",\n              \"planFeeId\": \"string\",\n              \"vendorId\": \"string\"\n            }\n          ],\n          \"locations\": [\n            \"string\",\n            \"string\"\n          ],\n          \"departments\": [\n            \"string\",\n            \"string\"\n          ],\n          \"alternateID\": \"string\",\n          \"pcpPreferences\": {\n            \"optOut\": false\n          },\n          \"employeeClass\": \"string\"\n        }\n      ],\n      \"phone\": \"+12125551234\",\n      \"emailAddress\": \"3JG1AS@z.g.Ej.tJw.Cm.IdT8cVJuZ.rQVF4QDDNO8.dkxfOYkrhSCp\",\n      \"ssnLastFour\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"lastName\": \"string\",\n      \"firstName\": \"string\",\n      \"sex\": \"M\",\n      \"birthDate\": \"2025-01-01\",\n      \"coordinationOfBenefits\": {\n        \"coverages\": [\n          {\n            \"id\": \"string\",\n            \"startDate\": \"2025-01-01\",\n            \"endDate\": \"2025-01-01\",\n            \"payerResponsibility\": \"secondary\",\n            \"organizationName\": \"string\",\n            \"subscriberFirstName\": \"string\",\n            \"subscriberLastName\": \"string\"\n          },\n          {\n            \"id\": \"string\",\n            \"startDate\": \"2025-01-01\",\n            \"endDate\": \"2025-01-01\",\n            \"payerResponsibility\": \"five\",\n            \"organizationName\": \"string\",\n            \"subscriberFirstName\": \"string\",\n            \"subscriberLastName\": \"string\"\n          }\n        ],\n        \"lastReviewed\": \"string\"\n      },\n      \"currentAddresses\": [\n        {\n          \"address1\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"WV\",\n          \"postalCode\": \"96101\",\n          \"address2\": \"string\"\n        },\n        {\n          \"address1\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"IN\",\n          \"postalCode\": \"51822\",\n          \"address2\": \"string\"\n        }\n      ],\n      \"coverages\": [\n        {\n          \"id\": \"string\",\n          \"coverageStatus\": \"active\",\n          \"eligibilitySince\": \"2025-01-01\",\n          \"eligibilityUntil\": \"2025-01-01\",\n          \"groupId\": \"string\",\n          \"planId\": \"string\",\n          \"subscriberId\": \"string\",\n          \"memberNumber\": \"string\",\n          \"relationship\": \"child\",\n          \"fees\": [\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"startDate\": \"2025-01-01\",\n              \"endDate\": \"2025-01-01\",\n              \"planFeeId\": \"string\",\n              \"vendorId\": \"string\"\n            },\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"startDate\": \"2025-01-01\",\n              \"endDate\": \"2025-01-01\",\n              \"planFeeId\": \"string\",\n              \"vendorId\": \"string\"\n            }\n          ],\n          \"locations\": [\n            \"string\",\n            \"string\"\n          ],\n          \"departments\": [\n            \"string\",\n            \"string\"\n          ],\n          \"alternateID\": \"string\",\n          \"pcpPreferences\": {\n            \"optOut\": false\n          },\n          \"employeeClass\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"coverageStatus\": \"active\",\n          \"eligibilitySince\": \"2025-01-01\",\n          \"eligibilityUntil\": \"2025-01-01\",\n          \"groupId\": \"string\",\n          \"planId\": \"string\",\n          \"subscriberId\": \"string\",\n          \"memberNumber\": \"string\",\n          \"relationship\": \"child\",\n          \"fees\": [\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"startDate\": \"2025-01-01\",\n              \"endDate\": \"2025-01-01\",\n              \"planFeeId\": \"string\",\n              \"vendorId\": \"string\"\n            },\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"startDate\": \"2025-01-01\",\n              \"endDate\": \"2025-01-01\",\n              \"planFeeId\": \"string\",\n              \"vendorId\": \"string\"\n            }\n          ],\n          \"locations\": [\n            \"string\",\n            \"string\"\n          ],\n          \"departments\": [\n            \"string\",\n            \"string\"\n          ],\n          \"alternateID\": \"string\",\n          \"pcpPreferences\": {\n            \"optOut\": true\n          },\n          \"employeeClass\": \"string\"\n        }\n      ],\n      \"phone\": \"+12125551234\",\n      \"emailAddress\": \"rVE@tscDEn.P.h.k.xweidd.r2o.2NdwX1.H1JIswd.JZPneN5tg.iBOx.ERWjlTnN\",\n      \"ssnLastFour\": \"string\"\n    }\n  ],\n  \"startAfter\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0e58e13a-53c6-457e-89dd-92bbc3a39c6d",
+          "name": "Retrieve a member",
+          "request": {
+            "name": "Retrieve a member",
+            "description": {
+              "content": "Fetch details for a specific member, including demographics, address, and coverage informations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "members",
+                ":memberId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "memberId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "acb528f3-88d0-4202-bbdf-34c9bbcbe3a4",
+              "name": "Member",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "members",
+                    ":memberId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "memberId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"lastName\": \"string\",\n  \"firstName\": \"string\",\n  \"sex\": \"M\",\n  \"birthDate\": \"2025-01-01\",\n  \"coordinationOfBenefits\": {\n    \"coverages\": [\n      {\n        \"id\": \"string\",\n        \"startDate\": \"2025-01-01\",\n        \"endDate\": \"2025-01-01\",\n        \"payerResponsibility\": \"seven\",\n        \"organizationName\": \"string\",\n        \"subscriberFirstName\": \"string\",\n        \"subscriberLastName\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"startDate\": \"2025-01-01\",\n        \"endDate\": \"2025-01-01\",\n        \"payerResponsibility\": \"primary\",\n        \"organizationName\": \"string\",\n        \"subscriberFirstName\": \"string\",\n        \"subscriberLastName\": \"string\"\n      }\n    ],\n    \"lastReviewed\": \"string\"\n  },\n  \"currentAddresses\": [\n    {\n      \"address1\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"PR\",\n      \"postalCode\": \"571583377\",\n      \"address2\": \"string\"\n    },\n    {\n      \"address1\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"MO\",\n      \"postalCode\": \"68757\",\n      \"address2\": \"string\"\n    }\n  ],\n  \"coverages\": [\n    {\n      \"id\": \"string\",\n      \"coverageStatus\": \"cobra\",\n      \"eligibilitySince\": \"2025-01-01\",\n      \"eligibilityUntil\": \"2025-01-01\",\n      \"groupId\": \"string\",\n      \"planId\": \"string\",\n      \"subscriberId\": \"string\",\n      \"memberNumber\": \"string\",\n      \"relationship\": \"subscriber\",\n      \"fees\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"startDate\": \"2025-01-01\",\n          \"endDate\": \"2025-01-01\",\n          \"planFeeId\": \"string\",\n          \"vendorId\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"startDate\": \"2025-01-01\",\n          \"endDate\": \"2025-01-01\",\n          \"planFeeId\": \"string\",\n          \"vendorId\": \"string\"\n        }\n      ],\n      \"locations\": [\n        \"string\",\n        \"string\"\n      ],\n      \"departments\": [\n        \"string\",\n        \"string\"\n      ],\n      \"alternateID\": \"string\",\n      \"pcpPreferences\": {\n        \"optOut\": false\n      },\n      \"employeeClass\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"coverageStatus\": \"cobra\",\n      \"eligibilitySince\": \"2025-01-01\",\n      \"eligibilityUntil\": \"2025-01-01\",\n      \"groupId\": \"string\",\n      \"planId\": \"string\",\n      \"subscriberId\": \"string\",\n      \"memberNumber\": \"string\",\n      \"relationship\": \"spouse\",\n      \"fees\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"startDate\": \"2025-01-01\",\n          \"endDate\": \"2025-01-01\",\n          \"planFeeId\": \"string\",\n          \"vendorId\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"startDate\": \"2025-01-01\",\n          \"endDate\": \"2025-01-01\",\n          \"planFeeId\": \"string\",\n          \"vendorId\": \"string\"\n        }\n      ],\n      \"locations\": [\n        \"string\",\n        \"string\"\n      ],\n      \"departments\": [\n        \"string\",\n        \"string\"\n      ],\n      \"alternateID\": \"string\",\n      \"pcpPreferences\": {\n        \"optOut\": true\n      },\n      \"employeeClass\": \"string\"\n    }\n  ],\n  \"phone\": \"+12125551234\",\n  \"emailAddress\": \"gM-kP22ut@m.jkqtT4.06HB.gEm-96c.mHrS8i.uZGVrxeaw.7VC.vwCrAJJvjBJ\",\n  \"ssnLastFour\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "19f3121b-4741-44dc-9132-10c910e3fc57",
+          "name": "Update a member's demographics",
+          "request": {
+            "name": "Update a member's demographics",
+            "description": {
+              "content": "Update demographic fields (name, sex, SSN, date of birth, and address) for a specific member. Only the provided fields are changed. Email and phone are updated via the updateLogin endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "members",
+                ":memberId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "memberId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"sex\": \"<string>\",\n  \"ssn\": \"<string>\",\n  \"birthday\": \"<string>\",\n  \"line1\": \"<string>\",\n  \"line2\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"zip\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2fa6c578-8810-4107-a578-e5f04b2b3908",
+              "name": "Member updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "members",
+                    ":memberId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "memberId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"sex\": \"<string>\",\n  \"ssn\": \"{ raw: \\\"123-45-6789\\\", masked: \\\"***-**-6789\\\" }\",\n  \"birthday\": \"<string>\",\n  \"line1\": \"<string>\",\n  \"line2\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"zip\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c15059c9-1867-4ba8-8d5e-4fbedb26a009",
+          "name": "Update the login information for a member",
+          "request": {
+            "name": "Update the login information for a member",
+            "description": {
+              "content": "Update the email address and/or phone number for a specific member\nNull values are allowed to clear the field",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "members",
+                ":memberId",
+                "updateLogin"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "memberId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"phoneNumber\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "827beb93-5e73-4d35-af1e-233c425a1b3a",
+              "name": "Member updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "members",
+                    ":memberId",
+                    "updateLogin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "memberId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"phoneNumber\": \"+12125551234\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "833d75de-6e88-456b-b445-bdf503aca541",
+    "name": "Yuzu Accumulator (Experimental) Accumulator (Experimental) Member API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Yuzu's Public API",
+      "type": "text/plain"
+    }
+  }
+}

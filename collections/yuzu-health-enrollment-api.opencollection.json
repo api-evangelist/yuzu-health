@@ -1,0 +1,101 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Yuzu Accumulator (Experimental) Accumulator (Experimental) Enrollment API",
+    "version": "0.5"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Enrollment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add subscribers to an existing plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v3/groups/:groupPolicyId/enroll/add-subscriber",
+            "params": [
+              {
+                "name": "groupPolicyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Enroll one or more new subscribers and their families on an existing plan. For reason `newHire`, each subscriber's coverage start is derived from their hire date and the plan's waiting-period rules. For a qualifying-life-event reason, coverage starts on the provided effectiveDate."
+        },
+        {
+          "info": {
+            "name": "Add a dependent to an existing subscriber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v3/groups/:groupPolicyId/enroll/:subscriberCoverageId/add-dependent",
+            "params": [
+              {
+                "name": "groupPolicyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "subscriberCoverageId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Enroll a single dependent (spouse or child) under an existing subscriber, identified by the subscriber's coverage id (the `subscriberId` field returned on a coverage). The dependent is added to that coverage's plan and coverage starts on the provided effectiveDate."
+        },
+        {
+          "info": {
+            "name": "Terminate coverage on an existing plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v3/groups/:groupPolicyId/enroll/terminate",
+            "params": [
+              {
+                "name": "groupPolicyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Terminate the coverage identified by coverageId, dispatching by reason. A subscriber's coverage terminates the whole family; a dependent's coverage terminates only that dependent. Employment termination is only valid on a subscriber's coverage. terminationDate is required for every reason except mistakeEnrollment (a mistaken-enrollment correction). For employment termination COBRA eligibility is taken from cobraEligible; for every other reason it is derived from the reason."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

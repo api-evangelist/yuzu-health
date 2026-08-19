@@ -1,0 +1,377 @@
+{
+  "item": [
+    {
+      "id": "38b69f55-1801-419a-b318-223b04d60955",
+      "name": "Group Policy",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "566c5606-27ec-4b90-8a4e-6b83d0587071",
+          "name": "Renew a group policy",
+          "request": {
+            "name": "Renew a group policy",
+            "description": {
+              "content": "Renew a group policy",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "groups",
+                ":groupPolicyId",
+                "renew"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupPolicyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "88c3583e-bd50-47c5-8c15-49674c1020d7",
+              "name": "ID of the new group policy with copied plans, benefit bundles and follows the same renewal process as the portal",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "groups",
+                    ":groupPolicyId",
+                    "renew"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupPolicyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"groupPolicyId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7ec6cc6c-e953-4159-83f0-6bd5c23eeffe",
+          "name": "Get the rules of a group policy",
+          "request": {
+            "name": "Get the rules of a group policy",
+            "description": {
+              "content": "Get the rules of a group policy",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "groups",
+                ":groupPolicyId",
+                "rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupPolicyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4d8c2f46-29a7-4c9c-b2e2-c435fe9ff513",
+              "name": "Group Policy Rules",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "groups",
+                    ":groupPolicyId",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupPolicyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"terminationRule\": \"endOfMonth\",\n  \"ageOutTerminationRule\": \"endOfPlanYear\",\n  \"enrollmentWaitingPeriodType\": \"days\",\n  \"accumulatorPeriod\": \"planYear\",\n  \"loadAccumulators\": false,\n  \"enrollmentWaitingPeriod\": 438964789795978,\n  \"isCobraManagedByYuzu\": true,\n  \"externalCobraVendor\": {\n    \"name\": \"string\",\n    \"phoneNumber\": \"+12125551234\"\n  },\n  \"humanReadableEnrollmentWaitingPeriod\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dd74e5e7-a767-4955-90bf-f0cbf9b31536",
+          "name": "Update the rules of a group policy",
+          "request": {
+            "name": "Update the rules of a group policy",
+            "description": {
+              "content": "Update the rules of a group policy",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "groups",
+                ":groupPolicyId",
+                "rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupPolicyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"terminationRule\": \"<string>\",\n  \"ageOutTerminationRule\": \"<string>\",\n  \"enrollmentWaitingPeriodType\": \"<string>\",\n  \"accumulatorPeriod\": \"<string>\",\n  \"loadAccumulators\": \"<boolean>\",\n  \"enrollmentWaitingPeriod\": \"<integer>\",\n  \"isCobraManagedByYuzu\": \"<boolean>\",\n  \"externalCobraVendor\": {\n    \"name\": \"<string>\",\n    \"phoneNumber\": \"<string>\"\n  },\n  \"waitingPeriodRules\": [\n    {\n      \"employeeClassTagName\": \"<string>\",\n      \"days\": \"<integer>\",\n      \"rounding\": \"<string>\"\n    },\n    {\n      \"employeeClassTagName\": \"<string>\",\n      \"days\": \"<integer>\",\n      \"rounding\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a94cf3bd-4d62-4281-9404-49644a0d2257",
+              "name": "Group Policy Rules",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "groups",
+                    ":groupPolicyId",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupPolicyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"terminationRule\": \"<string>\",\n  \"ageOutTerminationRule\": \"<string>\",\n  \"enrollmentWaitingPeriodType\": \"<string>\",\n  \"accumulatorPeriod\": \"<string>\",\n  \"loadAccumulators\": \"<boolean>\",\n  \"enrollmentWaitingPeriod\": \"<integer>\",\n  \"isCobraManagedByYuzu\": \"<boolean>\",\n  \"externalCobraVendor\": {\n    \"name\": \"<string>\",\n    \"phoneNumber\": \"+12125551234\"\n  },\n  \"waitingPeriodRules\": [\n    {\n      \"employeeClassTagName\": \"<string>\",\n      \"days\": \"<integer>\",\n      \"rounding\": \"<string>\"\n    },\n    {\n      \"employeeClassTagName\": \"<string>\",\n      \"days\": \"<integer>\",\n      \"rounding\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"terminationRule\": \"lastDayOfEmployment\",\n  \"ageOutTerminationRule\": \"endOfPlanYear\",\n  \"enrollmentWaitingPeriodType\": \"days\",\n  \"accumulatorPeriod\": \"planYear\",\n  \"loadAccumulators\": true,\n  \"enrollmentWaitingPeriod\": 3811743724538037,\n  \"isCobraManagedByYuzu\": true,\n  \"externalCobraVendor\": {\n    \"name\": \"string\",\n    \"phoneNumber\": \"+12125551234\"\n  },\n  \"humanReadableEnrollmentWaitingPeriod\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "401447d8-ba23-488c-9fe5-29b4116d7970",
+    "name": "Yuzu Accumulator (Experimental) Accumulator (Experimental) Group Policy API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Yuzu's Public API",
+      "type": "text/plain"
+    }
+  }
+}

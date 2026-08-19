@@ -1,0 +1,1918 @@
+{
+  "item": [
+    {
+      "id": "1b7b6402-3891-440c-a6b1-e88f538f87fd",
+      "name": "PublicApiV2",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "12eb3e73-5a7f-4549-b9d8-46572b030e95",
+          "name": "Create a group",
+          "request": {
+            "name": "Create a group",
+            "description": {
+              "content": "Create a new group with the provided data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"startDate\": \"<string>\",\n  \"endDate\": \"<string>\",\n  \"groupId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"ein\": \"<string>\",\n  \"plans\": [\n    {\n      \"planDesignId\": \"<string>\",\n      \"broker\": {\n        \"planFees\": [\n          {\n            \"name\": \"<string>\",\n            \"eeCents\": 0,\n            \"esCents\": 0,\n            \"ecCents\": 0,\n            \"efCents\": 0,\n            \"adultCents\": 0,\n            \"minorCents\": 0,\n            \"flatCents\": 0,\n            \"isVariable\": false,\n            \"isReserve\": false\n          },\n          {\n            \"name\": \"<string>\",\n            \"eeCents\": 0,\n            \"esCents\": 0,\n            \"ecCents\": 0,\n            \"efCents\": 0,\n            \"adultCents\": 0,\n            \"minorCents\": 0,\n            \"flatCents\": 0,\n            \"isVariable\": false,\n            \"isReserve\": false\n          }\n        ],\n        \"vendorId\": \"<string>\"\n      },\n      \"stoploss\": {\n        \"planFees\": [\n          {\n            \"name\": \"<string>\",\n            \"eeCents\": 0,\n            \"esCents\": 0,\n            \"ecCents\": 0,\n            \"efCents\": 0,\n            \"adultCents\": 0,\n            \"minorCents\": 0,\n            \"flatCents\": 0,\n            \"isVariable\": false,\n            \"isReserve\": false\n          },\n          {\n            \"name\": \"<string>\",\n            \"eeCents\": 0,\n            \"esCents\": 0,\n            \"ecCents\": 0,\n            \"efCents\": 0,\n            \"adultCents\": 0,\n            \"minorCents\": 0,\n            \"flatCents\": 0,\n            \"isVariable\": false,\n            \"isReserve\": false\n          }\n        ],\n        \"vendorId\": \"<string>\",\n        \"contract\": {\n          \"aggEeCents\": 0,\n          \"aggEsCents\": 0,\n          \"aggEcCents\": 0,\n          \"aggEfCents\": 0,\n          \"type\": \"<string>\",\n          \"policyNumber\": \"<string>\",\n          \"specAttachmentCents\": \"<number>\",\n          \"aggAccommodationDeductibleCents\": \"<number>\",\n          \"aggregatingSpecDeductibleCents\": \"<number>\",\n          \"minAggAttachmentCents\": \"<string>\",\n          \"incurredMonths\": \"<number>\",\n          \"paidMonths\": \"<number>\"\n        }\n      },\n      \"cobra\": {\n        \"planFees\": [\n          {\n            \"name\": \"<string>\",\n            \"eeCents\": 0,\n            \"esCents\": 0,\n            \"ecCents\": 0,\n            \"efCents\": 0,\n            \"adultCents\": 0,\n            \"minorCents\": 0,\n            \"flatCents\": 0,\n            \"isVariable\": false,\n            \"isReserve\": false\n          },\n          {\n            \"name\": \"<string>\",\n            \"eeCents\": 0,\n            \"esCents\": 0,\n            \"ecCents\": 0,\n            \"efCents\": 0,\n            \"adultCents\": 0,\n            \"minorCents\": 0,\n            \"flatCents\": 0,\n            \"isVariable\": false,\n            \"isReserve\": false\n          }\n        ],\n        \"vendorId\": \"<string>\"\n      }\n    },\n    {\n      \"planDesignId\": \"<string>\",\n      \"broker\": {\n        \"planFees\": [\n          {\n            \"name\": \"<string>\",\n            \"eeCents\": 0,\n            \"esCents\": 0,\n            \"ecCents\": 0,\n            \"efCents\": 0,\n            \"adultCents\": 0,\n            \"minorCents\": 0,\n            \"flatCents\": 0,\n            \"isVariable\": false,\n            \"isReserve\": false\n          },\n          {\n            \"name\": \"<string>\",\n            \"eeCents\": 0,\n            \"esCents\": 0,\n            \"ecCents\": 0,\n            \"efCents\": 0,\n            \"adultCents\": 0,\n            \"minorCents\": 0,\n            \"flatCents\": 0,\n            \"isVariable\": false,\n            \"isReserve\": false\n          }\n        ],\n        \"vendorId\": \"<string>\"\n      },\n      \"stoploss\": {\n        \"planFees\": [\n          {\n            \"name\": \"<string>\",\n            \"eeCents\": 0,\n            \"esCents\": 0,\n            \"ecCents\": 0,\n            \"efCents\": 0,\n            \"adultCents\": 0,\n            \"minorCents\": 0,\n            \"flatCents\": 0,\n            \"isVariable\": false,\n            \"isReserve\": false\n          },\n          {\n            \"name\": \"<string>\",\n            \"eeCents\": 0,\n            \"esCents\": 0,\n            \"ecCents\": 0,\n            \"efCents\": 0,\n            \"adultCents\": 0,\n            \"minorCents\": 0,\n            \"flatCents\": 0,\n            \"isVariable\": false,\n            \"isReserve\": false\n          }\n        ],\n        \"vendorId\": \"<string>\",\n        \"contract\": {\n          \"aggEeCents\": 0,\n          \"aggEsCents\": 0,\n          \"aggEcCents\": 0,\n          \"aggEfCents\": 0,\n          \"type\": \"<string>\",\n          \"policyNumber\": \"<string>\",\n          \"specAttachmentCents\": \"<number>\",\n          \"aggAccommodationDeductibleCents\": \"<number>\",\n          \"aggregatingSpecDeductibleCents\": \"<number>\",\n          \"minAggAttachmentCents\": \"<string>\",\n          \"incurredMonths\": \"<number>\",\n          \"paidMonths\": \"<number>\"\n        }\n      },\n      \"cobra\": {\n        \"planFees\": [\n          {\n            \"name\": \"<string>\",\n            \"eeCents\": 0,\n            \"esCents\": 0,\n            \"ecCents\": 0,\n            \"efCents\": 0,\n            \"adultCents\": 0,\n            \"minorCents\": 0,\n            \"flatCents\": 0,\n            \"isVariable\": false,\n            \"isReserve\": false\n          },\n          {\n            \"name\": \"<string>\",\n            \"eeCents\": 0,\n            \"esCents\": 0,\n            \"ecCents\": 0,\n            \"efCents\": 0,\n            \"adultCents\": 0,\n            \"minorCents\": 0,\n            \"flatCents\": 0,\n            \"isVariable\": false,\n            \"isReserve\": false\n          }\n        ],\n        \"vendorId\": \"<string>\"\n      }\n    }\n  ],\n  \"description\": \"<string>\",\n  \"website\": \"<uri>\",\n  \"phoneNumber\": \"<string>\",\n  \"businessType\": \"<string>\",\n  \"address\": {\n    \"address1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"address2\": \"<string>\"\n  },\n  \"structure\": \"<string>\",\n  \"adminEmail\": \"<email>\",\n  \"admin\": {\n    \"email\": \"<email>\",\n    \"name\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"jobTitle\": \"<string>\",\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"invoicingEmails\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"contractEmails\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"rules\": {\n    \"accumulatorPeriod\": \"<string>\",\n    \"runIn\": \"<boolean>\",\n    \"loadAccumulators\": \"<boolean>\",\n    \"cobraExempt\": \"<boolean>\",\n    \"erisaExempt\": \"<boolean>\",\n    \"enrollmentWaitingPeriodType\": \"<string>\",\n    \"enrollmentWaitingPeriod\": \"<integer>\",\n    \"externalCobraVendorId\": \"<string>\",\n    \"externalCobraVendor\": {\n      \"name\": \"<string>\",\n      \"phoneNumber\": \"<string>\"\n    },\n    \"isCobraManagedByYuzu\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a612b28d-0a27-4105-becb-2939cecba856",
+              "name": "Group Policy",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"startDate\": \"<string>\",\n  \"endDate\": \"<string>\",\n  \"groupId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"ein\": \"123456789\",\n  \"plans\": [\n    {\n      \"planDesignId\": \"<string>\",\n      \"broker\": {\n        \"planFees\": [\n          {\n            \"name\": \"<string>\",\n            \"eeCents\": 0,\n            \"esCents\": 0,\n            \"ecCents\": 0,\n            \"efCents\": 0,\n            \"adultCents\": 0,\n            \"minorCents\": 0,\n            \"flatCents\": 0,\n            \"isVariable\": false,\n            \"isReserve\": false\n          },\n          {\n            \"name\": \"<string>\",\n            \"eeCents\": 0,\n            \"esCents\": 0,\n            \"ecCents\": 0,\n            \"efCents\": 0,\n            \"adultCents\": 0,\n            \"minorCents\": 0,\n            \"flatCents\": 0,\n            \"isVariable\": false,\n            \"isReserve\": false\n          }\n        ],\n        \"vendorId\": \"<string>\"\n      },\n      \"stoploss\": {\n        \"planFees\": [\n          {\n            \"name\": \"<string>\",\n            \"eeCents\": 0,\n            \"esCents\": 0,\n            \"ecCents\": 0,\n            \"efCents\": 0,\n            \"adultCents\": 0,\n            \"minorCents\": 0,\n            \"flatCents\": 0,\n            \"isVariable\": false,\n            \"isReserve\": false\n          },\n          {\n            \"name\": \"<string>\",\n            \"eeCents\": 0,\n            \"esCents\": 0,\n            \"ecCents\": 0,\n            \"efCents\": 0,\n            \"adultCents\": 0,\n            \"minorCents\": 0,\n            \"flatCents\": 0,\n            \"isVariable\": false,\n            \"isReserve\": false\n          }\n        ],\n        \"vendorId\": \"<string>\",\n        \"contract\": {\n          \"aggEeCents\": 0,\n          \"aggEsCents\": 0,\n          \"aggEcCents\": 0,\n          \"aggEfCents\": 0,\n          \"type\": \"<string>\",\n          \"policyNumber\": \"<string>\",\n          \"specAttachmentCents\": \"<number>\",\n          \"aggAccommodationDeductibleCents\": \"<number>\",\n          \"aggregatingSpecDeductibleCents\": \"<number>\",\n          \"minAggAttachmentCents\": \"<string>\",\n          \"incurredMonths\": \"<number>\",\n          \"paidMonths\": \"<number>\"\n        }\n      },\n      \"cobra\": {\n        \"planFees\": [\n          {\n            \"name\": \"<string>\",\n            \"eeCents\": 0,\n            \"esCents\": 0,\n            \"ecCents\": 0,\n            \"efCents\": 0,\n            \"adultCents\": 0,\n            \"minorCents\": 0,\n            \"flatCents\": 0,\n            \"isVariable\": false,\n            \"isReserve\": false\n          },\n          {\n            \"name\": \"<string>\",\n            \"eeCents\": 0,\n            \"esCents\": 0,\n            \"ecCents\": 0,\n            \"efCents\": 0,\n            \"adultCents\": 0,\n            \"minorCents\": 0,\n            \"flatCents\": 0,\n            \"isVariable\": false,\n            \"isReserve\": false\n          }\n        ],\n        \"vendorId\": \"<string>\"\n      }\n    },\n    {\n      \"planDesignId\": \"<string>\",\n      \"broker\": {\n        \"planFees\": [\n          {\n            \"name\": \"<string>\",\n            \"eeCents\": 0,\n            \"esCents\": 0,\n            \"ecCents\": 0,\n            \"efCents\": 0,\n            \"adultCents\": 0,\n            \"minorCents\": 0,\n            \"flatCents\": 0,\n            \"isVariable\": false,\n            \"isReserve\": false\n          },\n          {\n            \"name\": \"<string>\",\n            \"eeCents\": 0,\n            \"esCents\": 0,\n            \"ecCents\": 0,\n            \"efCents\": 0,\n            \"adultCents\": 0,\n            \"minorCents\": 0,\n            \"flatCents\": 0,\n            \"isVariable\": false,\n            \"isReserve\": false\n          }\n        ],\n        \"vendorId\": \"<string>\"\n      },\n      \"stoploss\": {\n        \"planFees\": [\n          {\n            \"name\": \"<string>\",\n            \"eeCents\": 0,\n            \"esCents\": 0,\n            \"ecCents\": 0,\n            \"efCents\": 0,\n            \"adultCents\": 0,\n            \"minorCents\": 0,\n            \"flatCents\": 0,\n            \"isVariable\": false,\n            \"isReserve\": false\n          },\n          {\n            \"name\": \"<string>\",\n            \"eeCents\": 0,\n            \"esCents\": 0,\n            \"ecCents\": 0,\n            \"efCents\": 0,\n            \"adultCents\": 0,\n            \"minorCents\": 0,\n            \"flatCents\": 0,\n            \"isVariable\": false,\n            \"isReserve\": false\n          }\n        ],\n        \"vendorId\": \"<string>\",\n        \"contract\": {\n          \"aggEeCents\": 0,\n          \"aggEsCents\": 0,\n          \"aggEcCents\": 0,\n          \"aggEfCents\": 0,\n          \"type\": \"<string>\",\n          \"policyNumber\": \"<string>\",\n          \"specAttachmentCents\": \"<number>\",\n          \"aggAccommodationDeductibleCents\": \"<number>\",\n          \"aggregatingSpecDeductibleCents\": \"<number>\",\n          \"minAggAttachmentCents\": \"<string>\",\n          \"incurredMonths\": \"<number>\",\n          \"paidMonths\": \"<number>\"\n        }\n      },\n      \"cobra\": {\n        \"planFees\": [\n          {\n            \"name\": \"<string>\",\n            \"eeCents\": 0,\n            \"esCents\": 0,\n            \"ecCents\": 0,\n            \"efCents\": 0,\n            \"adultCents\": 0,\n            \"minorCents\": 0,\n            \"flatCents\": 0,\n            \"isVariable\": false,\n            \"isReserve\": false\n          },\n          {\n            \"name\": \"<string>\",\n            \"eeCents\": 0,\n            \"esCents\": 0,\n            \"ecCents\": 0,\n            \"efCents\": 0,\n            \"adultCents\": 0,\n            \"minorCents\": 0,\n            \"flatCents\": 0,\n            \"isVariable\": false,\n            \"isReserve\": false\n          }\n        ],\n        \"vendorId\": \"<string>\"\n      }\n    }\n  ],\n  \"description\": \"<string>\",\n  \"website\": \"<uri>\",\n  \"phoneNumber\": \"+12125551234\",\n  \"businessType\": \"<string>\",\n  \"address\": {\n    \"address1\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"address2\": \"<string>\"\n  },\n  \"structure\": \"<string>\",\n  \"adminEmail\": \"<email>\",\n  \"admin\": {\n    \"email\": \"<email>\",\n    \"name\": \"<string>\",\n    \"phoneNumber\": \"+12125551234\",\n    \"jobTitle\": \"<string>\",\n    \"roles\": [\n      \"hr\",\n      \"hr\"\n    ]\n  },\n  \"invoicingEmails\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"contractEmails\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"rules\": {\n    \"accumulatorPeriod\": \"<string>\",\n    \"runIn\": \"<boolean>\",\n    \"loadAccumulators\": \"<boolean>\",\n    \"cobraExempt\": \"<boolean>\",\n    \"erisaExempt\": \"<boolean>\",\n    \"enrollmentWaitingPeriodType\": \"<string>\",\n    \"enrollmentWaitingPeriod\": 1,\n    \"externalCobraVendorId\": \"<string>\",\n    \"externalCobraVendor\": {\n      \"name\": \"<string>\",\n      \"phoneNumber\": \"+12125551234\"\n    },\n    \"isCobraManagedByYuzu\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"startDate\": \"string\",\n  \"endDate\": \"string\",\n  \"groupId\": \"string\",\n  \"plans\": [\n    {\n      \"id\": \"string\",\n      \"planNumber\": \"string\",\n      \"nickname\": \"string\",\n      \"type\": \"Dental\",\n      \"basePlanDesignId\": \"string\",\n      \"vendorRelationships\": [\n        {\n          \"id\": \"string\",\n          \"vendor\": {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"ein\": \"string\"\n          },\n          \"planFees\": [\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0,\n              \"isVariable\": false,\n              \"isReserve\": false\n            },\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0,\n              \"isVariable\": false,\n              \"isReserve\": false\n            }\n          ],\n          \"stoplossContract\": {\n            \"aggEeCents\": 0,\n            \"aggEsCents\": 0,\n            \"aggEcCents\": 0,\n            \"aggEfCents\": 0,\n            \"type\": \"aggregate\",\n            \"policyNumber\": \"string\",\n            \"specAttachmentCents\": 3663.5794113369434,\n            \"aggAccommodationDeductibleCents\": 1637.8995514507988,\n            \"aggregatingSpecDeductibleCents\": 7825.351201315717,\n            \"minAggAttachmentCents\": \"4444774239\",\n            \"incurredMonths\": 8839.483682247526,\n            \"paidMonths\": 8804.679292298593\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"vendor\": {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"ein\": \"string\"\n          },\n          \"planFees\": [\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0,\n              \"isVariable\": false,\n              \"isReserve\": false\n            },\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0,\n              \"isVariable\": false,\n              \"isReserve\": false\n            }\n          ],\n          \"stoplossContract\": {\n            \"aggEeCents\": 0,\n            \"aggEsCents\": 0,\n            \"aggEcCents\": 0,\n            \"aggEfCents\": 0,\n            \"type\": \"specAndAgg\",\n            \"policyNumber\": \"string\",\n            \"specAttachmentCents\": 6668.2061707302,\n            \"aggAccommodationDeductibleCents\": 2460.4528279583237,\n            \"aggregatingSpecDeductibleCents\": 8321.187824504606,\n            \"minAggAttachmentCents\": \"0408\",\n            \"incurredMonths\": 6252.9733960135645,\n            \"paidMonths\": 9399.475777995001\n          }\n        }\n      ],\n      \"cobraVendorId\": \"string\",\n      \"brokerVendorId\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"planNumber\": \"string\",\n      \"nickname\": \"string\",\n      \"type\": \"RBP\",\n      \"basePlanDesignId\": \"string\",\n      \"vendorRelationships\": [\n        {\n          \"id\": \"string\",\n          \"vendor\": {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"ein\": \"string\"\n          },\n          \"planFees\": [\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0,\n              \"isVariable\": false,\n              \"isReserve\": false\n            },\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0,\n              \"isVariable\": false,\n              \"isReserve\": false\n            }\n          ],\n          \"stoplossContract\": {\n            \"aggEeCents\": 0,\n            \"aggEsCents\": 0,\n            \"aggEcCents\": 0,\n            \"aggEfCents\": 0,\n            \"type\": \"specAndAgg\",\n            \"policyNumber\": \"string\",\n            \"specAttachmentCents\": 5872.292519979256,\n            \"aggAccommodationDeductibleCents\": 4383.451955141016,\n            \"aggregatingSpecDeductibleCents\": 7294.284973945987,\n            \"minAggAttachmentCents\": \"91\",\n            \"incurredMonths\": 5509.974644058242,\n            \"paidMonths\": 7753.713283450999\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"vendor\": {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"ein\": \"string\"\n          },\n          \"planFees\": [\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0,\n              \"isVariable\": false,\n              \"isReserve\": false\n            },\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0,\n              \"isVariable\": false,\n              \"isReserve\": false\n            }\n          ],\n          \"stoplossContract\": {\n            \"aggEeCents\": 0,\n            \"aggEsCents\": 0,\n            \"aggEcCents\": 0,\n            \"aggEfCents\": 0,\n            \"type\": \"specific\",\n            \"policyNumber\": \"string\",\n            \"specAttachmentCents\": 3489.314384143114,\n            \"aggAccommodationDeductibleCents\": 624.8643710413537,\n            \"aggregatingSpecDeductibleCents\": 2874.025049525757,\n            \"minAggAttachmentCents\": \"2135923\",\n            \"incurredMonths\": 2990.0291030629933,\n            \"paidMonths\": 2738.8954271534185\n          }\n        }\n      ],\n      \"cobraVendorId\": \"string\",\n      \"brokerVendorId\": \"string\"\n    }\n  ],\n  \"sponsor\": {\n    \"id\": \"string\",\n    \"namespace\": \"string\",\n    \"name\": \"string\",\n    \"invoicingEmails\": [\n      \"t+i.'ic2bQm@LK.BtrXCoxV.G-8u8czX.Y1jvut9i2.O.q3awNQLu3.Sjw.teiXpV\",\n      \"22FTF2v@gc.EAwZF.h.vRV.pN8xOrY.WqWklppkRO6.7n.z.jmct7f-QeV.UefB\"\n    ],\n    \"contractEmails\": [\n      \"DuwjtKubA.N@H9L87G.j5EMPMTNYVa.b52w.bLsZV.PoZ\",\n      \"b@VK8p-eTSw.NZ9RuxIV.73.iEpbB\"\n    ],\n    \"website\": \"https://GtZbPEyXUGNnnecGi.ugfiDYI57Q9iNzZfCc0VNl67HQWSjiHnEYb3RiCjHRvaK6YDTZqPL1gAd5eUsiCWMC0OHT9qD5NvJin\",\n    \"description\": \"string\",\n    \"phoneNumber\": \"+12125551234\",\n    \"address\": {\n      \"address1\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"KS\",\n      \"postalCode\": \"89301-5511\",\n      \"address2\": \"string\"\n    },\n    \"bankingVerified\": true,\n    \"brokerVendor\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"ein\": \"string\"\n    },\n    \"ein\": \"123456789\",\n    \"structure\": \"LLP\",\n    \"businessType\": \"company\"\n  },\n  \"rules\": {\n    \"accumulatorPeriod\": \"calendarYear\",\n    \"runIn\": true,\n    \"loadAccumulators\": false,\n    \"cobraExempt\": false,\n    \"erisaExempt\": false,\n    \"enrollmentWaitingPeriodType\": \"days\",\n    \"enrollmentWaitingPeriod\": 1,\n    \"externalCobraVendorId\": \"string\",\n    \"externalCobraVendor\": {\n      \"name\": \"string\",\n      \"phoneNumber\": \"+12125551234\"\n    },\n    \"isCobraManagedByYuzu\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d9e803ab-473e-4809-91cc-15c9d39b28fc",
+          "name": "List all group policies",
+          "request": {
+            "name": "List all group policies",
+            "description": {
+              "content": "Fetch a paginated list of all group policies with optional filters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startAfter",
+                  "value": "<string>",
+                  "description": "Pagination cursor"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a584df3b-09a4-4404-b2cd-33a776d08473",
+              "name": "Paginated Group Policies",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startAfter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"id\": \"string\",\n      \"startDate\": \"string\",\n      \"endDate\": \"string\",\n      \"groupId\": \"string\",\n      \"plans\": [\n        {\n          \"id\": \"string\",\n          \"planNumber\": \"string\",\n          \"nickname\": \"string\",\n          \"type\": \"Cash\",\n          \"basePlanDesignId\": \"string\",\n          \"vendorRelationships\": [\n            {\n              \"id\": \"string\",\n              \"vendor\": {\n                \"id\": \"string\",\n                \"name\": \"string\",\n                \"ein\": \"string\"\n              },\n              \"planFees\": [\n                {\n                  \"id\": \"string\",\n                  \"name\": \"string\",\n                  \"eeCents\": 0,\n                  \"esCents\": 0,\n                  \"ecCents\": 0,\n                  \"efCents\": 0,\n                  \"adultCents\": 0,\n                  \"minorCents\": 0,\n                  \"flatCents\": 0,\n                  \"isVariable\": false,\n                  \"isReserve\": false\n                },\n                {\n                  \"id\": \"string\",\n                  \"name\": \"string\",\n                  \"eeCents\": 0,\n                  \"esCents\": 0,\n                  \"ecCents\": 0,\n                  \"efCents\": 0,\n                  \"adultCents\": 0,\n                  \"minorCents\": 0,\n                  \"flatCents\": 0,\n                  \"isVariable\": false,\n                  \"isReserve\": false\n                }\n              ],\n              \"stoplossContract\": {\n                \"aggEeCents\": 0,\n                \"aggEsCents\": 0,\n                \"aggEcCents\": 0,\n                \"aggEfCents\": 0,\n                \"type\": \"specAndAgg\",\n                \"policyNumber\": \"string\",\n                \"specAttachmentCents\": 7803.035694414606,\n                \"aggAccommodationDeductibleCents\": 655.5315550838259,\n                \"aggregatingSpecDeductibleCents\": 7450.256087539736,\n                \"minAggAttachmentCents\": \"989574522\",\n                \"incurredMonths\": 5510.114345602003,\n                \"paidMonths\": 4729.843359820793\n              }\n            },\n            {\n              \"id\": \"string\",\n              \"vendor\": {\n                \"id\": \"string\",\n                \"name\": \"string\",\n                \"ein\": \"string\"\n              },\n              \"planFees\": [\n                {\n                  \"id\": \"string\",\n                  \"name\": \"string\",\n                  \"eeCents\": 0,\n                  \"esCents\": 0,\n                  \"ecCents\": 0,\n                  \"efCents\": 0,\n                  \"adultCents\": 0,\n                  \"minorCents\": 0,\n                  \"flatCents\": 0,\n                  \"isVariable\": false,\n                  \"isReserve\": false\n                },\n                {\n                  \"id\": \"string\",\n                  \"name\": \"string\",\n                  \"eeCents\": 0,\n                  \"esCents\": 0,\n                  \"ecCents\": 0,\n                  \"efCents\": 0,\n                  \"adultCents\": 0,\n                  \"minorCents\": 0,\n                  \"flatCents\": 0,\n                  \"isVariable\": false,\n                  \"isReserve\": false\n                }\n              ],\n              \"stoplossContract\": {\n                \"aggEeCents\": 0,\n                \"aggEsCents\": 0,\n                \"aggEcCents\": 0,\n                \"aggEfCents\": 0,\n                \"type\": \"aggregate\",\n                \"policyNumber\": \"string\",\n                \"specAttachmentCents\": 6663.132292541973,\n                \"aggAccommodationDeductibleCents\": 4455.929893833848,\n                \"aggregatingSpecDeductibleCents\": 4195.555715679249,\n                \"minAggAttachmentCents\": \"22\",\n                \"incurredMonths\": 9444.780744383479,\n                \"paidMonths\": 803.7596443747597\n              }\n            }\n          ],\n          \"cobraVendorId\": \"string\",\n          \"brokerVendorId\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"planNumber\": \"string\",\n          \"nickname\": \"string\",\n          \"type\": \"Dental\",\n          \"basePlanDesignId\": \"string\",\n          \"vendorRelationships\": [\n            {\n              \"id\": \"string\",\n              \"vendor\": {\n                \"id\": \"string\",\n                \"name\": \"string\",\n                \"ein\": \"string\"\n              },\n              \"planFees\": [\n                {\n                  \"id\": \"string\",\n                  \"name\": \"string\",\n                  \"eeCents\": 0,\n                  \"esCents\": 0,\n                  \"ecCents\": 0,\n                  \"efCents\": 0,\n                  \"adultCents\": 0,\n                  \"minorCents\": 0,\n                  \"flatCents\": 0,\n                  \"isVariable\": false,\n                  \"isReserve\": false\n                },\n                {\n                  \"id\": \"string\",\n                  \"name\": \"string\",\n                  \"eeCents\": 0,\n                  \"esCents\": 0,\n                  \"ecCents\": 0,\n                  \"efCents\": 0,\n                  \"adultCents\": 0,\n                  \"minorCents\": 0,\n                  \"flatCents\": 0,\n                  \"isVariable\": false,\n                  \"isReserve\": false\n                }\n              ],\n              \"stoplossContract\": {\n                \"aggEeCents\": 0,\n                \"aggEsCents\": 0,\n                \"aggEcCents\": 0,\n                \"aggEfCents\": 0,\n                \"type\": \"specAndAgg\",\n                \"policyNumber\": \"string\",\n                \"specAttachmentCents\": 841.2534068500211,\n                \"aggAccommodationDeductibleCents\": 3079.6673492172554,\n                \"aggregatingSpecDeductibleCents\": 1648.1943261068432,\n                \"minAggAttachmentCents\": \"5\",\n                \"incurredMonths\": 3050.4948529494836,\n                \"paidMonths\": 789.3039108418332\n              }\n            },\n            {\n              \"id\": \"string\",\n              \"vendor\": {\n                \"id\": \"string\",\n                \"name\": \"string\",\n                \"ein\": \"string\"\n              },\n              \"planFees\": [\n                {\n                  \"id\": \"string\",\n                  \"name\": \"string\",\n                  \"eeCents\": 0,\n                  \"esCents\": 0,\n                  \"ecCents\": 0,\n                  \"efCents\": 0,\n                  \"adultCents\": 0,\n                  \"minorCents\": 0,\n                  \"flatCents\": 0,\n                  \"isVariable\": false,\n                  \"isReserve\": false\n                },\n                {\n                  \"id\": \"string\",\n                  \"name\": \"string\",\n                  \"eeCents\": 0,\n                  \"esCents\": 0,\n                  \"ecCents\": 0,\n                  \"efCents\": 0,\n                  \"adultCents\": 0,\n                  \"minorCents\": 0,\n                  \"flatCents\": 0,\n                  \"isVariable\": false,\n                  \"isReserve\": false\n                }\n              ],\n              \"stoplossContract\": {\n                \"aggEeCents\": 0,\n                \"aggEsCents\": 0,\n                \"aggEcCents\": 0,\n                \"aggEfCents\": 0,\n                \"type\": \"specAndAgg\",\n                \"policyNumber\": \"string\",\n                \"specAttachmentCents\": 952.832821048002,\n                \"aggAccommodationDeductibleCents\": 4947.035934792546,\n                \"aggregatingSpecDeductibleCents\": 6035.453006390927,\n                \"minAggAttachmentCents\": \"37792825\",\n                \"incurredMonths\": 4894.059480145488,\n                \"paidMonths\": 8630.099000705513\n              }\n            }\n          ],\n          \"cobraVendorId\": \"string\",\n          \"brokerVendorId\": \"string\"\n        }\n      ],\n      \"sponsor\": {\n        \"id\": \"string\",\n        \"namespace\": \"string\",\n        \"name\": \"string\",\n        \"invoicingEmails\": [\n          \"LiQAwiajU@G.Eh88IT.oIphHd-Ek.LjZbu.tcutI.rFXeUa\",\n          \"lEhL7H9prP@5I7YY4Q69.C7sbOwyLy.4U-XvBWySKv.Y1RXHj.ITOd.TPkRKmH8Lp.iEk7P.p.si.7.ZUs5e5B-ciB.hBCSBpjnT\"\n        ],\n        \"contractEmails\": [\n          \"J@y.davnGUB.8Oy.d1acynWMt16.fGCPN\",\n          \"Z-J97iA7L3m@6fZ.1.dIpqRgdQO\"\n        ],\n        \"website\": \"http://yioUYMPCmtkzV.jeeNB8R6jQAqrBKlgXTN+4wCoDqkQ6jeJ6Lo4nhbSfeWYJh+d-Bm-CYmWuCZU\",\n        \"description\": \"string\",\n        \"phoneNumber\": \"+12125551234\",\n        \"address\": {\n          \"address1\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"MI\",\n          \"postalCode\": \"91408\",\n          \"address2\": \"string\"\n        },\n        \"bankingVerified\": true,\n        \"brokerVendor\": {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"ein\": \"string\"\n        },\n        \"ein\": \"123456789\",\n        \"structure\": \"C_Corporation\",\n        \"businessType\": \"non_profit\"\n      },\n      \"rules\": {\n        \"accumulatorPeriod\": \"calendarYear\",\n        \"runIn\": false,\n        \"loadAccumulators\": true,\n        \"cobraExempt\": true,\n        \"erisaExempt\": false,\n        \"enrollmentWaitingPeriodType\": \"months\",\n        \"enrollmentWaitingPeriod\": 1,\n        \"externalCobraVendorId\": \"string\",\n        \"externalCobraVendor\": {\n          \"name\": \"string\",\n          \"phoneNumber\": \"+12125551234\"\n        },\n        \"isCobraManagedByYuzu\": true\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"startDate\": \"string\",\n      \"endDate\": \"string\",\n      \"groupId\": \"string\",\n      \"plans\": [\n        {\n          \"id\": \"string\",\n          \"planNumber\": \"string\",\n          \"nickname\": \"string\",\n          \"type\": \"Cash\",\n          \"basePlanDesignId\": \"string\",\n          \"vendorRelationships\": [\n            {\n              \"id\": \"string\",\n              \"vendor\": {\n                \"id\": \"string\",\n                \"name\": \"string\",\n                \"ein\": \"string\"\n              },\n              \"planFees\": [\n                {\n                  \"id\": \"string\",\n                  \"name\": \"string\",\n                  \"eeCents\": 0,\n                  \"esCents\": 0,\n                  \"ecCents\": 0,\n                  \"efCents\": 0,\n                  \"adultCents\": 0,\n                  \"minorCents\": 0,\n                  \"flatCents\": 0,\n                  \"isVariable\": false,\n                  \"isReserve\": false\n                },\n                {\n                  \"id\": \"string\",\n                  \"name\": \"string\",\n                  \"eeCents\": 0,\n                  \"esCents\": 0,\n                  \"ecCents\": 0,\n                  \"efCents\": 0,\n                  \"adultCents\": 0,\n                  \"minorCents\": 0,\n                  \"flatCents\": 0,\n                  \"isVariable\": false,\n                  \"isReserve\": false\n                }\n              ],\n              \"stoplossContract\": {\n                \"aggEeCents\": 0,\n                \"aggEsCents\": 0,\n                \"aggEcCents\": 0,\n                \"aggEfCents\": 0,\n                \"type\": \"specific\",\n                \"policyNumber\": \"string\",\n                \"specAttachmentCents\": 563.8424414577747,\n                \"aggAccommodationDeductibleCents\": 9135.512388270705,\n                \"aggregatingSpecDeductibleCents\": 800.3382560910454,\n                \"minAggAttachmentCents\": \"1912574845\",\n                \"incurredMonths\": 487.94602650552577,\n                \"paidMonths\": 7748.576934235038\n              }\n            },\n            {\n              \"id\": \"string\",\n              \"vendor\": {\n                \"id\": \"string\",\n                \"name\": \"string\",\n                \"ein\": \"string\"\n              },\n              \"planFees\": [\n                {\n                  \"id\": \"string\",\n                  \"name\": \"string\",\n                  \"eeCents\": 0,\n                  \"esCents\": 0,\n                  \"ecCents\": 0,\n                  \"efCents\": 0,\n                  \"adultCents\": 0,\n                  \"minorCents\": 0,\n                  \"flatCents\": 0,\n                  \"isVariable\": false,\n                  \"isReserve\": false\n                },\n                {\n                  \"id\": \"string\",\n                  \"name\": \"string\",\n                  \"eeCents\": 0,\n                  \"esCents\": 0,\n                  \"ecCents\": 0,\n                  \"efCents\": 0,\n                  \"adultCents\": 0,\n                  \"minorCents\": 0,\n                  \"flatCents\": 0,\n                  \"isVariable\": false,\n                  \"isReserve\": false\n                }\n              ],\n              \"stoplossContract\": {\n                \"aggEeCents\": 0,\n                \"aggEsCents\": 0,\n                \"aggEcCents\": 0,\n                \"aggEfCents\": 0,\n                \"type\": \"specific\",\n                \"policyNumber\": \"string\",\n                \"specAttachmentCents\": 8617.742186535683,\n                \"aggAccommodationDeductibleCents\": 4778.580709136585,\n                \"aggregatingSpecDeductibleCents\": 3581.211391077307,\n                \"minAggAttachmentCents\": \"01451314\",\n                \"incurredMonths\": 2787.995411848856,\n                \"paidMonths\": 3508.75979832612\n              }\n            }\n          ],\n          \"cobraVendorId\": \"string\",\n          \"brokerVendorId\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"planNumber\": \"string\",\n          \"nickname\": \"string\",\n          \"type\": \"EPO\",\n          \"basePlanDesignId\": \"string\",\n          \"vendorRelationships\": [\n            {\n              \"id\": \"string\",\n              \"vendor\": {\n                \"id\": \"string\",\n                \"name\": \"string\",\n                \"ein\": \"string\"\n              },\n              \"planFees\": [\n                {\n                  \"id\": \"string\",\n                  \"name\": \"string\",\n                  \"eeCents\": 0,\n                  \"esCents\": 0,\n                  \"ecCents\": 0,\n                  \"efCents\": 0,\n                  \"adultCents\": 0,\n                  \"minorCents\": 0,\n                  \"flatCents\": 0,\n                  \"isVariable\": false,\n                  \"isReserve\": false\n                },\n                {\n                  \"id\": \"string\",\n                  \"name\": \"string\",\n                  \"eeCents\": 0,\n                  \"esCents\": 0,\n                  \"ecCents\": 0,\n                  \"efCents\": 0,\n                  \"adultCents\": 0,\n                  \"minorCents\": 0,\n                  \"flatCents\": 0,\n                  \"isVariable\": false,\n                  \"isReserve\": false\n                }\n              ],\n              \"stoplossContract\": {\n                \"aggEeCents\": 0,\n                \"aggEsCents\": 0,\n                \"aggEcCents\": 0,\n                \"aggEfCents\": 0,\n                \"type\": \"specific\",\n                \"policyNumber\": \"string\",\n                \"specAttachmentCents\": 928.144607550696,\n                \"aggAccommodationDeductibleCents\": 2222.06293794995,\n                \"aggregatingSpecDeductibleCents\": 1977.4616112841259,\n                \"minAggAttachmentCents\": \"3677\",\n                \"incurredMonths\": 360.27841016726734,\n                \"paidMonths\": 5628.69689769948\n              }\n            },\n            {\n              \"id\": \"string\",\n              \"vendor\": {\n                \"id\": \"string\",\n                \"name\": \"string\",\n                \"ein\": \"string\"\n              },\n              \"planFees\": [\n                {\n                  \"id\": \"string\",\n                  \"name\": \"string\",\n                  \"eeCents\": 0,\n                  \"esCents\": 0,\n                  \"ecCents\": 0,\n                  \"efCents\": 0,\n                  \"adultCents\": 0,\n                  \"minorCents\": 0,\n                  \"flatCents\": 0,\n                  \"isVariable\": false,\n                  \"isReserve\": false\n                },\n                {\n                  \"id\": \"string\",\n                  \"name\": \"string\",\n                  \"eeCents\": 0,\n                  \"esCents\": 0,\n                  \"ecCents\": 0,\n                  \"efCents\": 0,\n                  \"adultCents\": 0,\n                  \"minorCents\": 0,\n                  \"flatCents\": 0,\n                  \"isVariable\": false,\n                  \"isReserve\": false\n                }\n              ],\n              \"stoplossContract\": {\n                \"aggEeCents\": 0,\n                \"aggEsCents\": 0,\n                \"aggEcCents\": 0,\n                \"aggEfCents\": 0,\n                \"type\": \"aggregate\",\n                \"policyNumber\": \"string\",\n                \"specAttachmentCents\": 7596.881941342041,\n                \"aggAccommodationDeductibleCents\": 7534.963661678759,\n                \"aggregatingSpecDeductibleCents\": 5714.259895519152,\n                \"minAggAttachmentCents\": \"1618546\",\n                \"incurredMonths\": 7309.115858703159,\n                \"paidMonths\": 2189.002514503441\n              }\n            }\n          ],\n          \"cobraVendorId\": \"string\",\n          \"brokerVendorId\": \"string\"\n        }\n      ],\n      \"sponsor\": {\n        \"id\": \"string\",\n        \"namespace\": \"string\",\n        \"name\": \"string\",\n        \"invoicingEmails\": [\n          \"D@IlQDRz2.jf9.pNJWnOC6.WpYzv.QrZhBXU6.vp7GRU.giFl.iUM.v5rM34y6.IFZxOAW0G.IlOzbtqSujaL\",\n          \"CcxTWd0Re@bxgiZ8-awML.FrsQFFgeJwd.Gs7q.B9-pBXFQ.oOyjbkbbM3.zpYL05l.19x9LXEqtDJ.LgUXVb.sGqNlujmRNmQ\"\n        ],\n        \"contractEmails\": [\n          \"oRQo4T@Na6yV.PnX.fY.A02XqN.a55CXEu.1PriXiSzj.cgO6VrhSNU.uNs.8zig92.TqCBOeAN\",\n          \"kxfoJFfAxRs@qv6.VFr\"\n        ],\n        \"website\": \"https://zpDusoWUWdqeetvxEhdPxzemTbqms.jvkwH\",\n        \"description\": \"string\",\n        \"phoneNumber\": \"+12125551234\",\n        \"address\": {\n          \"address1\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"AL\",\n          \"postalCode\": \"517374189\",\n          \"address2\": \"string\"\n        },\n        \"bankingVerified\": true,\n        \"brokerVendor\": {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"ein\": \"string\"\n        },\n        \"ein\": \"123456789\",\n        \"structure\": \"Professional_Corporation\",\n        \"businessType\": \"government_entity\"\n      },\n      \"rules\": {\n        \"accumulatorPeriod\": \"planYear\",\n        \"runIn\": true,\n        \"loadAccumulators\": false,\n        \"cobraExempt\": true,\n        \"erisaExempt\": true,\n        \"enrollmentWaitingPeriodType\": \"months\",\n        \"enrollmentWaitingPeriod\": 1,\n        \"externalCobraVendorId\": \"string\",\n        \"externalCobraVendor\": {\n          \"name\": \"string\",\n          \"phoneNumber\": \"+12125551234\"\n        },\n        \"isCobraManagedByYuzu\": true\n      }\n    }\n  ],\n  \"startAfter\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0127cf4c-74a3-4cc3-b1f1-5c55f1a6d75e",
+          "name": "Retrieve a group policy",
+          "request": {
+            "name": "Retrieve a group policy",
+            "description": {
+              "content": "Fetch details for a specific group policy by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "groups",
+                ":groupPolicyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupPolicyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e7a13032-4a26-4c9c-bf5f-65eeed1dd6e8",
+              "name": "Group Policy",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "groups",
+                    ":groupPolicyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupPolicyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"startDate\": \"string\",\n  \"endDate\": \"string\",\n  \"groupId\": \"string\",\n  \"plans\": [\n    {\n      \"id\": \"string\",\n      \"planNumber\": \"string\",\n      \"nickname\": \"string\",\n      \"type\": \"Supplemental\",\n      \"basePlanDesignId\": \"string\",\n      \"vendorRelationships\": [\n        {\n          \"id\": \"string\",\n          \"vendor\": {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"ein\": \"string\"\n          },\n          \"planFees\": [\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0,\n              \"isVariable\": false,\n              \"isReserve\": false\n            },\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0,\n              \"isVariable\": false,\n              \"isReserve\": false\n            }\n          ],\n          \"stoplossContract\": {\n            \"aggEeCents\": 0,\n            \"aggEsCents\": 0,\n            \"aggEcCents\": 0,\n            \"aggEfCents\": 0,\n            \"type\": \"specific\",\n            \"policyNumber\": \"string\",\n            \"specAttachmentCents\": 6937.524639290728,\n            \"aggAccommodationDeductibleCents\": 9556.258684513654,\n            \"aggregatingSpecDeductibleCents\": 9371.034913188694,\n            \"minAggAttachmentCents\": \"3816\",\n            \"incurredMonths\": 5636.466837352976,\n            \"paidMonths\": 1538.020701995666\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"vendor\": {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"ein\": \"string\"\n          },\n          \"planFees\": [\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0,\n              \"isVariable\": false,\n              \"isReserve\": false\n            },\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0,\n              \"isVariable\": false,\n              \"isReserve\": false\n            }\n          ],\n          \"stoplossContract\": {\n            \"aggEeCents\": 0,\n            \"aggEsCents\": 0,\n            \"aggEcCents\": 0,\n            \"aggEfCents\": 0,\n            \"type\": \"specAndAgg\",\n            \"policyNumber\": \"string\",\n            \"specAttachmentCents\": 5626.28559955913,\n            \"aggAccommodationDeductibleCents\": 1978.4090062749283,\n            \"aggregatingSpecDeductibleCents\": 5669.164359562376,\n            \"minAggAttachmentCents\": \"33233503495\",\n            \"incurredMonths\": 4836.907770082192,\n            \"paidMonths\": 4678.581986742682\n          }\n        }\n      ],\n      \"cobraVendorId\": \"string\",\n      \"brokerVendorId\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"planNumber\": \"string\",\n      \"nickname\": \"string\",\n      \"type\": \"Vision\",\n      \"basePlanDesignId\": \"string\",\n      \"vendorRelationships\": [\n        {\n          \"id\": \"string\",\n          \"vendor\": {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"ein\": \"string\"\n          },\n          \"planFees\": [\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0,\n              \"isVariable\": false,\n              \"isReserve\": false\n            },\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0,\n              \"isVariable\": false,\n              \"isReserve\": false\n            }\n          ],\n          \"stoplossContract\": {\n            \"aggEeCents\": 0,\n            \"aggEsCents\": 0,\n            \"aggEcCents\": 0,\n            \"aggEfCents\": 0,\n            \"type\": \"aggregate\",\n            \"policyNumber\": \"string\",\n            \"specAttachmentCents\": 1433.4082159905547,\n            \"aggAccommodationDeductibleCents\": 1399.5403603705936,\n            \"aggregatingSpecDeductibleCents\": 6267.6259172975115,\n            \"minAggAttachmentCents\": \"7554\",\n            \"incurredMonths\": 8966.947071611217,\n            \"paidMonths\": 3426.769867465149\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"vendor\": {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"ein\": \"string\"\n          },\n          \"planFees\": [\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0,\n              \"isVariable\": false,\n              \"isReserve\": false\n            },\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0,\n              \"isVariable\": false,\n              \"isReserve\": false\n            }\n          ],\n          \"stoplossContract\": {\n            \"aggEeCents\": 0,\n            \"aggEsCents\": 0,\n            \"aggEcCents\": 0,\n            \"aggEfCents\": 0,\n            \"type\": \"aggregate\",\n            \"policyNumber\": \"string\",\n            \"specAttachmentCents\": 8874.854473593272,\n            \"aggAccommodationDeductibleCents\": 1957.9537018757298,\n            \"aggregatingSpecDeductibleCents\": 490.8093395158875,\n            \"minAggAttachmentCents\": \"0715406\",\n            \"incurredMonths\": 8906.916627576808,\n            \"paidMonths\": 2189.7438724656936\n          }\n        }\n      ],\n      \"cobraVendorId\": \"string\",\n      \"brokerVendorId\": \"string\"\n    }\n  ],\n  \"sponsor\": {\n    \"id\": \"string\",\n    \"namespace\": \"string\",\n    \"name\": \"string\",\n    \"invoicingEmails\": [\n      \"WUmenq@1ygIE.RP-de7jd.2.wYJ1m0.cNtP9XM6a6.SM1.0dL.I.SuMtnJM\",\n      \"D7m1Hqa7@kb2GSIj.KObt\"\n    ],\n    \"contractEmails\": [\n      \"9--tAX@ojlaHfD6q.Aswr00Zsy76.saJr7BSQYL.fsQE.C.8PJGcK6-e.jroz6kR0A.06VuA3FQtqa.1Gcr9.tyqqFVpCyl\",\n      \"x5G9p@6.TCXU.1r7lxZNgLf.BKVOAG0SjS.U4wLSsuQ.kylANUJEO\"\n    ],\n    \"website\": \"https://a.umzU-UOCkH5XTYe.2u9,WOaBhZLwtwf+Pu,9W+dKsNgXgS\",\n    \"description\": \"string\",\n    \"phoneNumber\": \"+12125551234\",\n    \"address\": {\n      \"address1\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"FL\",\n      \"postalCode\": \"84921\",\n      \"address2\": \"string\"\n    },\n    \"bankingVerified\": false,\n    \"brokerVendor\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"ein\": \"string\"\n    },\n    \"ein\": \"123456789\",\n    \"structure\": \"Professional_Corporation\",\n    \"businessType\": \"company\"\n  },\n  \"rules\": {\n    \"accumulatorPeriod\": \"planYear\",\n    \"runIn\": false,\n    \"loadAccumulators\": false,\n    \"cobraExempt\": true,\n    \"erisaExempt\": false,\n    \"enrollmentWaitingPeriodType\": \"days\",\n    \"enrollmentWaitingPeriod\": 1,\n    \"externalCobraVendorId\": \"string\",\n    \"externalCobraVendor\": {\n      \"name\": \"string\",\n      \"phoneNumber\": \"+12125551234\"\n    },\n    \"isCobraManagedByYuzu\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "354c2f10-a191-40f1-8e89-eb1a74f7054f",
+          "name": "Create an initial enrollment",
+          "request": {
+            "name": "Create an initial enrollment",
+            "description": {
+              "content": "Create an initial enrollment for a group policy with the provided data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "groups",
+                ":groupPolicyId",
+                "enroll",
+                "initial-enrollment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupPolicyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"subscribers\": [\n    {\n      \"self\": {\n        \"line1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"zip\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"birthday\": \"<string>\",\n        \"state\": \"\",\n        \"sex\": \"\",\n        \"ssn\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"middleName\": \"<string>\",\n        \"suffix\": \"<string>\",\n        \"alternateID\": \"<string>\",\n        \"email\": \"<email>\",\n        \"phoneNumber\": \"<string>\",\n        \"__id\": \"<string>\"\n      },\n      \"plans\": [\n        \"<string>\"\n      ],\n      \"cobraStartDate\": \"<string>\",\n      \"termedByEmployerDate\": \"<string>\",\n      \"location\": \"<string>\",\n      \"department\": \"<string>\",\n      \"employeeClass\": \"<string>\",\n      \"spouse\": {\n        \"line1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"zip\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"birthday\": \"<string>\",\n        \"state\": \"\",\n        \"sex\": \"\",\n        \"ssn\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"middleName\": \"<string>\",\n        \"suffix\": \"<string>\",\n        \"alternateID\": \"<string>\",\n        \"email\": \"<email>\",\n        \"phoneNumber\": \"<string>\",\n        \"__id\": \"<string>\"\n      },\n      \"children\": [\n        {\n          \"line1\": \"<string>\",\n          \"city\": \"<string>\",\n          \"zip\": \"<string>\",\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\",\n          \"birthday\": \"<string>\",\n          \"state\": \"\",\n          \"sex\": \"\",\n          \"ssn\": \"<string>\",\n          \"line2\": \"<string>\",\n          \"middleName\": \"<string>\",\n          \"suffix\": \"<string>\",\n          \"alternateID\": \"<string>\",\n          \"email\": \"<email>\",\n          \"phoneNumber\": \"<string>\",\n          \"__id\": \"<string>\"\n        },\n        {\n          \"line1\": \"<string>\",\n          \"city\": \"<string>\",\n          \"zip\": \"<string>\",\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\",\n          \"birthday\": \"<string>\",\n          \"state\": \"\",\n          \"sex\": \"\",\n          \"ssn\": \"<string>\",\n          \"line2\": \"<string>\",\n          \"middleName\": \"<string>\",\n          \"suffix\": \"<string>\",\n          \"alternateID\": \"<string>\",\n          \"email\": \"<email>\",\n          \"phoneNumber\": \"<string>\",\n          \"__id\": \"<string>\"\n        }\n      ],\n      \"isCobraEligible\": \"<boolean>\",\n      \"hireDate\": \"<string>\",\n      \"retirementDate\": \"<string>\",\n      \"__id\": \"<string>\"\n    },\n    {\n      \"self\": {\n        \"line1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"zip\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"birthday\": \"<string>\",\n        \"state\": \"\",\n        \"sex\": \"\",\n        \"ssn\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"middleName\": \"<string>\",\n        \"suffix\": \"<string>\",\n        \"alternateID\": \"<string>\",\n        \"email\": \"<email>\",\n        \"phoneNumber\": \"<string>\",\n        \"__id\": \"<string>\"\n      },\n      \"plans\": [\n        \"<string>\"\n      ],\n      \"cobraStartDate\": \"<string>\",\n      \"termedByEmployerDate\": \"<string>\",\n      \"location\": \"<string>\",\n      \"department\": \"<string>\",\n      \"employeeClass\": \"<string>\",\n      \"spouse\": {\n        \"line1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"zip\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"birthday\": \"<string>\",\n        \"state\": \"\",\n        \"sex\": \"\",\n        \"ssn\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"middleName\": \"<string>\",\n        \"suffix\": \"<string>\",\n        \"alternateID\": \"<string>\",\n        \"email\": \"<email>\",\n        \"phoneNumber\": \"<string>\",\n        \"__id\": \"<string>\"\n      },\n      \"children\": [\n        {\n          \"line1\": \"<string>\",\n          \"city\": \"<string>\",\n          \"zip\": \"<string>\",\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\",\n          \"birthday\": \"<string>\",\n          \"state\": \"\",\n          \"sex\": \"\",\n          \"ssn\": \"<string>\",\n          \"line2\": \"<string>\",\n          \"middleName\": \"<string>\",\n          \"suffix\": \"<string>\",\n          \"alternateID\": \"<string>\",\n          \"email\": \"<email>\",\n          \"phoneNumber\": \"<string>\",\n          \"__id\": \"<string>\"\n        },\n        {\n          \"line1\": \"<string>\",\n          \"city\": \"<string>\",\n          \"zip\": \"<string>\",\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\",\n          \"birthday\": \"<string>\",\n          \"state\": \"\",\n          \"sex\": \"\",\n          \"ssn\": \"<string>\",\n          \"line2\": \"<string>\",\n          \"middleName\": \"<string>\",\n          \"suffix\": \"<string>\",\n          \"alternateID\": \"<string>\",\n          \"email\": \"<email>\",\n          \"phoneNumber\": \"<string>\",\n          \"__id\": \"<string>\"\n        }\n      ],\n      \"isCobraEligible\": \"<boolean>\",\n      \"hireDate\": \"<string>\",\n      \"retirementDate\": \"<string>\",\n      \"__id\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d8f837de-419d-4407-8280-fc7cd50ee157",
+              "name": "Enrollment Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "groups",
+                    ":groupPolicyId",
+                    "enroll",
+                    "initial-enrollment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupPolicyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"subscribers\": [\n    {\n      \"self\": {\n        \"line1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"zip\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"birthday\": \"2025-01-01\",\n        \"state\": \"\",\n        \"sex\": \"\",\n        \"ssn\": \"{ raw: \\\"123-45-6789\\\", masked: \\\"***-**-6789\\\" }\",\n        \"line2\": \"<string>\",\n        \"middleName\": \"<string>\",\n        \"suffix\": \"<string>\",\n        \"alternateID\": \"<string>\",\n        \"email\": \"<email>\",\n        \"phoneNumber\": \"+12125551234\",\n        \"__id\": \"<string>\"\n      },\n      \"plans\": [\n        \"<string>\"\n      ],\n      \"cobraStartDate\": \"2025-01-01\",\n      \"termedByEmployerDate\": \"2025-01-01\",\n      \"location\": \"<string>\",\n      \"department\": \"<string>\",\n      \"employeeClass\": \"<string>\",\n      \"spouse\": {\n        \"line1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"zip\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"birthday\": \"2025-01-01\",\n        \"state\": \"\",\n        \"sex\": \"\",\n        \"ssn\": \"{ raw: \\\"123-45-6789\\\", masked: \\\"***-**-6789\\\" }\",\n        \"line2\": \"<string>\",\n        \"middleName\": \"<string>\",\n        \"suffix\": \"<string>\",\n        \"alternateID\": \"<string>\",\n        \"email\": \"<email>\",\n        \"phoneNumber\": \"+12125551234\",\n        \"__id\": \"<string>\"\n      },\n      \"children\": [\n        {\n          \"line1\": \"<string>\",\n          \"city\": \"<string>\",\n          \"zip\": \"<string>\",\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\",\n          \"birthday\": \"2025-01-01\",\n          \"state\": \"\",\n          \"sex\": \"\",\n          \"ssn\": \"{ raw: \\\"123-45-6789\\\", masked: \\\"***-**-6789\\\" }\",\n          \"line2\": \"<string>\",\n          \"middleName\": \"<string>\",\n          \"suffix\": \"<string>\",\n          \"alternateID\": \"<string>\",\n          \"email\": \"<email>\",\n          \"phoneNumber\": \"+12125551234\",\n          \"__id\": \"<string>\"\n        },\n        {\n          \"line1\": \"<string>\",\n          \"city\": \"<string>\",\n          \"zip\": \"<string>\",\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\",\n          \"birthday\": \"2025-01-01\",\n          \"state\": \"\",\n          \"sex\": \"\",\n          \"ssn\": \"{ raw: \\\"123-45-6789\\\", masked: \\\"***-**-6789\\\" }\",\n          \"line2\": \"<string>\",\n          \"middleName\": \"<string>\",\n          \"suffix\": \"<string>\",\n          \"alternateID\": \"<string>\",\n          \"email\": \"<email>\",\n          \"phoneNumber\": \"+12125551234\",\n          \"__id\": \"<string>\"\n        }\n      ],\n      \"isCobraEligible\": \"<boolean>\",\n      \"hireDate\": \"2025-01-01\",\n      \"retirementDate\": \"2025-01-01\",\n      \"__id\": \"<string>\"\n    },\n    {\n      \"self\": {\n        \"line1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"zip\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"birthday\": \"2025-01-01\",\n        \"state\": \"\",\n        \"sex\": \"\",\n        \"ssn\": \"{ raw: \\\"123-45-6789\\\", masked: \\\"***-**-6789\\\" }\",\n        \"line2\": \"<string>\",\n        \"middleName\": \"<string>\",\n        \"suffix\": \"<string>\",\n        \"alternateID\": \"<string>\",\n        \"email\": \"<email>\",\n        \"phoneNumber\": \"+12125551234\",\n        \"__id\": \"<string>\"\n      },\n      \"plans\": [\n        \"<string>\"\n      ],\n      \"cobraStartDate\": \"2025-01-01\",\n      \"termedByEmployerDate\": \"2025-01-01\",\n      \"location\": \"<string>\",\n      \"department\": \"<string>\",\n      \"employeeClass\": \"<string>\",\n      \"spouse\": {\n        \"line1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"zip\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"birthday\": \"2025-01-01\",\n        \"state\": \"\",\n        \"sex\": \"\",\n        \"ssn\": \"{ raw: \\\"123-45-6789\\\", masked: \\\"***-**-6789\\\" }\",\n        \"line2\": \"<string>\",\n        \"middleName\": \"<string>\",\n        \"suffix\": \"<string>\",\n        \"alternateID\": \"<string>\",\n        \"email\": \"<email>\",\n        \"phoneNumber\": \"+12125551234\",\n        \"__id\": \"<string>\"\n      },\n      \"children\": [\n        {\n          \"line1\": \"<string>\",\n          \"city\": \"<string>\",\n          \"zip\": \"<string>\",\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\",\n          \"birthday\": \"2025-01-01\",\n          \"state\": \"\",\n          \"sex\": \"\",\n          \"ssn\": \"{ raw: \\\"123-45-6789\\\", masked: \\\"***-**-6789\\\" }\",\n          \"line2\": \"<string>\",\n          \"middleName\": \"<string>\",\n          \"suffix\": \"<string>\",\n          \"alternateID\": \"<string>\",\n          \"email\": \"<email>\",\n          \"phoneNumber\": \"+12125551234\",\n          \"__id\": \"<string>\"\n        },\n        {\n          \"line1\": \"<string>\",\n          \"city\": \"<string>\",\n          \"zip\": \"<string>\",\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\",\n          \"birthday\": \"2025-01-01\",\n          \"state\": \"\",\n          \"sex\": \"\",\n          \"ssn\": \"{ raw: \\\"123-45-6789\\\", masked: \\\"***-**-6789\\\" }\",\n          \"line2\": \"<string>\",\n          \"middleName\": \"<string>\",\n          \"suffix\": \"<string>\",\n          \"alternateID\": \"<string>\",\n          \"email\": \"<email>\",\n          \"phoneNumber\": \"+12125551234\",\n          \"__id\": \"<string>\"\n        }\n      ],\n      \"isCobraEligible\": \"<boolean>\",\n      \"hireDate\": \"2025-01-01\",\n      \"retirementDate\": \"2025-01-01\",\n      \"__id\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"status\": \"queued\",\n  \"errors\": [\n    {\n      \"subscriber\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"subscriber\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "88fa6def-84e0-4194-9872-6401ce410e26",
+          "name": "Add new subscribers to an existing plan",
+          "request": {
+            "name": "Add new subscribers to an existing plan",
+            "description": {
+              "content": "Append new employees/subscribers to an existing plan. This is an append (it never terminates omitted members); each subscriber's coverage start is derived from their hire date and the plan's waiting-period rules.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "groups",
+                ":groupPolicyId",
+                "enroll",
+                "new-subscribers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupPolicyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subscribers\": [\n    {\n      \"self\": {\n        \"line1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"zip\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"birthday\": \"<string>\",\n        \"state\": \"\",\n        \"sex\": \"\",\n        \"ssn\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"middleName\": \"<string>\",\n        \"suffix\": \"<string>\",\n        \"alternateID\": \"<string>\",\n        \"email\": \"<email>\",\n        \"phoneNumber\": \"<string>\",\n        \"__id\": \"<string>\"\n      },\n      \"hireDate\": \"<string>\",\n      \"plans\": [\n        \"<uuid>\"\n      ],\n      \"cobraStartDate\": \"<string>\",\n      \"termedByEmployerDate\": \"<string>\",\n      \"location\": \"<string>\",\n      \"department\": \"<string>\",\n      \"employeeClass\": \"<string>\",\n      \"spouse\": {\n        \"line1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"zip\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"birthday\": \"<string>\",\n        \"state\": \"\",\n        \"sex\": \"\",\n        \"ssn\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"middleName\": \"<string>\",\n        \"suffix\": \"<string>\",\n        \"alternateID\": \"<string>\",\n        \"email\": \"<email>\",\n        \"phoneNumber\": \"<string>\",\n        \"__id\": \"<string>\"\n      },\n      \"children\": [\n        {\n          \"line1\": \"<string>\",\n          \"city\": \"<string>\",\n          \"zip\": \"<string>\",\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\",\n          \"birthday\": \"<string>\",\n          \"state\": \"\",\n          \"sex\": \"\",\n          \"ssn\": \"<string>\",\n          \"line2\": \"<string>\",\n          \"middleName\": \"<string>\",\n          \"suffix\": \"<string>\",\n          \"alternateID\": \"<string>\",\n          \"email\": \"<email>\",\n          \"phoneNumber\": \"<string>\",\n          \"__id\": \"<string>\"\n        },\n        {\n          \"line1\": \"<string>\",\n          \"city\": \"<string>\",\n          \"zip\": \"<string>\",\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\",\n          \"birthday\": \"<string>\",\n          \"state\": \"\",\n          \"sex\": \"\",\n          \"ssn\": \"<string>\",\n          \"line2\": \"<string>\",\n          \"middleName\": \"<string>\",\n          \"suffix\": \"<string>\",\n          \"alternateID\": \"<string>\",\n          \"email\": \"<email>\",\n          \"phoneNumber\": \"<string>\",\n          \"__id\": \"<string>\"\n        }\n      ],\n      \"isCobraEligible\": \"<boolean>\",\n      \"retirementDate\": \"<string>\",\n      \"__id\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b24fe925-948b-4a5e-9f82-692f36c4f0b2",
+              "name": "Enrollment Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "groups",
+                    ":groupPolicyId",
+                    "enroll",
+                    "new-subscribers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupPolicyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscribers\": [\n    {\n      \"self\": {\n        \"line1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"zip\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"birthday\": \"2025-01-01\",\n        \"state\": \"\",\n        \"sex\": \"\",\n        \"ssn\": \"{ raw: \\\"123-45-6789\\\", masked: \\\"***-**-6789\\\" }\",\n        \"line2\": \"<string>\",\n        \"middleName\": \"<string>\",\n        \"suffix\": \"<string>\",\n        \"alternateID\": \"<string>\",\n        \"email\": \"<email>\",\n        \"phoneNumber\": \"+12125551234\",\n        \"__id\": \"<string>\"\n      },\n      \"hireDate\": \"2025-01-01\",\n      \"plans\": [\n        \"<uuid>\"\n      ],\n      \"cobraStartDate\": \"2025-01-01\",\n      \"termedByEmployerDate\": \"2025-01-01\",\n      \"location\": \"<string>\",\n      \"department\": \"<string>\",\n      \"employeeClass\": \"<string>\",\n      \"spouse\": {\n        \"line1\": \"<string>\",\n        \"city\": \"<string>\",\n        \"zip\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"birthday\": \"2025-01-01\",\n        \"state\": \"\",\n        \"sex\": \"\",\n        \"ssn\": \"{ raw: \\\"123-45-6789\\\", masked: \\\"***-**-6789\\\" }\",\n        \"line2\": \"<string>\",\n        \"middleName\": \"<string>\",\n        \"suffix\": \"<string>\",\n        \"alternateID\": \"<string>\",\n        \"email\": \"<email>\",\n        \"phoneNumber\": \"+12125551234\",\n        \"__id\": \"<string>\"\n      },\n      \"children\": [\n        {\n          \"line1\": \"<string>\",\n          \"city\": \"<string>\",\n          \"zip\": \"<string>\",\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\",\n          \"birthday\": \"2025-01-01\",\n          \"state\": \"\",\n          \"sex\": \"\",\n          \"ssn\": \"{ raw: \\\"123-45-6789\\\", masked: \\\"***-**-6789\\\" }\",\n          \"line2\": \"<string>\",\n          \"middleName\": \"<string>\",\n          \"suffix\": \"<string>\",\n          \"alternateID\": \"<string>\",\n          \"email\": \"<email>\",\n          \"phoneNumber\": \"+12125551234\",\n          \"__id\": \"<string>\"\n        },\n        {\n          \"line1\": \"<string>\",\n          \"city\": \"<string>\",\n          \"zip\": \"<string>\",\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\",\n          \"birthday\": \"2025-01-01\",\n          \"state\": \"\",\n          \"sex\": \"\",\n          \"ssn\": \"{ raw: \\\"123-45-6789\\\", masked: \\\"***-**-6789\\\" }\",\n          \"line2\": \"<string>\",\n          \"middleName\": \"<string>\",\n          \"suffix\": \"<string>\",\n          \"alternateID\": \"<string>\",\n          \"email\": \"<email>\",\n          \"phoneNumber\": \"+12125551234\",\n          \"__id\": \"<string>\"\n        }\n      ],\n      \"isCobraEligible\": \"<boolean>\",\n      \"retirementDate\": \"2025-01-01\",\n      \"__id\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"status\": \"pendingApproval\",\n  \"errors\": [\n    {\n      \"subscriber\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"subscriber\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e5b0a59d-8a38-43b8-b903-d6eb3ebfe381",
+          "name": "Get enrollment request status",
+          "request": {
+            "name": "Get enrollment request status",
+            "description": {
+              "content": "Get the status of an enrollment request for a group policy.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "enroll",
+                ":enrollmentRequestId",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "enrollmentRequestId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c6debd90-f2f9-4f34-b61b-1e38f1573d1a",
+              "name": "Enrollment Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "enroll",
+                    ":enrollmentRequestId",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "enrollmentRequestId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"status\": \"pendingApproval\",\n  \"errors\": [\n    {\n      \"subscriber\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"subscriber\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ff55fe8e-8c6c-4553-a90e-1e8ce871371a",
+          "name": "List group members",
+          "request": {
+            "name": "List group members",
+            "description": {
+              "content": "Fetch a paginated list of members for a specific group policy.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "groups",
+                ":groupPolicyId",
+                "members"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startAfter",
+                  "value": "<string>",
+                  "description": "Pagination cursor"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupPolicyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a4ce14e2-ab40-447d-899e-203244f67d67",
+              "name": "Paginated Members",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "groups",
+                    ":groupPolicyId",
+                    "members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startAfter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupPolicyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"id\": \"string\",\n      \"lastName\": \"string\",\n      \"firstName\": \"string\",\n      \"sex\": \"F\",\n      \"birthDate\": \"2025-01-01\",\n      \"coordinationOfBenefits\": {\n        \"coverages\": [\n          {\n            \"id\": \"string\",\n            \"startDate\": \"2025-01-01\",\n            \"endDate\": \"2025-01-01\",\n            \"payerResponsibility\": \"primary\",\n            \"organizationName\": \"string\",\n            \"subscriberFirstName\": \"string\",\n            \"subscriberLastName\": \"string\"\n          },\n          {\n            \"id\": \"string\",\n            \"startDate\": \"2025-01-01\",\n            \"endDate\": \"2025-01-01\",\n            \"payerResponsibility\": \"nine\",\n            \"organizationName\": \"string\",\n            \"subscriberFirstName\": \"string\",\n            \"subscriberLastName\": \"string\"\n          }\n        ],\n        \"lastReviewed\": \"string\"\n      },\n      \"currentAddresses\": [\n        {\n          \"address1\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"OK\",\n          \"postalCode\": \"95540 4255\",\n          \"address2\": \"string\"\n        },\n        {\n          \"address1\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"GA\",\n          \"postalCode\": \"30611\",\n          \"address2\": \"string\"\n        }\n      ],\n      \"coverages\": [\n        {\n          \"id\": \"string\",\n          \"coverageStatus\": \"annulled\",\n          \"eligibilitySince\": \"2025-01-01\",\n          \"eligibilityUntil\": \"2025-01-01\",\n          \"groupId\": \"string\",\n          \"planId\": \"string\",\n          \"subscriberId\": \"string\",\n          \"memberNumber\": \"string\",\n          \"relationship\": \"spouse\",\n          \"fees\": [\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"startDate\": \"2025-01-01\",\n              \"endDate\": \"2025-01-01\",\n              \"planFeeId\": \"string\",\n              \"vendorId\": \"string\"\n            },\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"startDate\": \"2025-01-01\",\n              \"endDate\": \"2025-01-01\",\n              \"planFeeId\": \"string\",\n              \"vendorId\": \"string\"\n            }\n          ],\n          \"locations\": [\n            \"string\",\n            \"string\"\n          ],\n          \"departments\": [\n            \"string\",\n            \"string\"\n          ],\n          \"alternateID\": \"string\",\n          \"pcpPreferences\": {\n            \"optOut\": false\n          },\n          \"employeeClass\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"coverageStatus\": \"pending\",\n          \"eligibilitySince\": \"2025-01-01\",\n          \"eligibilityUntil\": \"2025-01-01\",\n          \"groupId\": \"string\",\n          \"planId\": \"string\",\n          \"subscriberId\": \"string\",\n          \"memberNumber\": \"string\",\n          \"relationship\": \"subscriber\",\n          \"fees\": [\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"startDate\": \"2025-01-01\",\n              \"endDate\": \"2025-01-01\",\n              \"planFeeId\": \"string\",\n              \"vendorId\": \"string\"\n            },\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"startDate\": \"2025-01-01\",\n              \"endDate\": \"2025-01-01\",\n              \"planFeeId\": \"string\",\n              \"vendorId\": \"string\"\n            }\n          ],\n          \"locations\": [\n            \"string\",\n            \"string\"\n          ],\n          \"departments\": [\n            \"string\",\n            \"string\"\n          ],\n          \"alternateID\": \"string\",\n          \"pcpPreferences\": {\n            \"optOut\": false\n          },\n          \"employeeClass\": \"string\"\n        }\n      ],\n      \"phone\": \"+12125551234\",\n      \"emailAddress\": \"la1U5T@E-y.2RCH.iUjp\",\n      \"ssnLastFour\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"lastName\": \"string\",\n      \"firstName\": \"string\",\n      \"sex\": \"F\",\n      \"birthDate\": \"2025-01-01\",\n      \"coordinationOfBenefits\": {\n        \"coverages\": [\n          {\n            \"id\": \"string\",\n            \"startDate\": \"2025-01-01\",\n            \"endDate\": \"2025-01-01\",\n            \"payerResponsibility\": \"four\",\n            \"organizationName\": \"string\",\n            \"subscriberFirstName\": \"string\",\n            \"subscriberLastName\": \"string\"\n          },\n          {\n            \"id\": \"string\",\n            \"startDate\": \"2025-01-01\",\n            \"endDate\": \"2025-01-01\",\n            \"payerResponsibility\": \"seven\",\n            \"organizationName\": \"string\",\n            \"subscriberFirstName\": \"string\",\n            \"subscriberLastName\": \"string\"\n          }\n        ],\n        \"lastReviewed\": \"string\"\n      },\n      \"currentAddresses\": [\n        {\n          \"address1\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"LA\",\n          \"postalCode\": \"22769\",\n          \"address2\": \"string\"\n        },\n        {\n          \"address1\": \"string\",\n          \"city\": \"string\",\n          \"state\": \"PA\",\n          \"postalCode\": \"51225-1141\",\n          \"address2\": \"string\"\n        }\n      ],\n      \"coverages\": [\n        {\n          \"id\": \"string\",\n          \"coverageStatus\": \"pending\",\n          \"eligibilitySince\": \"2025-01-01\",\n          \"eligibilityUntil\": \"2025-01-01\",\n          \"groupId\": \"string\",\n          \"planId\": \"string\",\n          \"subscriberId\": \"string\",\n          \"memberNumber\": \"string\",\n          \"relationship\": \"spouse\",\n          \"fees\": [\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"startDate\": \"2025-01-01\",\n              \"endDate\": \"2025-01-01\",\n              \"planFeeId\": \"string\",\n              \"vendorId\": \"string\"\n            },\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"startDate\": \"2025-01-01\",\n              \"endDate\": \"2025-01-01\",\n              \"planFeeId\": \"string\",\n              \"vendorId\": \"string\"\n            }\n          ],\n          \"locations\": [\n            \"string\",\n            \"string\"\n          ],\n          \"departments\": [\n            \"string\",\n            \"string\"\n          ],\n          \"alternateID\": \"string\",\n          \"pcpPreferences\": {\n            \"optOut\": true\n          },\n          \"employeeClass\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"coverageStatus\": \"cobra\",\n          \"eligibilitySince\": \"2025-01-01\",\n          \"eligibilityUntil\": \"2025-01-01\",\n          \"groupId\": \"string\",\n          \"planId\": \"string\",\n          \"subscriberId\": \"string\",\n          \"memberNumber\": \"string\",\n          \"relationship\": \"subscriber\",\n          \"fees\": [\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"startDate\": \"2025-01-01\",\n              \"endDate\": \"2025-01-01\",\n              \"planFeeId\": \"string\",\n              \"vendorId\": \"string\"\n            },\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"startDate\": \"2025-01-01\",\n              \"endDate\": \"2025-01-01\",\n              \"planFeeId\": \"string\",\n              \"vendorId\": \"string\"\n            }\n          ],\n          \"locations\": [\n            \"string\",\n            \"string\"\n          ],\n          \"departments\": [\n            \"string\",\n            \"string\"\n          ],\n          \"alternateID\": \"string\",\n          \"pcpPreferences\": {\n            \"optOut\": true\n          },\n          \"employeeClass\": \"string\"\n        }\n      ],\n      \"phone\": \"+12125551234\",\n      \"emailAddress\": \"D9@I1-g-ZQyvi.3DkzO.9dRKoFAM5.ta9aIcpIm.rND2dSlp.1gh.NbskcquDaRt.grFi2Z.M3Q23lT.O1J.Kqc.yxRjycIc\",\n      \"ssnLastFour\": \"string\"\n    }\n  ],\n  \"startAfter\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9f46dea1-9bef-4505-bb94-28a1514e1a6a",
+          "name": "Remove a plan from a group",
+          "request": {
+            "name": "Remove a plan from a group",
+            "description": {
+              "content": "Remove a specific plan from a group policy by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "groups",
+                ":groupPolicyId",
+                "plans",
+                "remove",
+                ":planIdToRemove"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupPolicyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "planIdToRemove",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d65c0859-fcea-49e3-9214-c0042f17072a",
+              "name": "Group Policy",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "groups",
+                    ":groupPolicyId",
+                    "plans",
+                    "remove",
+                    ":planIdToRemove"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupPolicyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planIdToRemove",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"startDate\": \"string\",\n  \"endDate\": \"string\",\n  \"groupId\": \"string\",\n  \"plans\": [\n    {\n      \"id\": \"string\",\n      \"planNumber\": \"string\",\n      \"nickname\": \"string\",\n      \"type\": \"Supplemental\",\n      \"basePlanDesignId\": \"string\",\n      \"vendorRelationships\": [\n        {\n          \"id\": \"string\",\n          \"vendor\": {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"ein\": \"string\"\n          },\n          \"planFees\": [\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0,\n              \"isVariable\": false,\n              \"isReserve\": false\n            },\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0,\n              \"isVariable\": false,\n              \"isReserve\": false\n            }\n          ],\n          \"stoplossContract\": {\n            \"aggEeCents\": 0,\n            \"aggEsCents\": 0,\n            \"aggEcCents\": 0,\n            \"aggEfCents\": 0,\n            \"type\": \"specific\",\n            \"policyNumber\": \"string\",\n            \"specAttachmentCents\": 6937.524639290728,\n            \"aggAccommodationDeductibleCents\": 9556.258684513654,\n            \"aggregatingSpecDeductibleCents\": 9371.034913188694,\n            \"minAggAttachmentCents\": \"3816\",\n            \"incurredMonths\": 5636.466837352976,\n            \"paidMonths\": 1538.020701995666\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"vendor\": {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"ein\": \"string\"\n          },\n          \"planFees\": [\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0,\n              \"isVariable\": false,\n              \"isReserve\": false\n            },\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0,\n              \"isVariable\": false,\n              \"isReserve\": false\n            }\n          ],\n          \"stoplossContract\": {\n            \"aggEeCents\": 0,\n            \"aggEsCents\": 0,\n            \"aggEcCents\": 0,\n            \"aggEfCents\": 0,\n            \"type\": \"specAndAgg\",\n            \"policyNumber\": \"string\",\n            \"specAttachmentCents\": 5626.28559955913,\n            \"aggAccommodationDeductibleCents\": 1978.4090062749283,\n            \"aggregatingSpecDeductibleCents\": 5669.164359562376,\n            \"minAggAttachmentCents\": \"33233503495\",\n            \"incurredMonths\": 4836.907770082192,\n            \"paidMonths\": 4678.581986742682\n          }\n        }\n      ],\n      \"cobraVendorId\": \"string\",\n      \"brokerVendorId\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"planNumber\": \"string\",\n      \"nickname\": \"string\",\n      \"type\": \"Vision\",\n      \"basePlanDesignId\": \"string\",\n      \"vendorRelationships\": [\n        {\n          \"id\": \"string\",\n          \"vendor\": {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"ein\": \"string\"\n          },\n          \"planFees\": [\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0,\n              \"isVariable\": false,\n              \"isReserve\": false\n            },\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0,\n              \"isVariable\": false,\n              \"isReserve\": false\n            }\n          ],\n          \"stoplossContract\": {\n            \"aggEeCents\": 0,\n            \"aggEsCents\": 0,\n            \"aggEcCents\": 0,\n            \"aggEfCents\": 0,\n            \"type\": \"aggregate\",\n            \"policyNumber\": \"string\",\n            \"specAttachmentCents\": 1433.4082159905547,\n            \"aggAccommodationDeductibleCents\": 1399.5403603705936,\n            \"aggregatingSpecDeductibleCents\": 6267.6259172975115,\n            \"minAggAttachmentCents\": \"7554\",\n            \"incurredMonths\": 8966.947071611217,\n            \"paidMonths\": 3426.769867465149\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"vendor\": {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"ein\": \"string\"\n          },\n          \"planFees\": [\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0,\n              \"isVariable\": false,\n              \"isReserve\": false\n            },\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0,\n              \"isVariable\": false,\n              \"isReserve\": false\n            }\n          ],\n          \"stoplossContract\": {\n            \"aggEeCents\": 0,\n            \"aggEsCents\": 0,\n            \"aggEcCents\": 0,\n            \"aggEfCents\": 0,\n            \"type\": \"aggregate\",\n            \"policyNumber\": \"string\",\n            \"specAttachmentCents\": 8874.854473593272,\n            \"aggAccommodationDeductibleCents\": 1957.9537018757298,\n            \"aggregatingSpecDeductibleCents\": 490.8093395158875,\n            \"minAggAttachmentCents\": \"0715406\",\n            \"incurredMonths\": 8906.916627576808,\n            \"paidMonths\": 2189.7438724656936\n          }\n        }\n      ],\n      \"cobraVendorId\": \"string\",\n      \"brokerVendorId\": \"string\"\n    }\n  ],\n  \"sponsor\": {\n    \"id\": \"string\",\n    \"namespace\": \"string\",\n    \"name\": \"string\",\n    \"invoicingEmails\": [\n      \"WUmenq@1ygIE.RP-de7jd.2.wYJ1m0.cNtP9XM6a6.SM1.0dL.I.SuMtnJM\",\n      \"D7m1Hqa7@kb2GSIj.KObt\"\n    ],\n    \"contractEmails\": [\n      \"9--tAX@ojlaHfD6q.Aswr00Zsy76.saJr7BSQYL.fsQE.C.8PJGcK6-e.jroz6kR0A.06VuA3FQtqa.1Gcr9.tyqqFVpCyl\",\n      \"x5G9p@6.TCXU.1r7lxZNgLf.BKVOAG0SjS.U4wLSsuQ.kylANUJEO\"\n    ],\n    \"website\": \"https://a.umzU-UOCkH5XTYe.2u9,WOaBhZLwtwf+Pu,9W+dKsNgXgS\",\n    \"description\": \"string\",\n    \"phoneNumber\": \"+12125551234\",\n    \"address\": {\n      \"address1\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"FL\",\n      \"postalCode\": \"84921\",\n      \"address2\": \"string\"\n    },\n    \"bankingVerified\": false,\n    \"brokerVendor\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"ein\": \"string\"\n    },\n    \"ein\": \"123456789\",\n    \"structure\": \"Professional_Corporation\",\n    \"businessType\": \"company\"\n  },\n  \"rules\": {\n    \"accumulatorPeriod\": \"planYear\",\n    \"runIn\": false,\n    \"loadAccumulators\": false,\n    \"cobraExempt\": true,\n    \"erisaExempt\": false,\n    \"enrollmentWaitingPeriodType\": \"days\",\n    \"enrollmentWaitingPeriod\": 1,\n    \"externalCobraVendorId\": \"string\",\n    \"externalCobraVendor\": {\n      \"name\": \"string\",\n      \"phoneNumber\": \"+12125551234\"\n    },\n    \"isCobraManagedByYuzu\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8dc81da2-0b94-4b5f-981b-503285ad73f8",
+          "name": "Add a plan to a group",
+          "request": {
+            "name": "Add a plan to a group",
+            "description": {
+              "content": "Add a new plan to a specific group policy with the provided data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "groups",
+                ":groupPolicyId",
+                "plans",
+                "add"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupPolicyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"planDesignId\": \"<string>\",\n  \"broker\": {\n    \"planFees\": [\n      {\n        \"name\": \"<string>\",\n        \"eeCents\": 0,\n        \"esCents\": 0,\n        \"ecCents\": 0,\n        \"efCents\": 0,\n        \"adultCents\": 0,\n        \"minorCents\": 0,\n        \"flatCents\": 0,\n        \"isVariable\": false,\n        \"isReserve\": false\n      },\n      {\n        \"name\": \"<string>\",\n        \"eeCents\": 0,\n        \"esCents\": 0,\n        \"ecCents\": 0,\n        \"efCents\": 0,\n        \"adultCents\": 0,\n        \"minorCents\": 0,\n        \"flatCents\": 0,\n        \"isVariable\": false,\n        \"isReserve\": false\n      }\n    ],\n    \"vendorId\": \"<string>\"\n  },\n  \"stoploss\": {\n    \"planFees\": [\n      {\n        \"name\": \"<string>\",\n        \"eeCents\": 0,\n        \"esCents\": 0,\n        \"ecCents\": 0,\n        \"efCents\": 0,\n        \"adultCents\": 0,\n        \"minorCents\": 0,\n        \"flatCents\": 0,\n        \"isVariable\": false,\n        \"isReserve\": false\n      },\n      {\n        \"name\": \"<string>\",\n        \"eeCents\": 0,\n        \"esCents\": 0,\n        \"ecCents\": 0,\n        \"efCents\": 0,\n        \"adultCents\": 0,\n        \"minorCents\": 0,\n        \"flatCents\": 0,\n        \"isVariable\": false,\n        \"isReserve\": false\n      }\n    ],\n    \"vendorId\": \"<string>\",\n    \"contract\": {\n      \"aggEeCents\": 0,\n      \"aggEsCents\": 0,\n      \"aggEcCents\": 0,\n      \"aggEfCents\": 0,\n      \"type\": \"<string>\",\n      \"policyNumber\": \"<string>\",\n      \"specAttachmentCents\": \"<number>\",\n      \"aggAccommodationDeductibleCents\": \"<number>\",\n      \"aggregatingSpecDeductibleCents\": \"<number>\",\n      \"minAggAttachmentCents\": \"<string>\",\n      \"incurredMonths\": \"<number>\",\n      \"paidMonths\": \"<number>\"\n    }\n  },\n  \"cobra\": {\n    \"planFees\": [\n      {\n        \"name\": \"<string>\",\n        \"eeCents\": 0,\n        \"esCents\": 0,\n        \"ecCents\": 0,\n        \"efCents\": 0,\n        \"adultCents\": 0,\n        \"minorCents\": 0,\n        \"flatCents\": 0,\n        \"isVariable\": false,\n        \"isReserve\": false\n      },\n      {\n        \"name\": \"<string>\",\n        \"eeCents\": 0,\n        \"esCents\": 0,\n        \"ecCents\": 0,\n        \"efCents\": 0,\n        \"adultCents\": 0,\n        \"minorCents\": 0,\n        \"flatCents\": 0,\n        \"isVariable\": false,\n        \"isReserve\": false\n      }\n    ],\n    \"vendorId\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "39adbefc-d103-4379-ae15-6948e84bd07e",
+              "name": "Group Policy",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "groups",
+                    ":groupPolicyId",
+                    "plans",
+                    "add"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupPolicyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"planDesignId\": \"<string>\",\n  \"broker\": {\n    \"planFees\": [\n      {\n        \"name\": \"<string>\",\n        \"eeCents\": 0,\n        \"esCents\": 0,\n        \"ecCents\": 0,\n        \"efCents\": 0,\n        \"adultCents\": 0,\n        \"minorCents\": 0,\n        \"flatCents\": 0,\n        \"isVariable\": false,\n        \"isReserve\": false\n      },\n      {\n        \"name\": \"<string>\",\n        \"eeCents\": 0,\n        \"esCents\": 0,\n        \"ecCents\": 0,\n        \"efCents\": 0,\n        \"adultCents\": 0,\n        \"minorCents\": 0,\n        \"flatCents\": 0,\n        \"isVariable\": false,\n        \"isReserve\": false\n      }\n    ],\n    \"vendorId\": \"<string>\"\n  },\n  \"stoploss\": {\n    \"planFees\": [\n      {\n        \"name\": \"<string>\",\n        \"eeCents\": 0,\n        \"esCents\": 0,\n        \"ecCents\": 0,\n        \"efCents\": 0,\n        \"adultCents\": 0,\n        \"minorCents\": 0,\n        \"flatCents\": 0,\n        \"isVariable\": false,\n        \"isReserve\": false\n      },\n      {\n        \"name\": \"<string>\",\n        \"eeCents\": 0,\n        \"esCents\": 0,\n        \"ecCents\": 0,\n        \"efCents\": 0,\n        \"adultCents\": 0,\n        \"minorCents\": 0,\n        \"flatCents\": 0,\n        \"isVariable\": false,\n        \"isReserve\": false\n      }\n    ],\n    \"vendorId\": \"<string>\",\n    \"contract\": {\n      \"aggEeCents\": 0,\n      \"aggEsCents\": 0,\n      \"aggEcCents\": 0,\n      \"aggEfCents\": 0,\n      \"type\": \"<string>\",\n      \"policyNumber\": \"<string>\",\n      \"specAttachmentCents\": \"<number>\",\n      \"aggAccommodationDeductibleCents\": \"<number>\",\n      \"aggregatingSpecDeductibleCents\": \"<number>\",\n      \"minAggAttachmentCents\": \"<string>\",\n      \"incurredMonths\": \"<number>\",\n      \"paidMonths\": \"<number>\"\n    }\n  },\n  \"cobra\": {\n    \"planFees\": [\n      {\n        \"name\": \"<string>\",\n        \"eeCents\": 0,\n        \"esCents\": 0,\n        \"ecCents\": 0,\n        \"efCents\": 0,\n        \"adultCents\": 0,\n        \"minorCents\": 0,\n        \"flatCents\": 0,\n        \"isVariable\": false,\n        \"isReserve\": false\n      },\n      {\n        \"name\": \"<string>\",\n        \"eeCents\": 0,\n        \"esCents\": 0,\n        \"ecCents\": 0,\n        \"efCents\": 0,\n        \"adultCents\": 0,\n        \"minorCents\": 0,\n        \"flatCents\": 0,\n        \"isVariable\": false,\n        \"isReserve\": false\n      }\n    ],\n    \"vendorId\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"startDate\": \"string\",\n  \"endDate\": \"string\",\n  \"groupId\": \"string\",\n  \"plans\": [\n    {\n      \"id\": \"string\",\n      \"planNumber\": \"string\",\n      \"nickname\": \"string\",\n      \"type\": \"Supplemental\",\n      \"basePlanDesignId\": \"string\",\n      \"vendorRelationships\": [\n        {\n          \"id\": \"string\",\n          \"vendor\": {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"ein\": \"string\"\n          },\n          \"planFees\": [\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0,\n              \"isVariable\": false,\n              \"isReserve\": false\n            },\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0,\n              \"isVariable\": false,\n              \"isReserve\": false\n            }\n          ],\n          \"stoplossContract\": {\n            \"aggEeCents\": 0,\n            \"aggEsCents\": 0,\n            \"aggEcCents\": 0,\n            \"aggEfCents\": 0,\n            \"type\": \"specific\",\n            \"policyNumber\": \"string\",\n            \"specAttachmentCents\": 6937.524639290728,\n            \"aggAccommodationDeductibleCents\": 9556.258684513654,\n            \"aggregatingSpecDeductibleCents\": 9371.034913188694,\n            \"minAggAttachmentCents\": \"3816\",\n            \"incurredMonths\": 5636.466837352976,\n            \"paidMonths\": 1538.020701995666\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"vendor\": {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"ein\": \"string\"\n          },\n          \"planFees\": [\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0,\n              \"isVariable\": false,\n              \"isReserve\": false\n            },\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0,\n              \"isVariable\": false,\n              \"isReserve\": false\n            }\n          ],\n          \"stoplossContract\": {\n            \"aggEeCents\": 0,\n            \"aggEsCents\": 0,\n            \"aggEcCents\": 0,\n            \"aggEfCents\": 0,\n            \"type\": \"specAndAgg\",\n            \"policyNumber\": \"string\",\n            \"specAttachmentCents\": 5626.28559955913,\n            \"aggAccommodationDeductibleCents\": 1978.4090062749283,\n            \"aggregatingSpecDeductibleCents\": 5669.164359562376,\n            \"minAggAttachmentCents\": \"33233503495\",\n            \"incurredMonths\": 4836.907770082192,\n            \"paidMonths\": 4678.581986742682\n          }\n        }\n      ],\n      \"cobraVendorId\": \"string\",\n      \"brokerVendorId\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"planNumber\": \"string\",\n      \"nickname\": \"string\",\n      \"type\": \"Vision\",\n      \"basePlanDesignId\": \"string\",\n      \"vendorRelationships\": [\n        {\n          \"id\": \"string\",\n          \"vendor\": {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"ein\": \"string\"\n          },\n          \"planFees\": [\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0,\n              \"isVariable\": false,\n              \"isReserve\": false\n            },\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0,\n              \"isVariable\": false,\n              \"isReserve\": false\n            }\n          ],\n          \"stoplossContract\": {\n            \"aggEeCents\": 0,\n            \"aggEsCents\": 0,\n            \"aggEcCents\": 0,\n            \"aggEfCents\": 0,\n            \"type\": \"aggregate\",\n            \"policyNumber\": \"string\",\n            \"specAttachmentCents\": 1433.4082159905547,\n            \"aggAccommodationDeductibleCents\": 1399.5403603705936,\n            \"aggregatingSpecDeductibleCents\": 6267.6259172975115,\n            \"minAggAttachmentCents\": \"7554\",\n            \"incurredMonths\": 8966.947071611217,\n            \"paidMonths\": 3426.769867465149\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"vendor\": {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"ein\": \"string\"\n          },\n          \"planFees\": [\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0,\n              \"isVariable\": false,\n              \"isReserve\": false\n            },\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0,\n              \"isVariable\": false,\n              \"isReserve\": false\n            }\n          ],\n          \"stoplossContract\": {\n            \"aggEeCents\": 0,\n            \"aggEsCents\": 0,\n            \"aggEcCents\": 0,\n            \"aggEfCents\": 0,\n            \"type\": \"aggregate\",\n            \"policyNumber\": \"string\",\n            \"specAttachmentCents\": 8874.854473593272,\n            \"aggAccommodationDeductibleCents\": 1957.9537018757298,\n            \"aggregatingSpecDeductibleCents\": 490.8093395158875,\n            \"minAggAttachmentCents\": \"0715406\",\n            \"incurredMonths\": 8906.916627576808,\n            \"paidMonths\": 2189.7438724656936\n          }\n        }\n      ],\n      \"cobraVendorId\": \"string\",\n      \"brokerVendorId\": \"string\"\n    }\n  ],\n  \"sponsor\": {\n    \"id\": \"string\",\n    \"namespace\": \"string\",\n    \"name\": \"string\",\n    \"invoicingEmails\": [\n      \"WUmenq@1ygIE.RP-de7jd.2.wYJ1m0.cNtP9XM6a6.SM1.0dL.I.SuMtnJM\",\n      \"D7m1Hqa7@kb2GSIj.KObt\"\n    ],\n    \"contractEmails\": [\n      \"9--tAX@ojlaHfD6q.Aswr00Zsy76.saJr7BSQYL.fsQE.C.8PJGcK6-e.jroz6kR0A.06VuA3FQtqa.1Gcr9.tyqqFVpCyl\",\n      \"x5G9p@6.TCXU.1r7lxZNgLf.BKVOAG0SjS.U4wLSsuQ.kylANUJEO\"\n    ],\n    \"website\": \"https://a.umzU-UOCkH5XTYe.2u9,WOaBhZLwtwf+Pu,9W+dKsNgXgS\",\n    \"description\": \"string\",\n    \"phoneNumber\": \"+12125551234\",\n    \"address\": {\n      \"address1\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"FL\",\n      \"postalCode\": \"84921\",\n      \"address2\": \"string\"\n    },\n    \"bankingVerified\": false,\n    \"brokerVendor\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"ein\": \"string\"\n    },\n    \"ein\": \"123456789\",\n    \"structure\": \"Professional_Corporation\",\n    \"businessType\": \"company\"\n  },\n  \"rules\": {\n    \"accumulatorPeriod\": \"planYear\",\n    \"runIn\": false,\n    \"loadAccumulators\": false,\n    \"cobraExempt\": true,\n    \"erisaExempt\": false,\n    \"enrollmentWaitingPeriodType\": \"days\",\n    \"enrollmentWaitingPeriod\": 1,\n    \"externalCobraVendorId\": \"string\",\n    \"externalCobraVendor\": {\n      \"name\": \"string\",\n      \"phoneNumber\": \"+12125551234\"\n    },\n    \"isCobraManagedByYuzu\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d57050b5-d5fe-4a7e-a7d0-df00c2fdb313",
+          "name": "Retrieve plan SPD",
+          "request": {
+            "name": "Retrieve plan SPD",
+            "description": {
+              "content": "Fetch a specific plan's Summary Plan Description (SPD) as a PDF file. If one is not found, it will not be generated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "plans",
+                ":planId",
+                "spd"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "planId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7c51e75b-3c86-46ec-82d3-6bbb210bdb1b",
+              "name": "Plan SPD as PDF",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "plans",
+                    ":planId",
+                    "spd"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cccfb5d1-c02f-4b77-a753-2c7f56f6e119",
+          "name": "List all plan designs",
+          "request": {
+            "name": "List all plan designs",
+            "description": {
+              "content": "Fetch a list of plan designs. By default only active designs are returned. Set includeAll=true to include all statuses (draft, inReview, active, archived).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "designs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "includeAll",
+                  "value": "<boolean>",
+                  "description": "When true, returns plan designs in all statuses. Defaults to false (active only)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4c93f248-5824-4d23-97d0-e1a1dc22e5dd",
+              "name": "Array of Plan Designs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "designs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeAll",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"planDesigns\": [\n    {\n      \"id\": \"string\",\n      \"nickname\": \"string\",\n      \"type\": \"EPO\",\n      \"status\": \"draft\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"minNumberOfMembers\": 6773618909994979,\n      \"planDesignVendorRelationships\": [\n        {\n          \"id\": \"string\",\n          \"vendor\": {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"ein\": \"string\"\n          },\n          \"planDesignFees\": [\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0\n            },\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0\n            }\n          ],\n          \"relationshipTypes\": [\n            \"telehealth\",\n            \"utilizationManagement\"\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"vendor\": {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"ein\": \"string\"\n          },\n          \"planDesignFees\": [\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0\n            },\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0\n            }\n          ],\n          \"relationshipTypes\": [\n            \"pbm\",\n            \"pbm\"\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"nickname\": \"string\",\n      \"type\": \"RBP\",\n      \"status\": \"archived\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"minNumberOfMembers\": 343579304844417,\n      \"planDesignVendorRelationships\": [\n        {\n          \"id\": \"string\",\n          \"vendor\": {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"ein\": \"string\"\n          },\n          \"planDesignFees\": [\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0\n            },\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0\n            }\n          ],\n          \"relationshipTypes\": [\n            \"network\",\n            \"utilizationManagement\"\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"vendor\": {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"ein\": \"string\"\n          },\n          \"planDesignFees\": [\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0\n            },\n            {\n              \"id\": \"string\",\n              \"name\": \"string\",\n              \"eeCents\": 0,\n              \"esCents\": 0,\n              \"ecCents\": 0,\n              \"efCents\": 0,\n              \"adultCents\": 0,\n              \"minorCents\": 0,\n              \"flatCents\": 0\n            }\n          ],\n          \"relationshipTypes\": [\n            \"careNavigator\",\n            \"careNavigator\"\n          ]\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b696be8f-6c21-4373-8780-7a036a567b88",
+          "name": "Create a care event",
+          "request": {
+            "name": "Create a care event",
+            "description": {
+              "content": "Create a new care event for a specific coverage. Care events can pend claims, reprice claims, or set a benefit tier for matching claims.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "coverages",
+                ":coverageId",
+                "care-events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "coverageId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"benefitTierId\": \"<string>\",\n  \"startDate\": \"<string>\",\n  \"endDate\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"providerLastOrgName\": \"<string>\",\n  \"providerNpi\": \"<string>\",\n  \"providerTaxID\": \"<string>\",\n  \"id\": \"<string>\",\n  \"rate\": {\n    \"type\": \"<string>\",\n    \"medicarePct\": \"<number>\",\n    \"planYear\": \"<integer>\",\n    \"medicareFallbackPct\": \"<number>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1481e73d-d332-45b4-bfb6-a392fd999d48",
+              "name": "Care Event",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "coverages",
+                    ":coverageId",
+                    "care-events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "coverageId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"benefitTierId\": \"<string>\",\n  \"startDate\": \"<string>\",\n  \"endDate\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"providerLastOrgName\": \"<string>\",\n  \"providerNpi\": \"1265284533\",\n  \"providerTaxID\": \"123456789\",\n  \"id\": \"<string>\",\n  \"rate\": {\n    \"type\": \"<string>\",\n    \"medicarePct\": \"<number>\",\n    \"planYear\": \"<integer>\",\n    \"medicareFallbackPct\": \"<number>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"coverageId\": \"string\",\n  \"action\": \"pendClaims\",\n  \"startDate\": \"string\",\n  \"endDate\": \"string\",\n  \"notes\": \"string\",\n  \"benefitTierId\": \"string\",\n  \"rate\": {\n    \"type\": \"string\",\n    \"medicarePct\": 969.1879296934084,\n    \"planYear\": 2066,\n    \"medicareFallbackPct\": 6.024311177936113\n  },\n  \"provider\": {\n    \"lastOrOrganizationName\": \"string\",\n    \"npi\": \"1265284533\",\n    \"tin\": \"123456789\"\n  },\n  \"archived\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f629416-41e6-41e8-b305-262566c4284d",
+          "name": "List care events",
+          "request": {
+            "name": "List care events",
+            "description": {
+              "content": "Fetch all care events for a specific coverage, including archived ones. Archived events no longer apply to claims.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "coverages",
+                ":coverageId",
+                "care-events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "coverageId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0f3d0e11-c941-4871-b7bd-4d72b829d595",
+              "name": "Care Events",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "coverages",
+                    ":coverageId",
+                    "care-events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "coverageId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"careEvents\": [\n    {\n      \"id\": \"string\",\n      \"coverageId\": \"string\",\n      \"action\": \"repriceClaims\",\n      \"startDate\": \"string\",\n      \"endDate\": \"string\",\n      \"notes\": \"string\",\n      \"benefitTierId\": \"string\",\n      \"rate\": {\n        \"type\": \"string\",\n        \"medicarePct\": 102.0536812635993,\n        \"planYear\": 2021,\n        \"medicareFallbackPct\": 70.08563760015473\n      },\n      \"provider\": {\n        \"lastOrOrganizationName\": \"string\",\n        \"npi\": \"1265284533\",\n        \"tin\": \"123456789\"\n      },\n      \"archived\": true\n    },\n    {\n      \"id\": \"string\",\n      \"coverageId\": \"string\",\n      \"action\": \"setTier\",\n      \"startDate\": \"string\",\n      \"endDate\": \"string\",\n      \"notes\": \"string\",\n      \"benefitTierId\": \"string\",\n      \"rate\": {\n        \"type\": \"string\",\n        \"medicarePct\": 794.4878713629278,\n        \"planYear\": 2036,\n        \"medicareFallbackPct\": 95.09127593700077\n      },\n      \"provider\": {\n        \"lastOrOrganizationName\": \"string\",\n        \"npi\": \"1265284533\",\n        \"tin\": \"123456789\"\n      },\n      \"archived\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a2b93a10-4891-413a-bf30-ce126a5d9b0b",
+          "name": "Replace a care event",
+          "request": {
+            "name": "Replace a care event",
+            "description": {
+              "content": "Archive the existing care event and create a replacement with the provided data",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "coverages",
+                ":coverageId",
+                "care-events",
+                ":careEventId",
+                "replacement"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "coverageId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "careEventId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"benefitTierId\": \"<string>\",\n  \"startDate\": \"<string>\",\n  \"endDate\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"providerLastOrgName\": \"<string>\",\n  \"providerNpi\": \"<string>\",\n  \"providerTaxID\": \"<string>\",\n  \"id\": \"<string>\",\n  \"rate\": {\n    \"type\": \"<string>\",\n    \"medicarePct\": \"<number>\",\n    \"planYear\": \"<integer>\",\n    \"medicareFallbackPct\": \"<number>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "93abbf03-f6f8-42ad-bf6e-cb37e651c4b1",
+              "name": "Care Event",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "coverages",
+                    ":coverageId",
+                    "care-events",
+                    ":careEventId",
+                    "replacement"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "coverageId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "careEventId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"benefitTierId\": \"<string>\",\n  \"startDate\": \"<string>\",\n  \"endDate\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"providerLastOrgName\": \"<string>\",\n  \"providerNpi\": \"1265284533\",\n  \"providerTaxID\": \"123456789\",\n  \"id\": \"<string>\",\n  \"rate\": {\n    \"type\": \"<string>\",\n    \"medicarePct\": \"<number>\",\n    \"planYear\": \"<integer>\",\n    \"medicareFallbackPct\": \"<number>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"coverageId\": \"string\",\n  \"action\": \"pendClaims\",\n  \"startDate\": \"string\",\n  \"endDate\": \"string\",\n  \"notes\": \"string\",\n  \"benefitTierId\": \"string\",\n  \"rate\": {\n    \"type\": \"string\",\n    \"medicarePct\": 969.1879296934084,\n    \"planYear\": 2066,\n    \"medicareFallbackPct\": 6.024311177936113\n  },\n  \"provider\": {\n    \"lastOrOrganizationName\": \"string\",\n    \"npi\": \"1265284533\",\n    \"tin\": \"123456789\"\n  },\n  \"archived\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7c9ba393-95cc-47aa-b13d-20064ccd66b7",
+          "name": "Delete a care event",
+          "request": {
+            "name": "Delete a care event",
+            "description": {
+              "content": "Archive a care event so it no longer applies to the coverage. Returns the archived care event.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "coverages",
+                ":coverageId",
+                "care-events",
+                ":careEventId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "coverageId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "careEventId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b7628f0f-3a57-4d54-ac80-bb29e4c55d8f",
+              "name": "Care Event",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "coverages",
+                    ":coverageId",
+                    "care-events",
+                    ":careEventId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "coverageId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "careEventId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"coverageId\": \"string\",\n  \"action\": \"pendClaims\",\n  \"startDate\": \"string\",\n  \"endDate\": \"string\",\n  \"notes\": \"string\",\n  \"benefitTierId\": \"string\",\n  \"rate\": {\n    \"type\": \"string\",\n    \"medicarePct\": 969.1879296934084,\n    \"planYear\": 2066,\n    \"medicareFallbackPct\": 6.024311177936113\n  },\n  \"provider\": {\n    \"lastOrOrganizationName\": \"string\",\n    \"npi\": \"1265284533\",\n    \"tin\": \"123456789\"\n  },\n  \"archived\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f1c187a-3263-4902-9ec6-0277f4bfa7a2",
+          "name": "Retrieve plan design benefits",
+          "request": {
+            "name": "Retrieve plan design benefits",
+            "description": {
+              "content": "Fetch details for a specific plan design's benefits.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "designs",
+                ":planDesignId",
+                "benefits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "planDesignId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "82c79719-60fa-41a2-8a64-c4521415f048",
+              "name": "Plan Benefits",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "designs",
+                    ":planDesignId",
+                    "benefits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planDesignId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tiers\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"providerNetworkIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"waivePrecertRequirements\": false,\n      \"excludeLimitations\": false\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"providerNetworkIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"waivePrecertRequirements\": false,\n      \"excludeLimitations\": false\n    }\n  ],\n  \"rx\": {\n    \"accumulator\": {\n      \"id\": \"string\",\n      \"individualMaxOOPCents\": 2433.174622501125,\n      \"familyMaxOOPCents\": 9495.007017476066,\n      \"individualDeductibleCents\": 4612.306031214743,\n      \"familyDeductibleCents\": 4846.348026761199,\n      \"name\": \"string\"\n    },\n    \"days30\": {\n      \"genericDrug\": \"string\",\n      \"preferredDrug\": \"string\",\n      \"nonPreferredDrug\": \"string\",\n      \"specialtyDrug\": \"string\"\n    },\n    \"days90\": {\n      \"genericDrug\": \"string\",\n      \"preferredDrug\": \"string\",\n      \"nonPreferredDrug\": \"string\",\n      \"specialtyDrug\": \"string\"\n    }\n  },\n  \"medical\": {\n    \"accumulators\": [\n      {\n        \"id\": \"string\",\n        \"individualMaxOOPCents\": 8436.93610336199,\n        \"familyMaxOOPCents\": 6040.096373489065,\n        \"individualDeductibleCents\": 3529.960445901842,\n        \"familyDeductibleCents\": 896.2457860622197,\n        \"name\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"individualMaxOOPCents\": 5745.859305228382,\n        \"familyMaxOOPCents\": 181.17597598770962,\n        \"individualDeductibleCents\": 3111.71545215579,\n        \"familyDeductibleCents\": 954.1441311314336,\n        \"name\": \"string\"\n      }\n    ],\n    \"benefits\": [\n      {\n        \"benefitCategory\": {\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"legalDescription\": \"string\"\n        },\n        \"costSharing\": [\n          {\n            \"tierId\": \"string\",\n            \"covered\": true,\n            \"copayCents\": 2716304711429037,\n            \"coinsurancePct\": -4730460091540970,\n            \"waiveCopayAfterDays\": 5635962127041559,\n            \"waiveCostSharingForVisits\": 6619057311613503,\n            \"notes\": \"string\",\n            \"ifApplicable\": false,\n            \"requiresDeductibleMet\": false\n          },\n          {\n            \"tierId\": \"string\",\n            \"covered\": true,\n            \"copayCents\": -5563848280344662,\n            \"coinsurancePct\": -6240615074368578,\n            \"waiveCopayAfterDays\": -7007370496680109,\n            \"waiveCostSharingForVisits\": 8366008078824629,\n            \"notes\": \"string\",\n            \"ifApplicable\": false,\n            \"requiresDeductibleMet\": false\n          }\n        ],\n        \"limitations\": {\n          \"maxVisitsPerYear\": -1579031968536296,\n          \"maxDaysPerYear\": 7938723746428333,\n          \"moneyPerLifetimeCents\": 1125731660043047,\n          \"maxDaysPerLifetime\": 1024738438443803,\n          \"moneyPerFillCents\": 6479427991662381,\n          \"maxHoursPerVisit\": 8492121425303801,\n          \"excludeChildDependents\": true,\n          \"notes\": \"string\",\n          \"precertMayBeRequired\": false\n        }\n      },\n      {\n        \"benefitCategory\": {\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"legalDescription\": \"string\"\n        },\n        \"costSharing\": [\n          {\n            \"tierId\": \"string\",\n            \"covered\": false,\n            \"copayCents\": 3008788783842531,\n            \"coinsurancePct\": 1183804434546189,\n            \"waiveCopayAfterDays\": -4336727081129572,\n            \"waiveCostSharingForVisits\": 4986170991929289,\n            \"notes\": \"string\",\n            \"ifApplicable\": false,\n            \"requiresDeductibleMet\": false\n          },\n          {\n            \"tierId\": \"string\",\n            \"covered\": false,\n            \"copayCents\": -7775206325498515,\n            \"coinsurancePct\": 264934552925371,\n            \"waiveCopayAfterDays\": 7835897810433295,\n            \"waiveCostSharingForVisits\": 7898630961318095,\n            \"notes\": \"string\",\n            \"ifApplicable\": false,\n            \"requiresDeductibleMet\": false\n          }\n        ],\n        \"limitations\": {\n          \"maxVisitsPerYear\": -8176733482809279,\n          \"maxDaysPerYear\": -264488463127384,\n          \"moneyPerLifetimeCents\": -1213222252407314,\n          \"maxDaysPerLifetime\": -717144390351446,\n          \"moneyPerFillCents\": -6026609842712002,\n          \"maxHoursPerVisit\": -3755580366097778,\n          \"excludeChildDependents\": false,\n          \"notes\": \"string\",\n          \"precertMayBeRequired\": false\n        }\n      }\n    ]\n  },\n  \"exclusions\": [\n    {\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"legalDescription\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"legalDescription\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c5519adf-aac0-4877-8eaf-3eceb4ee9129",
+    "name": "Yuzu Accumulator (Experimental) Accumulator (Experimental) PublicApiV2 API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Yuzu's Public API",
+      "type": "text/plain"
+    }
+  }
+}

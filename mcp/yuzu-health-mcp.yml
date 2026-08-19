@@ -237,3 +237,9 @@ tools:
 - name: SponsorPublicController_updateSponsor
   description: Update a sponsor
   source_operation: openapi/yuzu-health-openapi-original.json#SponsorPublicController_updateSponsor
+deployment:
+  mode: none
+  verified: derived
+  tools: 76
+  checked: '2026-08-12'
+  source: catalog MCP census

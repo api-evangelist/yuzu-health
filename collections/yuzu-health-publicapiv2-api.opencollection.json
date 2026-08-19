@@ -1,0 +1,410 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Yuzu Accumulator (Experimental) Accumulator (Experimental) PublicApiV2 API",
+    "version": "0.5"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "PublicApiV2",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all group policies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/groups",
+            "params": [
+              {
+                "name": "startAfter",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch a paginated list of all group policies with optional filters."
+        },
+        {
+          "info": {
+            "name": "Create a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/groups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a new group with the provided data."
+        },
+        {
+          "info": {
+            "name": "Retrieve a group policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/groups/:groupPolicyId",
+            "params": [
+              {
+                "name": "groupPolicyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch details for a specific group policy by its ID."
+        },
+        {
+          "info": {
+            "name": "Create an initial enrollment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/groups/:groupPolicyId/enroll/initial-enrollment",
+            "params": [
+              {
+                "name": "groupPolicyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create an initial enrollment for a group policy with the provided data."
+        },
+        {
+          "info": {
+            "name": "Add new subscribers to an existing plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/groups/:groupPolicyId/enroll/new-subscribers",
+            "params": [
+              {
+                "name": "groupPolicyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Append new employees/subscribers to an existing plan. This is an append (it never terminates omitted members); each subscriber's coverage start is derived from their hire date and the plan's waiting-period rules."
+        },
+        {
+          "info": {
+            "name": "Get enrollment request status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/enroll/:enrollmentRequestId/status",
+            "params": [
+              {
+                "name": "enrollmentRequestId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get the status of an enrollment request for a group policy."
+        },
+        {
+          "info": {
+            "name": "List group members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/groups/:groupPolicyId/members",
+            "params": [
+              {
+                "name": "groupPolicyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "startAfter",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch a paginated list of members for a specific group policy."
+        },
+        {
+          "info": {
+            "name": "Remove a plan from a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v2/groups/:groupPolicyId/plans/remove/:planIdToRemove",
+            "params": [
+              {
+                "name": "groupPolicyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "planIdToRemove",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Remove a specific plan from a group policy by its ID."
+        },
+        {
+          "info": {
+            "name": "Add a plan to a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/groups/:groupPolicyId/plans/add",
+            "params": [
+              {
+                "name": "groupPolicyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Add a new plan to a specific group policy with the provided data."
+        },
+        {
+          "info": {
+            "name": "Retrieve plan SPD",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/plans/:planId/spd",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch a specific plan's Summary Plan Description (SPD) as a PDF file. If one is not found, it will not be generated."
+        },
+        {
+          "info": {
+            "name": "List all plan designs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/designs",
+            "params": [
+              {
+                "name": "includeAll",
+                "value": "",
+                "type": "query",
+                "description": "When true, returns plan designs in all statuses. Defaults to false (active only)."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch a list of plan designs. By default only active designs are returned. Set includeAll=true to include all statuses (draft, inReview, active, archived)."
+        },
+        {
+          "info": {
+            "name": "List care events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/coverages/:coverageId/care-events",
+            "params": [
+              {
+                "name": "coverageId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch all care events for a specific coverage, including archived ones. Archived events no longer apply to claims."
+        },
+        {
+          "info": {
+            "name": "Create a care event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/coverages/:coverageId/care-events",
+            "params": [
+              {
+                "name": "coverageId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a new care event for a specific coverage. Care events can pend claims, reprice claims, or set a benefit tier for matching claims."
+        },
+        {
+          "info": {
+            "name": "Replace a care event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v2/coverages/:coverageId/care-events/:careEventId/replacement",
+            "params": [
+              {
+                "name": "coverageId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "careEventId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Archive the existing care event and create a replacement with the provided data"
+        },
+        {
+          "info": {
+            "name": "Delete a care event",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v2/coverages/:coverageId/care-events/:careEventId",
+            "params": [
+              {
+                "name": "coverageId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "careEventId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Archive a care event so it no longer applies to the coverage. Returns the archived care event."
+        },
+        {
+          "info": {
+            "name": "Retrieve plan design benefits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/designs/:planDesignId/benefits",
+            "params": [
+              {
+                "name": "planDesignId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch details for a specific plan design's benefits."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

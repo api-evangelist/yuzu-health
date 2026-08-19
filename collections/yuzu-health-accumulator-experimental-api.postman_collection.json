@@ -1,0 +1,250 @@
+{
+  "item": [
+    {
+      "id": "8cd75fd6-5315-4135-99f5-ece91b075e68",
+      "name": "Accumulator (Experimental)",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6395a90a-4183-4898-bf4f-f39a4e33c4f9",
+          "name": "Get coverage buckets",
+          "request": {
+            "name": "Get coverage buckets",
+            "description": {
+              "content": "Get coverage buckets for a coverage. Note: buckets are filtered out if cost sharing is $0.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "accumulator",
+                "coverage",
+                "buckets",
+                ":coverageId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "coverageId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d1304b8c-d562-4507-82bb-3a4bbe7bb330",
+              "name": "Coverage buckets",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "accumulator",
+                    "coverage",
+                    "buckets",
+                    ":coverageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "coverageId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"startDate\": \"string\",\n  \"endDate\": \"string\",\n  \"buckets\": [\n    {\n      \"benefitCategoryId\": \"string\",\n      \"name\": \"string\",\n      \"limit\": 9424.531701334668,\n      \"used\": 5555.456984649167,\n      \"units\": \"visits\",\n      \"dxGroupingId\": \"string\",\n      \"resets\": \"string\"\n    },\n    {\n      \"benefitCategoryId\": \"string\",\n      \"name\": \"string\",\n      \"limit\": 4958.241607234281,\n      \"used\": 406.6618056786564,\n      \"units\": \"money\",\n      \"dxGroupingId\": \"string\",\n      \"resets\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dbe6449f-c610-4201-bddf-4833b0e20839",
+          "name": "Get coverage accumulators",
+          "request": {
+            "name": "Get coverage accumulators",
+            "description": {
+              "content": "Get coverage accumulators for a coverage. Note: accumulators are filtered out if 0.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "accumulator",
+                "coverage",
+                ":coverageId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "coverageId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6123654b-2e38-4f86-acfb-1173c5a2867b",
+              "name": "Coverage accumulators",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "accumulator",
+                    "coverage",
+                    ":coverageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "coverageId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"startDate\": \"string\",\n  \"endDate\": \"string\",\n  \"member\": [\n    {\n      \"id\": \"string\",\n      \"appliesToTiers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"deductible\": {\n        \"usedCents\": 4328.383974006266,\n        \"limitCents\": 8858.712394200835,\n        \"rolloverCents\": 293.6872888268982\n      },\n      \"maxOop\": {\n        \"usedCents\": 7032.970595301952,\n        \"limitCents\": 1196.831006749547,\n        \"rolloverCents\": 345.9288692410667\n      },\n      \"name\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"appliesToTiers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"deductible\": {\n        \"usedCents\": 6066.321208727653,\n        \"limitCents\": 8711.228025144952,\n        \"rolloverCents\": 1253.054418161762\n      },\n      \"maxOop\": {\n        \"usedCents\": 1950.9893914607023,\n        \"limitCents\": 6492.409112638588,\n        \"rolloverCents\": 9235.947990351153\n      },\n      \"name\": \"string\"\n    }\n  ],\n  \"family\": [\n    {\n      \"id\": \"string\",\n      \"appliesToTiers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"deductible\": {\n        \"usedCents\": 9086.364661506841,\n        \"limitCents\": 1038.982277959577,\n        \"rolloverCents\": 8321.45348733664\n      },\n      \"maxOop\": {\n        \"usedCents\": 2673.594234624318,\n        \"limitCents\": 9110.19293776861,\n        \"rolloverCents\": 7.433770569795772\n      },\n      \"name\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"appliesToTiers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"deductible\": {\n        \"usedCents\": 4278.265029683289,\n        \"limitCents\": 7709.31680169046,\n        \"rolloverCents\": 3481.8553601543467\n      },\n      \"maxOop\": {\n        \"usedCents\": 4842.781321121485,\n        \"limitCents\": 7317.0576840549775,\n        \"rolloverCents\": 2716.1229511391725\n      },\n      \"name\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "67313231-ce8e-4234-9f3c-94e90d3389df",
+    "name": "Yuzu Accumulator (Experimental) Accumulator (Experimental) Accumulator (Experimental) API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Yuzu's Public API",
+      "type": "text/plain"
+    }
+  }
+}
