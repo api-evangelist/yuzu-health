@@ -1,0 +1,47 @@
+slug: yuzu-health
+provider: Yuzu Health
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Insurance
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Group Policy
+  spec_file: yuzu-health-group-policy-api-openapi.yml
+  capability_id: BC-2140
+  capability_id_l1: BC-2140
+  capability_name: Policy Administration Management
+  confidence: 0.8
+  evidence: POST /v2/groups/{groupPolicyId}/renew — "Renew a group policy"; GET/PATCH /v2/groups/{groupPolicyId}/rules
+    — "Get/Update the rules of a group policy"
+  reason: Operations administer in-force group health policy contracts (renewal and policy rule maintenance),
+    which is Policy Administration Management. Sub-capability is genuinely split between Policy Renewal
+    Management (renew) and Group & Master Policy Administration (group rules), so only the L1 is asserted.
+- tag: EOB (Experimental)
+  spec_file: yuzu-health-eob-experimental-api-openapi.yml
+  capability_id: BC-2160
+  capability_id_l1: BC-2160
+  capability_name: Insurance Claims Management
+  confidence: 0.7
+  evidence: GET /v2/eob/download/{claimId} — 'Download EOB PDF by claim ID'
+  reason: Retrieval of the Explanation of Benefits document keyed by claim id, produced after adjudication
+    of a medical/pharmacy claim on a self-funded plan. Clearly within Insurance Claims Management; the
+    single operation does not pin down whether it belongs to adjudication or settlement, so no L2.
+- tag: Enrollment
+  spec_file: yuzu-health-enrollment-api-openapi.yml
+  capability_id: BC-2140.60
+  capability_id_l1: BC-2140
+  capability_name: Group & Master Policy Administration
+  confidence: 0.7
+  evidence: POST /v3/groups/{groupPolicyId}/enroll/add-subscriber — 'Add subscribers to an existing plan';
+    POST /v3/groups/{groupPolicyId}/enroll/terminate — 'Terminate coverage on an existing plan'
+  reason: Adds subscribers and dependents to, and terminates coverage under, an existing group policy
+    — certificate-level maintenance on a master/group contract, which is Group & Master Policy Administration.
+    Some overlap with policyholder onboarding (application capture) keeps this at 0.7.
