@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Yuzu Accumulator (Experimental) Accumulator (Experimental) Enrollment API
+  title: Yuzu Enrollment API
   description: Yuzu's Public API
   version: '0.5'
   contact: {}
@@ -102,173 +102,6 @@ paths:
       - Enrollment
 components:
   schemas:
-    AddDependentDto:
-      type: object
-      properties:
-        dependent:
-          type: object
-          properties:
-            line1:
-              type: string
-            state:
-              default: ''
-              type: string
-              enum:
-              - AL
-              - AK
-              - AZ
-              - AR
-              - CA
-              - CO
-              - CT
-              - DE
-              - FL
-              - GA
-              - HI
-              - ID
-              - IL
-              - IN
-              - IA
-              - KS
-              - KY
-              - LA
-              - ME
-              - MD
-              - MA
-              - MI
-              - MN
-              - MS
-              - MO
-              - MT
-              - NE
-              - NV
-              - NH
-              - NJ
-              - NM
-              - NY
-              - NC
-              - ND
-              - OH
-              - OK
-              - OR
-              - PA
-              - RI
-              - SC
-              - SD
-              - TN
-              - TX
-              - UT
-              - VT
-              - VA
-              - WA
-              - WV
-              - WI
-              - WY
-              - DC
-              - AS
-              - GU
-              - MP
-              - PR
-              - VI
-            city:
-              type: string
-            zip:
-              type: string
-              pattern: ^\d{5}(?:[ -]?\d{4})?$
-            sex:
-              default: ''
-              type: string
-              enum:
-              - M
-              - F
-            ssn:
-              anyOf:
-              - example: '{ raw: "123-45-6789", masked: "***-**-6789" }'
-                type: string
-              - type: 'null'
-            line2:
-              anyOf:
-              - type: string
-              - type: 'null'
-            firstName:
-              type: string
-            middleName:
-              anyOf:
-              - type: string
-                minLength: 1
-              - type: 'null'
-            lastName:
-              type: string
-            suffix:
-              anyOf:
-              - type: string
-                enum:
-                - Jr
-                - Sr
-                - II
-                - III
-                - IV
-                - V
-                - VI
-                - VII
-                - VIII
-              - type: 'null'
-            alternateID:
-              anyOf:
-              - type: string
-              - type: 'null'
-            email:
-              anyOf:
-              - type: string
-                format: email
-                pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
-              - type: 'null'
-            phoneNumber:
-              anyOf:
-              - type: string
-                example: '+12125551234'
-              - type: 'null'
-            birthday:
-              type: string
-              example: '2025-01-01'
-            planFeeIds:
-              default: []
-              type: array
-              items:
-                type: string
-            __id:
-              type: string
-          required:
-          - line1
-          - city
-          - zip
-          - firstName
-          - lastName
-          - birthday
-        relationship:
-          type: string
-          enum:
-          - spouse
-          - child
-        effectiveDate:
-          type: string
-          example: '2025-01-01'
-        reason:
-          type: string
-          enum:
-          - birth
-          - adoption
-          - marriage
-          - qualifiedMedicalChildSupportOrder
-          - lossOfCoverage
-          - subscriberOpenEnrollment
-          - subscriberNewHire
-          - other
-      required:
-      - dependent
-      - relationship
-      - effectiveDate
-      - reason
     TerminationDto:
       type: object
       properties:
@@ -781,6 +614,173 @@ components:
           example: '2025-01-01'
       required:
       - subscribers
+      - reason
+    AddDependentDto:
+      type: object
+      properties:
+        dependent:
+          type: object
+          properties:
+            line1:
+              type: string
+            state:
+              default: ''
+              type: string
+              enum:
+              - AL
+              - AK
+              - AZ
+              - AR
+              - CA
+              - CO
+              - CT
+              - DE
+              - FL
+              - GA
+              - HI
+              - ID
+              - IL
+              - IN
+              - IA
+              - KS
+              - KY
+              - LA
+              - ME
+              - MD
+              - MA
+              - MI
+              - MN
+              - MS
+              - MO
+              - MT
+              - NE
+              - NV
+              - NH
+              - NJ
+              - NM
+              - NY
+              - NC
+              - ND
+              - OH
+              - OK
+              - OR
+              - PA
+              - RI
+              - SC
+              - SD
+              - TN
+              - TX
+              - UT
+              - VT
+              - VA
+              - WA
+              - WV
+              - WI
+              - WY
+              - DC
+              - AS
+              - GU
+              - MP
+              - PR
+              - VI
+            city:
+              type: string
+            zip:
+              type: string
+              pattern: ^\d{5}(?:[ -]?\d{4})?$
+            sex:
+              default: ''
+              type: string
+              enum:
+              - M
+              - F
+            ssn:
+              anyOf:
+              - example: '{ raw: "123-45-6789", masked: "***-**-6789" }'
+                type: string
+              - type: 'null'
+            line2:
+              anyOf:
+              - type: string
+              - type: 'null'
+            firstName:
+              type: string
+            middleName:
+              anyOf:
+              - type: string
+                minLength: 1
+              - type: 'null'
+            lastName:
+              type: string
+            suffix:
+              anyOf:
+              - type: string
+                enum:
+                - Jr
+                - Sr
+                - II
+                - III
+                - IV
+                - V
+                - VI
+                - VII
+                - VIII
+              - type: 'null'
+            alternateID:
+              anyOf:
+              - type: string
+              - type: 'null'
+            email:
+              anyOf:
+              - type: string
+                format: email
+                pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+              - type: 'null'
+            phoneNumber:
+              anyOf:
+              - type: string
+                example: '+12125551234'
+              - type: 'null'
+            birthday:
+              type: string
+              example: '2025-01-01'
+            planFeeIds:
+              default: []
+              type: array
+              items:
+                type: string
+            __id:
+              type: string
+          required:
+          - line1
+          - city
+          - zip
+          - firstName
+          - lastName
+          - birthday
+        relationship:
+          type: string
+          enum:
+          - spouse
+          - child
+        effectiveDate:
+          type: string
+          example: '2025-01-01'
+        reason:
+          type: string
+          enum:
+          - birth
+          - adoption
+          - marriage
+          - qualifiedMedicalChildSupportOrder
+          - lossOfCoverage
+          - subscriberOpenEnrollment
+          - subscriberNewHire
+          - other
+      required:
+      - dependent
+      - relationship
+      - effectiveDate
       - reason
     EnrollmentRequestDto:
       type: object

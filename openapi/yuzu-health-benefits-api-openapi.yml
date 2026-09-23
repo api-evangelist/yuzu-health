@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Yuzu Accumulator (Experimental) Accumulator (Experimental) Benefits API
+  title: Yuzu Benefits API
   description: Yuzu's Public API
   version: '0.5'
   contact: {}
@@ -618,6 +618,334 @@ paths:
       - Benefits
 components:
   schemas:
+    BenefitLookupCodeRequestDto:
+      type: object
+      properties:
+        providerTin:
+          type: string
+          pattern: ^(\d{2}-\d{7}|\d{9})$
+          example: '123456789'
+    BenefitLookupDto:
+      type: object
+      properties:
+        benefits:
+          type: array
+          items:
+            type: object
+            properties:
+              benefitCategory:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  description:
+                    anyOf:
+                    - type: string
+                    - type: 'null'
+                  legalDescription:
+                    anyOf:
+                    - type: string
+                    - type: 'null'
+                required:
+                - id
+                - name
+                - description
+                - legalDescription
+              costSharing:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    tierId:
+                      type: string
+                    covered:
+                      type: boolean
+                    copayCents:
+                      anyOf:
+                      - type: integer
+                        minimum: -9007199254740991
+                        maximum: 9007199254740991
+                      - type: 'null'
+                    ifApplicable:
+                      default: false
+                      type: boolean
+                    coinsurancePct:
+                      anyOf:
+                      - type: integer
+                        minimum: -9007199254740991
+                        maximum: 9007199254740991
+                      - type: 'null'
+                    requiresDeductibleMet:
+                      default: false
+                      type: boolean
+                    waiveCopayAfterDays:
+                      anyOf:
+                      - type: integer
+                        minimum: -9007199254740991
+                        maximum: 9007199254740991
+                      - type: 'null'
+                    waiveCostSharingForVisits:
+                      anyOf:
+                      - type: integer
+                        minimum: -9007199254740991
+                        maximum: 9007199254740991
+                      - type: 'null'
+                    notes:
+                      anyOf:
+                      - type: string
+                      - type: 'null'
+                  required:
+                  - tierId
+                  - covered
+                  - copayCents
+                  - coinsurancePct
+                  - waiveCopayAfterDays
+                  - waiveCostSharingForVisits
+                  - notes
+              limitations:
+                type: object
+                properties:
+                  maxVisitsPerYear:
+                    anyOf:
+                    - type: integer
+                      minimum: -9007199254740991
+                      maximum: 9007199254740991
+                    - type: 'null'
+                  maxDaysPerYear:
+                    anyOf:
+                    - type: integer
+                      minimum: -9007199254740991
+                      maximum: 9007199254740991
+                    - type: 'null'
+                  moneyPerLifetimeCents:
+                    anyOf:
+                    - type: integer
+                      minimum: -9007199254740991
+                      maximum: 9007199254740991
+                    - type: 'null'
+                  maxDaysPerLifetime:
+                    anyOf:
+                    - type: integer
+                      minimum: -9007199254740991
+                      maximum: 9007199254740991
+                    - type: 'null'
+                  moneyPerFillCents:
+                    anyOf:
+                    - type: integer
+                      minimum: -9007199254740991
+                      maximum: 9007199254740991
+                    - type: 'null'
+                  maxHoursPerVisit:
+                    anyOf:
+                    - type: integer
+                      minimum: -9007199254740991
+                      maximum: 9007199254740991
+                    - type: 'null'
+                  excludeChildDependents:
+                    anyOf:
+                    - type: boolean
+                    - type: 'null'
+                  limitationNotes:
+                    anyOf:
+                    - type: string
+                    - type: 'null'
+                  precertMayBeRequired:
+                    default: false
+                    type: boolean
+                required:
+                - maxVisitsPerYear
+                - maxDaysPerYear
+                - moneyPerLifetimeCents
+                - maxDaysPerLifetime
+                - moneyPerFillCents
+                - maxHoursPerVisit
+                - excludeChildDependents
+                - limitationNotes
+              benefitNotes:
+                anyOf:
+                - type: string
+                - type: 'null'
+              precertRequirements:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    benefitCategoryId:
+                      type: string
+                    rule:
+                      type: object
+                      properties:
+                        minHoursPerAdmission:
+                          anyOf:
+                          - type: integer
+                            minimum: -9007199254740991
+                            maximum: 9007199254740991
+                          - type: 'null'
+                        minAge:
+                          anyOf:
+                          - type: integer
+                            minimum: -9007199254740991
+                            maximum: 9007199254740991
+                          - type: 'null'
+                        minMoneyPerServiceLineCents:
+                          anyOf:
+                          - type: integer
+                            minimum: -9007199254740991
+                            maximum: 9007199254740991
+                          - type: 'null'
+                        minDaysPerClaim:
+                          anyOf:
+                          - type: integer
+                            minimum: -9007199254740991
+                            maximum: 9007199254740991
+                          - type: 'null'
+                        excludePosCode:
+                          anyOf:
+                          - type: string
+                          - type: 'null'
+                      required:
+                      - minHoursPerAdmission
+                      - minAge
+                      - minMoneyPerServiceLineCents
+                      - minDaysPerClaim
+                      - excludePosCode
+                  required:
+                  - benefitCategoryId
+              procedureCodeRanges:
+                type: array
+                items:
+                  type: string
+              revenueCodeRanges:
+                type: array
+                items:
+                  type: string
+              humanReadable:
+                type: object
+                properties:
+                  payments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        tierId:
+                          type: string
+                        tierName:
+                          type: string
+                        payment:
+                          type: string
+                      required:
+                      - tierId
+                      - tierName
+                  limitation:
+                    type: string
+                  precertRequirements:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        benefitCategoryId:
+                          type: string
+                        rule:
+                          type: string
+                      required:
+                      - benefitCategoryId
+                required:
+                - payments
+                - precertRequirements
+            required:
+            - benefitCategory
+            - costSharing
+            - benefitNotes
+            - precertRequirements
+            - procedureCodeRanges
+            - revenueCodeRanges
+            - humanReadable
+        exclusions:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              description:
+                anyOf:
+                - type: string
+                - type: 'null'
+              legalDescription:
+                anyOf:
+                - type: string
+                - type: 'null'
+            required:
+            - id
+            - name
+            - description
+            - legalDescription
+        tiers:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              waivePrecertRequirements:
+                default: false
+                type: boolean
+              excludeLimitations:
+                default: false
+                type: boolean
+              networks:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    url:
+                      type: string
+                    phone:
+                      type: string
+                      example: '+12125551234'
+                    description:
+                      type: string
+                  required:
+                  - name
+            required:
+            - id
+            - name
+            - networks
+        precertVendorInfo:
+          type: object
+          properties:
+            name:
+              type: string
+            phone:
+              type: string
+              example: '+12125551234'
+          required:
+          - name
+        telehealthDisclaimer:
+          type: object
+          properties:
+            orgName:
+              type: string
+          required:
+          - orgName
+        humanReadable:
+          type: object
+          properties:
+            precertDisclaimer:
+              type: string
+      required:
+      - benefits
+      - exclusions
+      - tiers
+      - humanReadable
     BenefitLookupCodeResultDto:
       type: object
       properties:
@@ -984,334 +1312,6 @@ components:
       - matchedBenefits
       - matchedExclusions
       - tiers
-    BenefitLookupCodeRequestDto:
-      type: object
-      properties:
-        providerTin:
-          type: string
-          pattern: ^(\d{2}-\d{7}|\d{9})$
-          example: '123456789'
-    BenefitLookupDto:
-      type: object
-      properties:
-        benefits:
-          type: array
-          items:
-            type: object
-            properties:
-              benefitCategory:
-                type: object
-                properties:
-                  id:
-                    type: string
-                  name:
-                    type: string
-                  description:
-                    anyOf:
-                    - type: string
-                    - type: 'null'
-                  legalDescription:
-                    anyOf:
-                    - type: string
-                    - type: 'null'
-                required:
-                - id
-                - name
-                - description
-                - legalDescription
-              costSharing:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    tierId:
-                      type: string
-                    covered:
-                      type: boolean
-                    copayCents:
-                      anyOf:
-                      - type: integer
-                        minimum: -9007199254740991
-                        maximum: 9007199254740991
-                      - type: 'null'
-                    ifApplicable:
-                      default: false
-                      type: boolean
-                    coinsurancePct:
-                      anyOf:
-                      - type: integer
-                        minimum: -9007199254740991
-                        maximum: 9007199254740991
-                      - type: 'null'
-                    requiresDeductibleMet:
-                      default: false
-                      type: boolean
-                    waiveCopayAfterDays:
-                      anyOf:
-                      - type: integer
-                        minimum: -9007199254740991
-                        maximum: 9007199254740991
-                      - type: 'null'
-                    waiveCostSharingForVisits:
-                      anyOf:
-                      - type: integer
-                        minimum: -9007199254740991
-                        maximum: 9007199254740991
-                      - type: 'null'
-                    notes:
-                      anyOf:
-                      - type: string
-                      - type: 'null'
-                  required:
-                  - tierId
-                  - covered
-                  - copayCents
-                  - coinsurancePct
-                  - waiveCopayAfterDays
-                  - waiveCostSharingForVisits
-                  - notes
-              limitations:
-                type: object
-                properties:
-                  maxVisitsPerYear:
-                    anyOf:
-                    - type: integer
-                      minimum: -9007199254740991
-                      maximum: 9007199254740991
-                    - type: 'null'
-                  maxDaysPerYear:
-                    anyOf:
-                    - type: integer
-                      minimum: -9007199254740991
-                      maximum: 9007199254740991
-                    - type: 'null'
-                  moneyPerLifetimeCents:
-                    anyOf:
-                    - type: integer
-                      minimum: -9007199254740991
-                      maximum: 9007199254740991
-                    - type: 'null'
-                  maxDaysPerLifetime:
-                    anyOf:
-                    - type: integer
-                      minimum: -9007199254740991
-                      maximum: 9007199254740991
-                    - type: 'null'
-                  moneyPerFillCents:
-                    anyOf:
-                    - type: integer
-                      minimum: -9007199254740991
-                      maximum: 9007199254740991
-                    - type: 'null'
-                  maxHoursPerVisit:
-                    anyOf:
-                    - type: integer
-                      minimum: -9007199254740991
-                      maximum: 9007199254740991
-                    - type: 'null'
-                  excludeChildDependents:
-                    anyOf:
-                    - type: boolean
-                    - type: 'null'
-                  limitationNotes:
-                    anyOf:
-                    - type: string
-                    - type: 'null'
-                  precertMayBeRequired:
-                    default: false
-                    type: boolean
-                required:
-                - maxVisitsPerYear
-                - maxDaysPerYear
-                - moneyPerLifetimeCents
-                - maxDaysPerLifetime
-                - moneyPerFillCents
-                - maxHoursPerVisit
-                - excludeChildDependents
-                - limitationNotes
-              benefitNotes:
-                anyOf:
-                - type: string
-                - type: 'null'
-              precertRequirements:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    benefitCategoryId:
-                      type: string
-                    rule:
-                      type: object
-                      properties:
-                        minHoursPerAdmission:
-                          anyOf:
-                          - type: integer
-                            minimum: -9007199254740991
-                            maximum: 9007199254740991
-                          - type: 'null'
-                        minAge:
-                          anyOf:
-                          - type: integer
-                            minimum: -9007199254740991
-                            maximum: 9007199254740991
-                          - type: 'null'
-                        minMoneyPerServiceLineCents:
-                          anyOf:
-                          - type: integer
-                            minimum: -9007199254740991
-                            maximum: 9007199254740991
-                          - type: 'null'
-                        minDaysPerClaim:
-                          anyOf:
-                          - type: integer
-                            minimum: -9007199254740991
-                            maximum: 9007199254740991
-                          - type: 'null'
-                        excludePosCode:
-                          anyOf:
-                          - type: string
-                          - type: 'null'
-                      required:
-                      - minHoursPerAdmission
-                      - minAge
-                      - minMoneyPerServiceLineCents
-                      - minDaysPerClaim
-                      - excludePosCode
-                  required:
-                  - benefitCategoryId
-              procedureCodeRanges:
-                type: array
-                items:
-                  type: string
-              revenueCodeRanges:
-                type: array
-                items:
-                  type: string
-              humanReadable:
-                type: object
-                properties:
-                  payments:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        tierId:
-                          type: string
-                        tierName:
-                          type: string
-                        payment:
-                          type: string
-                      required:
-                      - tierId
-                      - tierName
-                  limitation:
-                    type: string
-                  precertRequirements:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        benefitCategoryId:
-                          type: string
-                        rule:
-                          type: string
-                      required:
-                      - benefitCategoryId
-                required:
-                - payments
-                - precertRequirements
-            required:
-            - benefitCategory
-            - costSharing
-            - benefitNotes
-            - precertRequirements
-            - procedureCodeRanges
-            - revenueCodeRanges
-            - humanReadable
-        exclusions:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-              name:
-                type: string
-              description:
-                anyOf:
-                - type: string
-                - type: 'null'
-              legalDescription:
-                anyOf:
-                - type: string
-                - type: 'null'
-            required:
-            - id
-            - name
-            - description
-            - legalDescription
-        tiers:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-              name:
-                type: string
-              waivePrecertRequirements:
-                default: false
-                type: boolean
-              excludeLimitations:
-                default: false
-                type: boolean
-              networks:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    url:
-                      type: string
-                    phone:
-                      type: string
-                      example: '+12125551234'
-                    description:
-                      type: string
-                  required:
-                  - name
-            required:
-            - id
-            - name
-            - networks
-        precertVendorInfo:
-          type: object
-          properties:
-            name:
-              type: string
-            phone:
-              type: string
-              example: '+12125551234'
-          required:
-          - name
-        telehealthDisclaimer:
-          type: object
-          properties:
-            orgName:
-              type: string
-          required:
-          - orgName
-        humanReadable:
-          type: object
-          properties:
-            precertDisclaimer:
-              type: string
-      required:
-      - benefits
-      - exclusions
-      - tiers
-      - humanReadable
   securitySchemes:
     public-api-auth:
       scheme: bearer
