@@ -79,6 +79,13 @@ paths:
       - Group Policy
 components:
   schemas:
+    GroupPolicyRenewalResponseDto:
+      type: object
+      properties:
+        groupPolicyId:
+          type: string
+      required:
+      - groupPolicyId
     GroupPolicyRulesUpdateDto:
       type: object
       properties:
@@ -228,13 +235,6 @@ components:
       - loadAccumulators
       - enrollmentWaitingPeriod
       - isCobraManagedByYuzu
-    GroupPolicyRenewalResponseDto:
-      type: object
-      properties:
-        groupPolicyId:
-          type: string
-      required:
-      - groupPolicyId
   securitySchemes:
     public-api-auth:
       scheme: bearer

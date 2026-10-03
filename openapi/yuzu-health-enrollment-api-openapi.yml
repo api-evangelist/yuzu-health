@@ -102,68 +102,6 @@ paths:
       - Enrollment
 components:
   schemas:
-    TerminationDto:
-      type: object
-      properties:
-        coverageId:
-          type: string
-        reason:
-          type: string
-          enum:
-          - maritalStatusChange
-          - spouseEligibleElsewhere
-          - coveredThroughEmploymentElsewhere
-          - reductionInWorkHours
-          - death
-          - medicaidMedicareElig
-          - mistakeEnrollment
-          - employmentTermination
-          - legalMandate
-          - ageOut
-        terminationDate:
-          type: string
-          example: '2025-01-01'
-        cobraEligible:
-          type: boolean
-      required:
-      - coverageId
-      - reason
-    EnrollmentRequestDto:
-      type: object
-      properties:
-        id:
-          type: string
-        status:
-          type: string
-          enum:
-          - ingested
-          - failed
-          - denied
-          - submitted
-          - applied
-          - rejected
-          - processing
-          - approved
-          - queued
-          - pendingApproval
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              subscriber:
-                anyOf:
-                - type: string
-                - type: 'null'
-              message:
-                type: string
-            required:
-            - subscriber
-            - message
-      required:
-      - id
-      - status
-      - errors
     AddDependentDto:
       type: object
       properties:
@@ -330,6 +268,32 @@ components:
       - dependent
       - relationship
       - effectiveDate
+      - reason
+    TerminationDto:
+      type: object
+      properties:
+        coverageId:
+          type: string
+        reason:
+          type: string
+          enum:
+          - maritalStatusChange
+          - spouseEligibleElsewhere
+          - coveredThroughEmploymentElsewhere
+          - reductionInWorkHours
+          - death
+          - medicaidMedicareElig
+          - mistakeEnrollment
+          - employmentTermination
+          - legalMandate
+          - ageOut
+        terminationDate:
+          type: string
+          example: '2025-01-01'
+        cobraEligible:
+          type: boolean
+      required:
+      - coverageId
       - reason
     AddSubscriberDto:
       type: object
@@ -818,6 +782,42 @@ components:
       required:
       - subscribers
       - reason
+    EnrollmentRequestDto:
+      type: object
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+          enum:
+          - ingested
+          - failed
+          - denied
+          - submitted
+          - applied
+          - rejected
+          - processing
+          - approved
+          - queued
+          - pendingApproval
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              subscriber:
+                anyOf:
+                - type: string
+                - type: 'null'
+              message:
+                type: string
+            required:
+            - subscriber
+            - message
+      required:
+      - id
+      - status
+      - errors
   securitySchemes:
     public-api-auth:
       scheme: bearer

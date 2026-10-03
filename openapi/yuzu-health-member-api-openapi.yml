@@ -110,22 +110,117 @@ paths:
       - Member
 components:
   schemas:
-    UpdateMemberLoginDto:
+    UpdateMemberDemographicsDto:
       type: object
       properties:
-        email:
+        firstName:
+          type: string
+        middleName:
           anyOf:
           - type: string
-            format: email
-            pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
           - type: 'null'
           x-nestjs_zod-empty-type: true
-        phoneNumber:
+        lastName:
+          type: string
+        suffix:
           anyOf:
           - type: string
-            example: '+12125551234'
+            enum:
+            - Jr
+            - Sr
+            - II
+            - III
+            - IV
+            - V
+            - VI
+            - VII
+            - VIII
           - type: 'null'
           x-nestjs_zod-empty-type: true
+        sex:
+          type: string
+          enum:
+          - M
+          - F
+        ssn:
+          anyOf:
+          - example: '{ raw: "123-45-6789", masked: "***-**-6789" }'
+            type: string
+          - type: 'null'
+          x-nestjs_zod-empty-type: true
+        birthday:
+          type: string
+        line1:
+          type: string
+        line2:
+          anyOf:
+          - type: string
+          - type: 'null'
+          x-nestjs_zod-empty-type: true
+        city:
+          type: string
+        state:
+          type: string
+          enum:
+          - AL
+          - AK
+          - AZ
+          - AR
+          - CA
+          - CO
+          - CT
+          - DE
+          - FL
+          - GA
+          - HI
+          - ID
+          - IL
+          - IN
+          - IA
+          - KS
+          - KY
+          - LA
+          - ME
+          - MD
+          - MA
+          - MI
+          - MN
+          - MS
+          - MO
+          - MT
+          - NE
+          - NV
+          - NH
+          - NJ
+          - NM
+          - NY
+          - NC
+          - ND
+          - OH
+          - OK
+          - OR
+          - PA
+          - RI
+          - SC
+          - SD
+          - TN
+          - TX
+          - UT
+          - VT
+          - VA
+          - WA
+          - WV
+          - WI
+          - WY
+          - DC
+          - AS
+          - GU
+          - MP
+          - PR
+          - VI
+        zip:
+          type: string
+          pattern: ^\d{5}(?:[ -]?\d{4})?$
     MemberDto:
       type: object
       properties:
@@ -377,117 +472,22 @@ components:
       - coordinationOfBenefits
       - currentAddresses
       - coverages
-    UpdateMemberDemographicsDto:
+    UpdateMemberLoginDto:
       type: object
       properties:
-        firstName:
-          type: string
-        middleName:
+        email:
           anyOf:
           - type: string
+            format: email
+            pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
           - type: 'null'
           x-nestjs_zod-empty-type: true
-        lastName:
-          type: string
-        suffix:
+        phoneNumber:
           anyOf:
           - type: string
-            enum:
-            - Jr
-            - Sr
-            - II
-            - III
-            - IV
-            - V
-            - VI
-            - VII
-            - VIII
+            example: '+12125551234'
           - type: 'null'
           x-nestjs_zod-empty-type: true
-        sex:
-          type: string
-          enum:
-          - M
-          - F
-        ssn:
-          anyOf:
-          - example: '{ raw: "123-45-6789", masked: "***-**-6789" }'
-            type: string
-          - type: 'null'
-          x-nestjs_zod-empty-type: true
-        birthday:
-          type: string
-        line1:
-          type: string
-        line2:
-          anyOf:
-          - type: string
-          - type: 'null'
-          x-nestjs_zod-empty-type: true
-        city:
-          type: string
-        state:
-          type: string
-          enum:
-          - AL
-          - AK
-          - AZ
-          - AR
-          - CA
-          - CO
-          - CT
-          - DE
-          - FL
-          - GA
-          - HI
-          - ID
-          - IL
-          - IN
-          - IA
-          - KS
-          - KY
-          - LA
-          - ME
-          - MD
-          - MA
-          - MI
-          - MN
-          - MS
-          - MO
-          - MT
-          - NE
-          - NV
-          - NH
-          - NJ
-          - NM
-          - NY
-          - NC
-          - ND
-          - OH
-          - OK
-          - OR
-          - PA
-          - RI
-          - SC
-          - SD
-          - TN
-          - TX
-          - UT
-          - VT
-          - VA
-          - WA
-          - WV
-          - WI
-          - WY
-          - DC
-          - AS
-          - GU
-          - MP
-          - PR
-          - VI
-        zip:
-          type: string
-          pattern: ^\d{5}(?:[ -]?\d{4})?$
     PaginatedMemberDto:
       type: object
       properties:
