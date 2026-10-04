@@ -984,13 +984,6 @@ components:
       - matchedBenefits
       - matchedExclusions
       - tiers
-    BenefitLookupCodeRequestDto:
-      type: object
-      properties:
-        providerTin:
-          type: string
-          pattern: ^(\d{2}-\d{7}|\d{9})$
-          example: '123456789'
     BenefitLookupDto:
       type: object
       properties:
@@ -1312,6 +1305,13 @@ components:
       - exclusions
       - tiers
       - humanReadable
+    BenefitLookupCodeRequestDto:
+      type: object
+      properties:
+        providerTin:
+          type: string
+          pattern: ^(\d{2}-\d{7}|\d{9})$
+          example: '123456789'
   securitySchemes:
     public-api-auth:
       scheme: bearer

@@ -79,13 +79,6 @@ paths:
       - Group Policy
 components:
   schemas:
-    GroupPolicyRenewalResponseDto:
-      type: object
-      properties:
-        groupPolicyId:
-          type: string
-      required:
-      - groupPolicyId
     GroupPolicyRulesUpdateDto:
       type: object
       properties:
@@ -153,6 +146,13 @@ components:
             - employeeClassTagName
             - days
             - rounding
+    GroupPolicyRenewalResponseDto:
+      type: object
+      properties:
+        groupPolicyId:
+          type: string
+      required:
+      - groupPolicyId
     GroupPolicyRulesDto:
       type: object
       properties:

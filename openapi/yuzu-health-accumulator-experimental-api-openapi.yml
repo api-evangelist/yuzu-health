@@ -54,46 +54,6 @@ paths:
       - Accumulator (Experimental)
 components:
   schemas:
-    BucketRangeDto:
-      type: object
-      properties:
-        startDate:
-          type: string
-        endDate:
-          type: string
-        buckets:
-          type: array
-          items:
-            type: object
-            properties:
-              benefitCategoryId:
-                type: string
-              dxGroupingId:
-                type: string
-              name:
-                type: string
-              limit:
-                type: number
-              used:
-                type: number
-              units:
-                type: string
-                enum:
-                - visits
-                - days
-                - money
-              resets:
-                type: string
-            required:
-            - benefitCategoryId
-            - name
-            - limit
-            - used
-            - units
-      required:
-      - startDate
-      - endDate
-      - buckets
     FamilyAccumulatorsDto:
       type: object
       properties:
@@ -198,6 +158,46 @@ components:
       - endDate
       - member
       - family
+    BucketRangeDto:
+      type: object
+      properties:
+        startDate:
+          type: string
+        endDate:
+          type: string
+        buckets:
+          type: array
+          items:
+            type: object
+            properties:
+              benefitCategoryId:
+                type: string
+              dxGroupingId:
+                type: string
+              name:
+                type: string
+              limit:
+                type: number
+              used:
+                type: number
+              units:
+                type: string
+                enum:
+                - visits
+                - days
+                - money
+              resets:
+                type: string
+            required:
+            - benefitCategoryId
+            - name
+            - limit
+            - used
+            - units
+      required:
+      - startDate
+      - endDate
+      - buckets
   securitySchemes:
     public-api-auth:
       scheme: bearer

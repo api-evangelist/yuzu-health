@@ -76,6 +76,9 @@ paths:
       - Coverage
 components:
   schemas:
+    Uint8Array:
+      type: object
+      properties: {}
     IDCardResponse:
       type: object
       properties:
@@ -86,9 +89,6 @@ components:
       required:
       - front
       - back
-    Uint8Array:
-      type: object
-      properties: {}
   securitySchemes:
     public-api-auth:
       scheme: bearer
