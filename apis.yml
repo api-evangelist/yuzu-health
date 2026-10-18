@@ -205,6 +205,8 @@ apis:
   humanURL: https://yuzu.health/docs/guides/api
   baseURL: https://api.yuzu.health
   tags:
+  - Public API V1
+  tags_raw:
   - PublicApiV1
   properties:
   - type: OpenAPI
